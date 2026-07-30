@@ -1,0 +1,2 @@
+class SplayTree:
+    pass

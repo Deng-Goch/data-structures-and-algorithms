@@ -1,0 +1,2 @@
+class BloomFilter:
+    pass

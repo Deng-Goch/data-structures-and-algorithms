@@ -1,0 +1,2 @@
+class CARTESIAN:
+    pass

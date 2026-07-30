@@ -1,0 +1,2 @@
+class KDT:
+    pass
