@@ -115,7 +115,7 @@ class Graph:
         order = DynArray()
 
         while queu:
-            node = queu.PeekLeft()
+            node = queu.PopLeft()
             if node not in seen:
                 seen.add(node)
                 order.append(node)
@@ -124,7 +124,7 @@ class Graph:
                     if isinstance(neighbor, tuple):
                         neighbor = neighbor[0]
                     if neighbor not in seen:
-                        queu.append(neighbor)
+                        queu.Push(neighbor)
         return order
     
     ## O(n)
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     print(graph.get_neighbors("A"))
     print(graph.get_neighbors("C"))
 
-    print(graph.dfs('C'))
+    print(graph.bfs('C'))
     # print(graph.bfs("B"))
 
     # print(graph.get_nodes())

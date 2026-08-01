@@ -10,7 +10,7 @@ class Queue:
     def __init__(self):
         self.right = None
         self.left = None
-        self.len = int(0)
+        self.len = 0
     
     ## O(1)
     def __len__(self):
@@ -34,38 +34,41 @@ class Queue:
     def Push(self, val):
         new_node = Queue._QueueNode_(val)
 
-        if self.right == None:
+        if self.right is None:
             self.right = new_node
             self.left = new_node
         else:
             self.right.next = new_node
             new_node.prev = self.right
             self.right = new_node
-        self.len += int(1)
+        self.len += 1
     
     ## O(1)
     def PopLeft(self):
-        val = self.left
-        if self.left == None:
+        if self.left is None:
            raise ValueError('Empty Stack')
         else:
-            newLeft = self.left.next
-            self.left.next.prev = None
-            self.left.next = None
-            self.left = newLeft
-            self.len -= int(1)
-            return val
+            popped = self.left.val
+            if self.len == 1:
+                self.left = None
+            else:
+                newLeft = self.left.next
+                newLeft.prev = None
+                self.left.next = None
+                self.left = newLeft
+            self.len -= 1
+            return popped
 
     ## O(1)
     def PeekLeft(self):
-        if self.left == None:
+        if self.left is None:
             raise ValueError('Empty Stack')
         else:
             return str(self.left.val)
     
     ## O(1)
     def PeekRight(self):
-        if self.right == None:
+        if self.right is None:
             raise ValueError('Empty Stack')
         else:
             return str(self.right.val)
@@ -74,12 +77,17 @@ class Queue:
 if __name__ == "__main__":
     x = Queue()
     x.Push(1)
-    x.Push(2)
-    x.Push(3)
-    x.Push(4)
-    x.Push(5)
+    # x.Push(2)
+    # x.Push(3)
+    # x.Push(4)
+    # x.Push(5)
 
     print(x)
-    x.PopLeft()
-    x.PopLeft()
+    z = x.PopLeft()
+    # x.PopLeft()
+    # x.PopLeft()
+    # x.PopLeft()
+    # print(x.PopLeft())
+    # print(x.PopLeft())
+
     print(x)
