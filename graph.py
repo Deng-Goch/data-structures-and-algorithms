@@ -1,10 +1,9 @@
 from dynamicarray import DynArray
 from hashtable import HashTable
-from hashset import HashSet
+# from set import set
 
 from stack import Stack
 from queu import Queue
-# from hashset import HashSet
 
 class Graph:
     ## 2 maigic methods
@@ -36,15 +35,14 @@ class Graph:
         else:
             for neighnors in self.adjaceny_list.values():
                 neighnors.discard(node)
-            del self.adjaceny_list[node]
+            self.adjaceny_list.pop(node)
 
     ## O(x)
     def add_edge(self, from_node, to_node, weight=None):
         if from_node not in self.adjaceny_list:
-            raise ValueError('From node does not exist.')
+            raise ValueError('"From Node" does not exist.')
         elif to_node not in self.adjaceny_list:
-            raise ValueError('To node does not exist.')
-        ## fine up to here
+            raise ValueError('"To Node" does not exist.')
 
         if self.weighted is False:
             if self.directed is False:
@@ -54,7 +52,7 @@ class Graph:
                 self.adjaceny_list[from_node].add(to_node)
         else:
             if weight is None or type(float(weight)) != float:
-                raise AssertionError("Enter a weight of type int/float.")
+                raise TypeError("Enter a weight of type int/float.")
             
             if self.directed is False:
                 self.adjaceny_list[to_node].add((from_node,weight))
@@ -108,10 +106,10 @@ class Graph:
     def bfs(self, start_node):
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
-        
-        seen = set()
+
         queu = Queue()
         queu.Push(start_node)
+        seen = set()
         order = DynArray()
 
         while queu:
@@ -119,12 +117,17 @@ class Graph:
             if node not in seen:
                 seen.add(node)
                 order.append(node)
+
                 neighbors = self.get_neighbors(node)
-                for neighbor in neighbors:
-                    if isinstance(neighbor, tuple):
-                        neighbor = neighbor[0]
-                    if neighbor not in seen:
-                        queu.Push(neighbor)
+
+                if self.weighted:
+                    for neighbor in sorted(neighbors, reverse=True):
+                        if neighbor[0] not in seen:
+                            queu.Push(neighbor[0])
+                else:
+                    for neighbor in sorted(neighbors, reverse=True):
+                        if neighbor not in seen:
+                            queu.Push(neighbor)
         return order
     
     ## O(n)
@@ -132,9 +135,9 @@ class Graph:
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
         
-        seen = set()
         stack = Stack()
         stack.push(start_node)
+        seen = set()
         order = DynArray()
 
         while stack:
@@ -145,12 +148,12 @@ class Graph:
 
                 neighbors = self.get_neighbors(node)
 
-                if self.weighted is True:
-                    for neighbor in neighbors:
+                if self.weighted:
+                    for neighbor in sorted(neighbors, reverse=True):
                         if neighbor[0] not in seen:
                             stack.push(neighbor[0])
                 else:
-                    for neighbor in neighbors:
+                    for neighbor in sorted(neighbors, reverse=True):
                         if neighbor not in seen:
                             stack.push(neighbor)
         return order
@@ -183,7 +186,7 @@ class Graph:
 
 
 if __name__ == "__main__":
-    graph = Graph(directed=False, weighted=True)
+    graph = Graph(directed=True, weighted=False)
     graph.add_node('A')
     graph.add_node('B')
     graph.add_node('C')
@@ -195,19 +198,24 @@ if __name__ == "__main__":
 
     print(graph)
 
+    graph.remove_node("B")
+
+    print(graph)
+
     graph.add_edge("A", "B", 7)
     graph.add_edge('A', 'C', 3)
-    graph.add_edge('A', 'D', 10)
+    graph.add_edge('A', 'E', 10)
 
-    graph.add_edge('B', 'E', 6)
+    graph.add_edge('B', 'A', 6)
+    graph.add_edge("B", "C")
 
     graph.add_edge('D', 'E', 4)
     graph.add_edge('D', 'F', 8)
     graph.add_edge('D', 'C', 9)
 
     graph.add_edge("E", "A", 2)
-    graph.add_edge('E', 'F', 5)
-    graph.add_edge('E', 'H', 11)
+    graph.add_edge('E', 'B', 5)
+    graph.add_edge('E', 'C', 11)
 
     graph.add_edge('F', 'H', 8.6)
     graph.add_edge("G", "E", 6)
@@ -215,28 +223,36 @@ if __name__ == "__main__":
     
     print(graph)
 
-    
-    # print("\n")
+    graph.remove_node("B")
+    print(graph)
 
-    # # print(graph.get_nodes())
+    print(graph.dfs('A'))
+    print(graph.bfs("A"))
+
+    
+    print("\n")
+
+    print(graph.adjaceny_list)
+
+    # print(graph.get_nodes())
 
     # graph.remove_edge("A", "B")
 
     # graph.remove_edge("E", "F")
 
 
-    # # graph.add_node('X')
-    # # print(graph)
+    # graph.add_node('X')
+    # print(graph)
 
 
     # graph.add_edge('H', 'X')
     # print(graph)
 
 
-    print(graph.get_neighbors("A"))
-    print(graph.get_neighbors("C"))
+    # print(graph.get_neighbors("A"))
+    # print(graph.get_neighbors("C"))
 
-    print(graph.bfs('C'))
-    # print(graph.bfs("B"))
+
+
 
     # print(graph.get_nodes())

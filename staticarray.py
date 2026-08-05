@@ -88,14 +88,23 @@ class StatArray:
             self.size += 1
 
     ## O(n)
-    def pop(self):
+    def remove(self, value) -> None:
+        index = 0
+        for i in range(self.size):
+            if self.Array[i] == value:
+                index += i
+                break
+        else:
+            return
+
+        for i in range(index, self.size -1):
+            self.Array[i] = self.Array[i + 1]
+
         self.Array[self.size - 1] = None
         self.size -= 1
-
-        return self.Array[self.size - 1]
     
     ## O(n)
-    def remove(self, index=None):
+    def pop(self, index=None):
         if self.size == 0:
             raise IndexError("Poping from an empty array")
 
@@ -107,7 +116,6 @@ class StatArray:
 
         value = self.Array[index]
 
-        # Shift left
         for i in range(index, self.size - 1):
             self.Array[i] = self.Array[i + 1]
 
@@ -223,3 +231,8 @@ if __name__ == "__main__":
 
     # y = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     # print(x[3:8:2])
+
+    x.pop()
+    x.pop()
+
+    print(x)

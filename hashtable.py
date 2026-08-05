@@ -37,7 +37,8 @@ class HashTable:
         for k, v in bucket:
             if k == key:
                 return True
-        return False
+        else:
+            return False
 
     ## O(1)*
     def __getitem__(self, key):

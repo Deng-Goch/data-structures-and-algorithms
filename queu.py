@@ -1,6 +1,6 @@
 from dynamicarray import DynArray
-class Queue:
 
+class Queue:
     class _QueueNode_:
         def __init__(self, val):
             self.val = val
@@ -29,12 +29,12 @@ class Queue:
     def __repr__(self):
         return f"Start -> {self} <- End"
 
-        
+
     ## O(1)
     def Push(self, val):
         new_node = Queue._QueueNode_(val)
 
-        if self.right is None:
+        if self.right == None:
             self.right = new_node
             self.left = new_node
         else:
@@ -51,6 +51,7 @@ class Queue:
             popped = self.left.val
             if self.len == 1:
                 self.left = None
+                self.right = None
             else:
                 newLeft = self.left.next
                 newLeft.prev = None
@@ -77,17 +78,24 @@ class Queue:
 if __name__ == "__main__":
     x = Queue()
     x.Push(1)
-    # x.Push(2)
-    # x.Push(3)
-    # x.Push(4)
-    # x.Push(5)
+    x.Push(2)
+    x.Push(3)
+    x.Push(4)
+    x.Push(5)
 
     print(x)
-    z = x.PopLeft()
-    # x.PopLeft()
-    # x.PopLeft()
-    # x.PopLeft()
-    # print(x.PopLeft())
-    # print(x.PopLeft())
 
-    print(x)
+    x.PopLeft()
+    print(x.len)
+
+    x.PopLeft()
+    print(x.len)
+
+    x.PopLeft()
+    print(x.len)
+
+    x.PopLeft()
+    print(x.len)
+
+    x.PopLeft()
+    print(x.len)

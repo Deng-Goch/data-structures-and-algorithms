@@ -5,44 +5,51 @@ class HashSet:
     def __init__(self):
         self._table = HashTable()
 
-    ## O(x)
+    ## O(n)
     def __iter__(self):
         for i in range(self._table.size):
             yield self._table.keys()[i]
 
-    ## O(x)
+    ## O(n)
     def __repr__(self):
         rep = str("")
         for i in range(self._table.size):
-            rep = rep + str(self._table.keys()[i])
+            rep += str(self._table.keys()[i])
 
             if i != (self._table.size - 1):
-                rep = rep + ", "
+                rep += ", "
 
         return "{" + rep + "}"
 
-    ## O(x)
+    ## O(1)
     def __contains__(self, value):
-        if value in self._table.keys():
+        if value in self._table:
             return True
         else:
             return False
 
-    ## O(x)
+    ## O(1)
     def __len__(self):
         return (self._table.size)
 
 
     ## instance methods - 17
-    ## O(x)
-    def add(self, value):
-        if value in self._table.keys():
+    # O(1)
+    def add(self, element) -> None:
+        if element in self._table:
             return
         else:
-            self._table.update(value, None)
+            self._table.update(element, None)
+
+     ## O(1)
+    def discard(self, element:object) -> None:
+        if element in self._table:
+            self._table.pop(element)
+        else:
+            return
 
     ## O(x)
-    def clear(self):
+    def clear(self) -> None:
         pass
     
     ## O(x)
@@ -55,10 +62,6 @@ class HashSet:
 
     ## O(x)
     def difference_update(self):
-        pass
-
-    ## O(x)
-    def discard(self, value):
         pass
 
     ## O(x)
@@ -86,7 +89,7 @@ class HashSet:
         pass
 
     ## O(x)
-    def remove(self, value):
+    def remove(self, element:object) -> None:
         pass
     
     ## O(x)
@@ -94,7 +97,7 @@ class HashSet:
         pass
 
     ## O(x)
-    def symmetric_difference_update(self, sec_set):
+    def symmetric_difference_update(self, s) -> None:
         pass
 
     ## O(x)
@@ -106,27 +109,34 @@ class HashSet:
         pass
 
 
-
-
-
-
-
 if __name__ == "__main__":
     hs = HashSet()
-    hs.add(7)
-    hs.add(1)
-    hs.add(2)
-    hs.add(2)
+    # hs.add(7)
+    # hs.add(1)
+    # hs.add(2)
+    # hs.add(2)
     
-    print(hs)
-    print(len(hs))
+    # print(hs)
+    # # print(len(hs))
 
+    # hs.discard(2)
 
+    # for i in hs:
+    #     print(i)
+
+    # print("\n")
 
     s = set()
     s.add(1)
     s.add(7)
     s.add(2)
     s.add(2)
+    s.add(7)
     print(s)
     print(len(s))
+
+    s.discard(2)
+    print(s)
+
+    for i in s:
+        print(i)

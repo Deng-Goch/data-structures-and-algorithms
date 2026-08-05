@@ -18,7 +18,7 @@ class Stack:
     ## O(1)
     def push(self, val):
         newNode = Stack._StackNode_(val)
-        if self.top is None:
+        if self.len == 0:
             self.top = newNode
         else:
             self.top.next = newNode
@@ -51,10 +51,15 @@ class Stack:
 
 if __name__ == "__main__":
     x = Stack()
-    x.push(1)
-    x.push(2)
-    x.push(3)
-    print(x.pop())
-    print(x.pop())
-    print(x.pop())
-    print(x.pop())
+    # x.push(1)
+    # x.push(2)
+    # x.push(3)
+    # print(x.pop())
+    # print(x.pop())
+    # print(x.pop())
+    # print(x.pop())
+
+    if x:
+        print(True)
+    else:
+        print(False)

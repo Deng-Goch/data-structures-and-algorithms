@@ -1,7 +1,7 @@
 from staticarray import StatArray
 
 class DynArray(StatArray):
-    def __init__(self, capacity=1):
+    def __init__(self, capacity=8):
        super().__init__(capacity)
     
     def append(self, value):
