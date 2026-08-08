@@ -1,6 +1,6 @@
 from dynamicarray import DynArray
 from hashtable import HashTable
-# from set import set
+from hashset import HashSet
 
 from stack import Stack
 from queu import Queue
@@ -24,7 +24,7 @@ class Graph:
     ## O(1)
     def add_node(self, node):
         if node not in self.adjaceny_list:
-            self.adjaceny_list[node] = set()
+            self.adjaceny_list[node] = HashSet()
         else:
             raise ValueError('Node exist.')
     
@@ -35,7 +35,7 @@ class Graph:
         else:
             for neighnors in self.adjaceny_list.values():
                 neighnors.discard(node)
-            self.adjaceny_list.pop(node)
+            del self.adjaceny_list[node]
 
     ## O(x)
     def add_edge(self, from_node, to_node, weight=None):
@@ -109,7 +109,7 @@ class Graph:
 
         queu = Queue()
         queu.Push(start_node)
-        seen = set()
+        seen = HashSet()
         order = DynArray()
 
         while queu:
@@ -137,7 +137,7 @@ class Graph:
         
         stack = Stack()
         stack.push(start_node)
-        seen = set()
+        seen = HashSet()
         order = DynArray()
 
         while stack:
@@ -186,7 +186,7 @@ class Graph:
 
 
 if __name__ == "__main__":
-    graph = Graph(directed=True, weighted=False)
+    graph = Graph(directed=False, weighted=False)
     graph.add_node('A')
     graph.add_node('B')
     graph.add_node('C')
@@ -198,9 +198,9 @@ if __name__ == "__main__":
 
     print(graph)
 
-    graph.remove_node("B")
+    # graph.remove_node("A")
 
-    print(graph)
+    # print(graph)
 
     graph.add_edge("A", "B", 7)
     graph.add_edge('A', 'C', 3)
@@ -223,36 +223,13 @@ if __name__ == "__main__":
     
     print(graph)
 
-    graph.remove_node("B")
+    graph.remove_node("A")
     print(graph)
 
-    print(graph.dfs('A'))
-    print(graph.bfs("A"))
+    print(graph.dfs('B'))
+    print(graph.bfs("B"))
 
     
-    print("\n")
+    # print("\n")
 
-    print(graph.adjaceny_list)
-
-    # print(graph.get_nodes())
-
-    # graph.remove_edge("A", "B")
-
-    # graph.remove_edge("E", "F")
-
-
-    # graph.add_node('X')
-    # print(graph)
-
-
-    # graph.add_edge('H', 'X')
-    # print(graph)
-
-
-    # print(graph.get_neighbors("A"))
-    # print(graph.get_neighbors("C"))
-
-
-
-
-    # print(graph.get_nodes())
+    # print(graph.adjaceny_list)

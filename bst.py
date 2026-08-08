@@ -14,9 +14,11 @@ class BST:
             return f"({self.key}, {self.value})"
 
     ## magic methods - 4
+    ## O(1)
     def __init__(self):
         self.root = None
 
+    ## O(log2 n)
     def __contains__(self, key):
         currNode = self.root
         while currNode is not None:
@@ -104,7 +106,7 @@ class BST:
             raise ValueError("Unknow order.")
 
 
-    ## internal functions - 8
+    ## internal functions - 7
     def _delete(self, node):
         #CASE 1: if it is a leaf node
         if node.left is None and node.right is None:
@@ -174,24 +176,7 @@ class BST:
 
 
     def _level_order(self, node):
-        arr = list([])
-        que = Queue()
-
-        if self.root is None:
-            raise ValueError("Empty Tree")
-        
-        que.Push(self.root)
-
-        while len(que) > 0:
-            if que.left.left is not None:
-                que.Push(que.left.left)
-            if que.left.right is not None:
-                que.Push(que.left.right)
-
-            arr.append(que.left.value)
-            que.PeekLeft()
-
-        return arr
+        pass
 
 
     def _suceessor(self, node):
@@ -222,16 +207,10 @@ class BST:
 
 
 if __name__ == "__main__":
-    # bst = BST()
-    # bst.insert(8, 23)
-    # bst.insert(3, 50)
-    # bst.insert(27, "xyz")
+    bst = BST()
+    bst.insert(8, 23)
+    bst.insert(3, 50)
+    bst.insert(27, "xyz")
 
-    # print(bst)
-    x = '3'
-    y = 'x'
-
-    if x < y:
-        print("True")
-    else:
-        print("False")
+    print(bst)
+    print(bst.travers("levelorder"))

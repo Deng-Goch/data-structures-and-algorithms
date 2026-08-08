@@ -120,7 +120,7 @@ class HashTable:
 
         for i, (k, v) in enumerate(bucket):
             if k == key:
-                bucket.remove(i)
+                bucket.pop(i)
                 self.size -= 1
                 break
         else:
@@ -207,7 +207,7 @@ class HashTable:
 
 if __name__ == "__main__":
     hashmap = HashTable()
-    # print(hashmap.buckets)
+    print(hashmap.buckets)
 
     hashmap.update("Deng", "DG")
     hashmap.update("Goch", "GH")
@@ -215,6 +215,14 @@ if __name__ == "__main__":
     hashmap.update("Monydhot", "MT")
     hashmap.update("Yor", "YR")
     hashmap.update("Bol", "BL")
+
+    print(hashmap)
+
+    del hashmap["Monydhot"]
+    del hashmap["Yassin"]
+
+    print(hashmap)
+
     # hashmap.update("Monywiir", "MR")
     # hashmap.update("Anyang", "AG")
     # hashmap.update("Kuac", "KC")
@@ -244,28 +252,28 @@ if __name__ == "__main__":
 
     # print(hashmap.keys())
 
-    print(hashmap.size)
+    # print(hashmap.size)
 
-    print("\n")
+    # print("\n")
 
-    print(hashmap.values())
+    # print(hashmap.values())
 
-    copied = hashmap.copy()
+    # copied = hashmap.copy()
 
-    print(copied.values())
+    # print(copied.values())
 
-    print(hashmap.keys())
+    # print(hashmap.keys())
 
-    print(copied.keys())
+    # print(copied.keys())
 
-    hashmap.popitem()
-    hashmap.popitem()
+    # hashmap.popitem()
+    # hashmap.popitem()
 
-    print(hashmap.size)
-    print(copied.size)
+    # print(hashmap.size)
+    # print(copied.size)
 
-    print("\n")
+    # print("\n")
 
-    print(hashmap.keys())
+    # print(hashmap.keys())
 
-    print(copied.keys())
+    # print(copied.keys())
