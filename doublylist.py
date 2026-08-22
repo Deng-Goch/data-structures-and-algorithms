@@ -10,10 +10,12 @@ class DoublyList:
     ## 8 magic method
     
     ## O(1)
-    def __init__(self):
+    def __init__(self, *args):
         self.head = None
         self.tail = None
         self.len = 0
+        for arg in args:
+            self.InsertEnd(arg)
 
     ## O(1)
     def __len__(self):
@@ -190,17 +192,6 @@ class DoublyList:
 
 
 if __name__ == "__main__":
-    x = DoublyList()
-    x.InsertEnd(1)
-    x.InsertEnd(2)
-    x.InsertEnd(3)
-    x.InsertEnd(4)
-    x.InsertEnd(5)
-    # x.InsertEnd(6)
+    x = DoublyList(1,2,3,4,5,6,7)
 
     print(x)
-
-    x.RevLinkList()
-    print(x)
-
-    ## output: 5 <-> 4 <-> 3 <-> 2 <-> 1

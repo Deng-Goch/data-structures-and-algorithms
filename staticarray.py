@@ -3,10 +3,16 @@ from ctypes import py_object
 class StatArray:
     ## 7 magic methods
     ## O(x)
-    def __init__(self, capacity):
+    def __init__(self, capacity, *args):
         self.capacity = capacity
-        self.size = int(0)
+        self.size = 0
         self.Array = self._make_array(self.capacity)
+        if len(args) <= capacity:
+            for arg in args:
+                self.append(arg)
+        else:
+            for i in range(capacity):
+                self.append(args[i])
 
     ## O(x)
     def __len__(self):
@@ -163,7 +169,7 @@ class StatArray:
                 return i
             else:
                 continue
-        return int(-1)
+        return -1
 
     ## O(n)
     def extend(self, elements):
@@ -178,14 +184,24 @@ class StatArray:
             self.Array[i] = None
         return self.Array
 
-    ## O(log2 n)
-    def mergeSort(self):
-        theArr = self.Array
-        pass
+    ## O(n2)
+    def bubbleSort(self):
+
+        swap = True
+        iters = ((self.size)-1)
+
+        while swap:
+            swap = False
+            for i in range(iters):
+                if self.Array[i] > self.Array[i+1]:
+                    self.Array[i], self.Array[i+1] = self.Array[i+1], self.Array[i]
+                    swap = True
+            iters -= 1
+        return self.Array
     
     ## O(log2 n)
     def binSearch(self, target):
-        self.mergeSort()
+        self.bubbleSort()
 
         le = 0
         ri = (len(self.Array)-1)
@@ -209,30 +225,5 @@ class StatArray:
 
 
 if __name__ == "__main__":
-    x = StatArray(20)
-    x.append(1)
-    x.append(2)
-    x.append(3)
-    x.append(4)
-    x.append(5)
-    x.append(6)
-    x.append(7)
-    x.append(8)
-    x.append(9)
-    x.append(10)
-    x.append(11)
-    x.append(12)
-
-    print(x)
-
-    # print(x[2:12:2])
-
-    # x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-
-    # y = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    # print(x[3:8:2])
-
-    x.pop()
-    x.pop()
-
+    x = StatArray(6, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
     print(x)

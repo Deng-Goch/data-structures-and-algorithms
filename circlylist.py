@@ -8,10 +8,12 @@ class CirclyList:
             self.prev = None
 
     ## magic methods - 8
-    def __init__(self):
+    def __init__(self, *args):
         self.head = None
         self.tail = None
         self.len = 0
+        for arg in args:
+            self.InsertEnd(arg)
 
     ## O(1)
     def __len__(self):
@@ -186,22 +188,6 @@ class CirclyList:
 
 
 if __name__ == "__main__":
-    x = CirclyList()
-    x.InsertStart(5)
-    x.InsertEnd(6)
-    x.InsertEnd(7)
-    x.InsertEnd(8)
-    x.InsertEnd(9)
-    x.InsertStart(4)
-    x.InsertStart(3)
-    x.InsertStart(2)
-    x.InsertStart(1)
-    x.InsertEnd('Circly')
+    x = CirclyList(1,2,3,4,5,6,7,8)
 
     print(x)
-    print(repr(x))
-
-
-    
-    for val in x:
-        print(val)

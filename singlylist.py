@@ -7,10 +7,12 @@ class SinglyList:
             self.next = None
 
     ## 8 magic methods
-    def __init__(self):
+    def __init__(self, *args):
         self.head = None
         self.tail = None
         self.len = 0
+        for arg in args:
+            self.InsertEnd(arg)
     
     ## O(1)
     def __len__(self):
@@ -128,19 +130,6 @@ class SinglyList:
 
 
 if __name__ == "__main__":
-    x = SinglyList()
-    x.InsertEnd(8)
-    x.InsertStart(7)
-    x.InsertStart(6)
-    x.InsertStart(5)
-    x.InsertStart(4)
-    x.InsertEnd(9)
-    x.InsertStart(3)
-    x.InsertStart(2)
-    x.InsertStart(1)
-    x.InsertEnd(10)
+    x = SinglyList(1,2,3,4,5,6,7)
 
     print(x)
-
-    for val in x:
-        print(val)

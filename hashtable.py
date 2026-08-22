@@ -3,11 +3,13 @@ from dynamicarray import DynArray
 class HashTable:
     ## 8 Magic Methods
     ## O(1)
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.size = 0
         self.capacity = 8
         self.buckets = self._Make_Table_(self.capacity)
         self.last = DynArray()
+        for key in kwargs:
+            self.update(key, kwargs[key])
 
     ## O(n)
     def __repr__(self):
@@ -71,7 +73,7 @@ class HashTable:
 
     ## O(n)
     def _Make_Table_(self, capacity):
-        table = DynArray(capacity)
+        table = DynArray()
         for _ in range(capacity):
             table.append(DynArray())
         return table
@@ -139,7 +141,7 @@ class HashTable:
 
     ## O(n)
     def keys(self):
-        keys = DynArray(self.size)
+        keys = DynArray()
         for bucket in self.buckets:
             for k, _ in bucket:
                 keys.append(k)
@@ -147,7 +149,7 @@ class HashTable:
     
     ## O(n)
     def values(self):
-        vals = DynArray(self.size)
+        vals = DynArray()
         for bucket in self.buckets:
             for _, v in bucket:
                 vals.append(v)
@@ -155,7 +157,7 @@ class HashTable:
 
     ## O(n)
     def items(self):
-        keyVals = DynArray(self.size)
+        keyVals = DynArray()
         for bucket in self.buckets:
             for k, v in bucket:
                 keyVals.append((k, v))
@@ -206,74 +208,13 @@ class HashTable:
 
 
 if __name__ == "__main__":
-    hashmap = HashTable()
+    hashmap = HashTable(name='Deng', age=30, gender='Male')
     print(hashmap.buckets)
+    print(hashmap.keys())
 
-    hashmap.update("Deng", "DG")
-    hashmap.update("Goch", "GH")
-    hashmap.update("Yassin", "YN")
-    hashmap.update("Monydhot", "MT")
-    hashmap.update("Yor", "YR")
-    hashmap.update("Bol", "BL")
+    print(hashmap.capacity)
+    print(hashmap.size)
 
-    print(hashmap)
 
-    del hashmap["Monydhot"]
-    del hashmap["Yassin"]
 
-    print(hashmap)
-
-    # hashmap.update("Monywiir", "MR")
-    # hashmap.update("Anyang", "AG")
-    # hashmap.update("Kuac", "KC")
-    # hashmap.update("John", "JN")
-    # hashmap.update("David", "DD")
-    # hashmap.update("Kol", "KL")
-    # hashmap.update("Dau", "DU")
-    # hashmap.update("Ayuel", "AL")
-    # hashmap.update("Musa", "MA")
-    # hashmap.update("Brown", "BN")
-    # hashmap.update("Chan", "CN")
-    # hashmap.update("Nyok", "NK")
-    # hashmap.update("Kunebuny", "KY")
-    # hashmap.update("Salva", "AA")
-    # hashmap.update("ArialDit", "AD")
-
-    # print(hashmap.setdefault("Yor"))
-    # print(hashmap)
-    # hashmap.setdefault("ArialBek", "Nyan")
-    # print(hashmap)
-
-    # print("\n")
-
-    # print(hashmap.items())
-
-    # print("\n")
-
-    # print(hashmap.keys())
-
-    # print(hashmap.size)
-
-    # print("\n")
-
-    # print(hashmap.values())
-
-    # copied = hashmap.copy()
-
-    # print(copied.values())
-
-    # print(hashmap.keys())
-
-    # print(copied.keys())
-
-    # hashmap.popitem()
-    # hashmap.popitem()
-
-    # print(hashmap.size)
-    # print(copied.size)
-
-    # print("\n")
-
-    # print(hashmap.keys())
-
-    # print(copied.keys())
+    

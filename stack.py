@@ -6,9 +6,11 @@ class Stack:
             self.next = None
 
     ## O(1)
-    def __init__(self):
+    def __init__(self, *args):
         self.top = None
         self.len = 0
+        for arg in args:
+            self.push(arg)
     
     ## O(1)
     def __len__(self):
@@ -46,20 +48,10 @@ class Stack:
         if self.top.val is None:
             raise ValueError('Empty Stack')
         else:
-            return print(f'{str(self.top.val)}')
+            return (f'{str(self.top.val)}')
 
 
 if __name__ == "__main__":
-    x = Stack()
-    # x.push(1)
-    # x.push(2)
-    # x.push(3)
-    # print(x.pop())
-    # print(x.pop())
-    # print(x.pop())
-    # print(x.pop())
+    x = Stack(1,2,3,4,5,6,7)
 
-    if x:
-        print(True)
-    else:
-        print(False)
+    print(x.peek())

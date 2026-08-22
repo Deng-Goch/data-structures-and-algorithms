@@ -7,10 +7,12 @@ class Queue:
             self.prev = None
             self.next = None
 
-    def __init__(self):
+    def __init__(self, *args):
         self.right = None
         self.left = None
         self.len = 0
+        for arg in args:
+            self.Push(arg)
     
     ## O(1)
     def __len__(self):
@@ -76,26 +78,6 @@ class Queue:
 
 
 if __name__ == "__main__":
-    x = Queue()
-    x.Push(1)
-    x.Push(2)
-    x.Push(3)
-    x.Push(4)
-    x.Push(5)
+    x = Queue(1,2,3,4,5,6,7)
 
     print(x)
-
-    x.PopLeft()
-    print(x.len)
-
-    x.PopLeft()
-    print(x.len)
-
-    x.PopLeft()
-    print(x.len)
-
-    x.PopLeft()
-    print(x.len)
-
-    x.PopLeft()
-    print(x.len)

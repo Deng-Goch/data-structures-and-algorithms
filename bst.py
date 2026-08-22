@@ -3,15 +3,15 @@ from queu import Queue
 
 class BST:
     class TreeNode:
-        def __init__(self, key):
+        def __init__(self, key, value):
             self.key = key
-            self.value = None
+            self.value = value
             self.left = None
             self.right = None
             self.parent = None
     
         def __repr__(self):
-            return f"(Key: {self.key}, Value: {self.value})"
+            return f"(K: {self.key}, V: {self.value})"
 
     ## magic methods - 4
     ## O(1)
@@ -66,14 +66,13 @@ class BST:
         if node is None:
             return None
         else:
-            # return node
             queue = Queue(node)
             order = DynArray()
 
             while queue:
                 nod = (queue.left.val)
 
-                order.append((nod.key))
+                order.append(nod)
 
                 if nod.left is not None:
                     queue.Push(nod.left)
@@ -114,15 +113,13 @@ class BST:
     ## O(log2 n)
     def insert(self, key, val):
         if self.root is None:
-            self.root = BST.TreeNode(key)
-            self.root.value = val
+            self.root = BST.TreeNode(key, val)
         else:
             currNode = self.root
             while True:
                 if key < currNode.key:
                     if currNode.left is None:
-                        currNode.left = BST.TreeNode(key)
-                        currNode.left.value = val
+                        currNode.left = BST.TreeNode(key, val)
                         currNode.left.parent = currNode
                         break
                     else:
@@ -130,8 +127,7 @@ class BST:
 
                 elif key > currNode.key:
                     if currNode.right is None:
-                        currNode.right = BST.TreeNode(key)
-                        currNode.right.value = val
+                        currNode.right = BST.TreeNode(key, val)
                         currNode.right.parent = currNode
                         break
                     else:
@@ -255,7 +251,7 @@ if __name__ == "__main__":
     # print("\n")
 
     # bst.travers('postorder')
-
+    
     # print("\n")
-
+    
     print(bst.travers('leveLordeR'))
