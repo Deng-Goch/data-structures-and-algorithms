@@ -4,24 +4,24 @@
 
 ## The Data Structures are as follow:
 
-## Array:
+## 1- Array:
     1- Dynamic Array
     2- Static Array
 
-## Linked List:
+## 2- Linked List:
     1- Singly Linked List.
     2- Doubly Linked List.
     3- Circly Linked List.
 
-## Stack:
+## 3- Stack:
 
-## Queue:
+## 4- Queue:
 
-## Hash Table / Hash Map / Dictionary:
+## 5- Hash Table / Hash Map / Dictionary:
 
-## Graph:
+## 6- Graph:
 
-## Tree:
+## 7- Tree:
     1- Binary Search Tree.
     2- Red-Black Tree.
     3- AVL Tree.
@@ -36,7 +36,7 @@
     12- Splay Tree.
     13- KD-Tree.
 
-## Others:
+## 8- Others:
     1- Hash Set.
     2- Union Find / Disjoint Set.
     3- SkipList
