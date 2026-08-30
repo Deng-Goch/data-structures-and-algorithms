@@ -1,11 +1,12 @@
-data-structures-and-algorithms
-A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
+## data-structures-and-algorithms
 
-The Data Structures are as follow:
+## A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
+
+## The Data Structures are as follow:
 
 ## Array:
-- Dynamic Array
-- Static Array
+    1- Dynamic Array
+    2- Static Array
 
 ## Linked List:
     1- Singly Linked List.
