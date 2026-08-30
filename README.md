@@ -3,11 +3,11 @@ A repository for data-structures-and-algorithms implemented from scratch, litera
 
 The Data Structures are as follow:
 
-1- Array:
+*Array:
     1- Dynamic Array
     2- Static Array
 
-2- Linked List:
+*Linked List:
     1- Singly Linked List.
     2- Doubly Linked List.
     3- Circly Linked List.
