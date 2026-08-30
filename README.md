@@ -1,4 +1,4 @@
-## data-structures-and-algorithms
+# Data Structures and Algorithms:
 
 ## A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
 
@@ -27,7 +27,7 @@
     3- AVL Tree.
     4- Max-Min Heap.
     5- Priority Queue.
-    6- Trie.
+    6- Trie / Prefix-Tree:
     7- Treap.
     8- Segment Tree.
     9- Binary Index Tree / Fenwick Tree.
@@ -39,4 +39,5 @@
 ## Others:
     1- Hash Set.
     2- Union Find / Disjoint Set.
-    3- Bloom Filter
+    3- SkipList
+    4- Bloom Filter
