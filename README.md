@@ -12,15 +12,15 @@ The Data Structures are as follow:
     2- Doubly Linked List.
     3- Circly Linked List.
 
-3- Stack:
+## Stack:
 
-4- Queue:
+## Queue:
 
-5- Hash Table / Hash Map / Dictionary:
+## Hash Table / Hash Map / Dictionary:
 
-6- Graph:
+## Graph:
 
-7- Tree:
+## Tree:
     1- Binary Search Tree.
     2- Red-Black Tree.
     3- AVL Tree.
@@ -35,7 +35,7 @@ The Data Structures are as follow:
     12- Splay Tree.
     13- KD-Tree.
 
-8- Others:
+## Others:
     1- Hash Set.
     2- Union Find / Disjoint Set.
     3- Bloom Filter
