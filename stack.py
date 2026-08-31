@@ -5,7 +5,7 @@ class Stack:
             self.prev = None
             self.next = None
 
-    ## O(1)
+    ## O(n)
     def __init__(self, *args):
         self.top = None
         self.len = 0
@@ -19,13 +19,13 @@ class Stack:
 
     ## O(1)
     def push(self, val):
-        newNode = Stack._StackNode_(val)
+        newnode = Stack._StackNode_(val)
         if self.len == 0:
-            self.top = newNode
+            self.top = newnode
         else:
-            self.top.next = newNode
-            newNode.prev = self.top
-            self.top = newNode
+            self.top.next = newnode
+            newnode.prev = self.top
+            self.top = newnode
         self.len += 1
     
     ## O(1)

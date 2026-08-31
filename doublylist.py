@@ -9,7 +9,7 @@ class DoublyList:
 
     ## 8 magic method
     
-    ## O(1)
+    ## O(n)
     def __init__(self, *args):
         self.head = None
         self.tail = None
@@ -18,11 +18,11 @@ class DoublyList:
             self.InsertEnd(arg)
 
     ## O(1)
-    def __len__(self):
+    def __len__(self) -> int:
         return self.len
     
     ## O(n)
-    def __str__(self):
+    def __str__(self) -> str:
         arr = DynArray()
         curr = self.head
         while curr:
@@ -38,12 +38,12 @@ class DoublyList:
             curr = curr.next
 
     ## O(n)
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Head => {(self)} <= Tail"
 
-    ## 27 in x
     ## O(n)
-    def __contains__(self, item):
+    ## allows us to do: 27 in x
+    def __contains__(self, item) -> bool:
         curr = self.head
         for _ in range(1, self.len + 1):
             if curr.value == item:
@@ -52,8 +52,8 @@ class DoublyList:
                 curr = curr.next
         return False
     
-    ## print(x[3])
-    ## O(1)
+    ## O(n)
+    ## allows us to do: print(x[3])
     def __getitem__(self, position):
         if position == 1:
             return self.head.value
@@ -67,35 +67,36 @@ class DoublyList:
                 curr = curr.next
         return curr.value
     
-    ## x[3] = 10
-    ## O(1)
+
+    ## O(n)
+    ## allows us to do: x[3] = 10
     def __setitem__(self, position, value):
-        newNode = DoublyList._DoublyNode_(value)
+        newnode = DoublyList._DoublyNode_(value)
         if position == 1:
             self.DelStart()
-            return self.InsertStart(value)
+            self.InsertStart(value)
         elif position == self.len:
             self.DelEnd()
-            return self.InsertEnd(value)
+            self.InsertEnd(value)
         elif position < 1 or position > self.len:
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, position):
                 curr = curr.next
-            curr.next.prev = newNode
-            curr.prev.next = newNode
-            newNode.prev = curr.prev
-            newNode.next = curr.next
-            curr = newNode
+            curr.next.prev = newnode
+            curr.prev.next = newnode
+            newnode.prev = curr.prev
+            newnode.next = curr.next
+            curr = newnode
         
-    ## del x[7]
-    ## O(1)
+    ## O(n)
+    ## allows us to do: del x[7]
     def __delitem__(self, position):
         if position == 1:
-            return DoublyList.DelStart(self)
+            self.DelStart()
         elif position == self.len:
-            return DoublyList.DelEnd(self)
+            self.DelEnd()
         elif position < 1 or position > self.len:
             raise IndexError("Index out of range.")
         else:
@@ -113,45 +114,45 @@ class DoublyList:
     ### 6 instance methods
     ## O(1)
     def InsertStart(self, value):
-        newNode = DoublyList._DoublyNode_(value)
+        newnode = DoublyList._DoublyNode_(value)
         if self.head == None:
-            self.head = newNode
-            self.tail = newNode
+            self.head = newnode
+            self.tail = newnode
         else:
-            newNode.next = self.head
-            self.head.prev = newNode
-            self.head = newNode
+            newnode.next = self.head
+            self.head.prev = newnode
+            self.head = newnode
         self.len += 1
 
     ## O(1)
     def InsertEnd(self, val):
-        newNode = DoublyList._DoublyNode_(val)
+        newnode = DoublyList._DoublyNode_(val)
         if self.tail == None:
-            self.tail = newNode
-            self.head = newNode
+            self.tail = newnode
+            self.head = newnode
         else:
-            self.tail.next = newNode
-            newNode.prev = self.tail
-            self.tail = newNode
+            self.tail.next = newnode
+            newnode.prev = self.tail
+            self.tail = newnode
         self.len += 1
     
     ## O(n)
     def InsertAt(self, value, position:int):
-        newNode = DoublyList._DoublyNode_(value)
+        newnode = DoublyList._DoublyNode_(value)
         if position == 1:
-            return DoublyList.InsertStart(self, value)
+            self.InsertStart(value)
         elif position == (self.len + 1):
-            return DoublyList.InsertEnd(self, value)
+            self.InsertEnd(value)
         elif position < 1 or position > (self.len + 1):
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, position - 1):
                 curr = curr.next
-            newNode.next = curr.next
-            newNode.next.prev = newNode
-            newNode.prev = curr
-            curr.next = newNode
+            newnode.next = curr.next
+            newnode.next.prev = newnode
+            newnode.prev = curr
+            curr.next = newnode
         self.len += 1
 
     ## O(1)
@@ -184,7 +185,7 @@ class DoublyList:
         p1 = self.head
         p2 = self.tail
 
-        for i in range(iters):
+        for _ in range(iters):
             p1.value, p2.value = p2.value, p1.value
             p1 = p1.next
             p2 = p2.prev

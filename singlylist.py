@@ -7,6 +7,8 @@ class SinglyList:
             self.next = None
 
     ## 8 magic methods
+
+    ## O(n)
     def __init__(self, *args):
         self.head = None
         self.tail = None
@@ -40,7 +42,7 @@ class SinglyList:
     
     ## O(n)
     ## allows us to do: 3 in x
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         curr = self.head
         for _ in range(1, self.len):
             if item == curr.value:
@@ -59,66 +61,66 @@ class SinglyList:
         return curr.value
 
     ## O(n)
-    ## allows us to do: x[4] = 100
+    ## allows us to do: x[3] = 100
     def __setitem__(self, position, value):
-        newNode = SinglyList._SinglyNode_(value)
+        newnode = SinglyList._SinglyNode_(value)
         if position == 1:
-            self.head.value = newNode.value
+            self.head.value = value
         elif position == (self.len):
-            self.tail.value = newNode.value
+            self.tail.value = value
         elif position < 1 or position > (self.len):
             raise IndexError("Position Out Of Range.")
         else:
             curr = self.head
             for _ in range(1, position - 1):
                 curr = curr.next
-            newNode.next = curr.next.next
+            newnode.next = curr.next.next
             curr.next.next = None
-            curr.next = newNode
+            curr.next = newnode
 
 
 
     ## 4 instances methods
-    ## op 1 - O(1)
+    ## sO(1)
     def InsertStart(self, value):
-        newNode = SinglyList._SinglyNode_(value)
+        newnode = SinglyList._SinglyNode_(value)
         if self.head == None:
-            self.head = newNode
-            self.tail = newNode
+            self.head = newnode
+            self.tail = newnode
         else:
-            newNode.next = self.head
-            self.head = newNode
-        self.len += int(1)
+            newnode.next = self.head
+            self.head = newnode
+        self.len += 1
 
-    ## op 2 - O(1)
+    ## O(1)
     def InsertEnd(self, value):
-        newNode = SinglyList._SinglyNode_(value)
+        newnode = SinglyList._SinglyNode_(value)
         if self.tail == None:
-            self.tail = newNode
-            self.head = newNode
+            self.tail = newnode
+            self.head = newnode
         else:
-            self.tail.next = newNode
-            self.tail = newNode
-        self.len += int(1)
+            self.tail.next = newnode
+            self.tail = newnode
+        self.len += 1
 
-    ## op 3 - O(n)
+    ## O(n)
     def InsertAt(self, value, position):
-        newNode = SinglyList._SinglyNode_(value)
+        newnode = SinglyList._SinglyNode_(value)
         if position == 1 :
-            return SinglyList.InsertStart(self, value)
+            self.InsertStart(value)
         elif position == (self.len + 1):
-            return SinglyList.InsertEnd(self, value)
+            self.InsertEnd(value)
         elif position < 1 or position > (self.len + 1):
             raise IndexError("position Out Of Range.")
         else:
             curr = self.head
             for _ in range(1, position-1):
                 curr = curr.next
-            newNode.next = curr.next
-            curr.next = newNode
-        self.len += int(1)
+            newnode.next = curr.next
+            curr.next = newnode
+        self.len += 1
 
-    ## op 4 - O(1)
+    ## O(1)
     def DelStart(self):
         if self.head == None:
             raise IndexError("Empty list.")
@@ -126,7 +128,7 @@ class SinglyList:
             newHead = self.head.next
             self.head.next = None
             self.head = newHead
-            self.len -= int(1)
+            self.len -= 1
 
 
 if __name__ == "__main__":

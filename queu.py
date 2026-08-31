@@ -7,6 +7,7 @@ class Queue:
             self.prev = None
             self.next = None
 
+    ## O(n)
     def __init__(self, *args):
         self.right = None
         self.left = None
@@ -34,15 +35,15 @@ class Queue:
 
     ## O(1)
     def Push(self, val):
-        new_node = Queue._QueueNode_(val)
+        newnode = Queue._QueueNode_(val)
 
         if self.right == None:
-            self.right = new_node
-            self.left = new_node
+            self.right = newnode
+            self.left = newnode
         else:
-            self.right.next = new_node
-            new_node.prev = self.right
-            self.right = new_node
+            self.right.next = newnode
+            newnode.prev = self.right
+            self.right = newnode
         self.len += 1
     
     ## O(1)

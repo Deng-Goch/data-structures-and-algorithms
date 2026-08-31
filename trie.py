@@ -1,3 +1,5 @@
+from hashtable import HashTable
+
 class Trie:
     pass
 

@@ -8,6 +8,8 @@ class CirclyList:
             self.prev = None
 
     ## magic methods - 8
+
+    ## O(n)
     def __init__(self, *args):
         self.head = None
         self.tail = None
@@ -16,7 +18,7 @@ class CirclyList:
             self.InsertEnd(arg)
 
     ## O(1)
-    def __len__(self):
+    def __len__(self) -> int:
         return self.len
     
     ## O(n)
@@ -34,7 +36,7 @@ class CirclyList:
 
     ## O(n)
     ## print(7 in x)
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         curr = self.head
         for _ in range(1, self.len + 1):
             if curr.value == item:
@@ -67,32 +69,32 @@ class CirclyList:
     ## O(n)
     ## x[3] = 9
     def __setitem__(self, position, value):
-        newNode = CirclyList._CirclyNode_(value)
+        newnode = CirclyList._CirclyNode_(value)
         if position == 1:
             self.DelStart()
-            return self.InsertStart(newNode.value)
+            self.InsertStart(value)
         elif position == self.len:
             self.DelEnd()
-            return self.InsertEnd(newNode.value)
+            self.InsertEnd(value)
         elif position < 1 or position > self.len:
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, position):
                 curr = curr.next
-            curr.next.prev = newNode
-            curr.prev.next = newNode
-            newNode.prev = curr.prev
-            newNode.next = curr.next
-            curr = newNode
+            curr.next.prev = newnode
+            curr.prev.next = newnode
+            newnode.prev = curr.prev
+            newnode.next = curr.next
+            curr = newnode
 
     ## O(n)
     ## del x[7]
     def __delitem__(self, position):
         if position == 1:
-            return CirclyList.DelStart(self)
+            self.DelStart()
         elif position == self.len:
-            return CirclyList.DelEnd(self)
+            self.DelEnd()
         elif position < 1 or position > self.len:
             raise IndexError("Position out of range.")
         else:
@@ -109,53 +111,53 @@ class CirclyList:
     ### instance methods - 5
     ## O(1)
     def InsertStart(self, value):
-        newNode = CirclyList._CirclyNode_(value)
+        newnode = CirclyList._CirclyNode_(value)
         if self.head == None:
-            self.head = newNode
-            self.tail = newNode
+            self.head = newnode
+            self.tail = newnode
             self.head.prev = self.tail
             self.tail.next = self.head
         else:
-            newNode.next = self.head
-            self.head.prev = newNode
-            self.head = newNode
+            newnode.next = self.head
+            self.head.prev = newnode
+            self.head = newnode
             self.head.prev = self.tail
             self.tail.next = self.head
         self.len += 1
 
     ## O(1)
     def InsertEnd(self, val):
-        newNode = CirclyList._CirclyNode_(val)
+        newnode = CirclyList._CirclyNode_(val)
         if self.tail == None:
-            self.tail = newNode
-            self.head = newNode
+            self.tail = newnode
+            self.head = newnode
             self.tail.next = self.head
             self.head.prev = self.tail
         else:
-            newNode.next = self.head
-            self.tail.next = newNode
-            self.head.prev = newNode
-            newNode.prev = self.tail
-            self.tail = newNode
+            newnode.next = self.head
+            self.tail.next = newnode
+            self.head.prev = newnode
+            newnode.prev = self.tail
+            self.tail = newnode
         self.len += 1
     
     ## O(n)
     def InsertAt(self, value, pos:int):
-        newNode = CirclyList._CirclyNode_(value)
+        newnode = CirclyList._CirclyNode_(value)
         if pos == 1:
-            return CirclyList.InsertStart(self, newNode.value)
+           self.InsertStart(value)
         elif pos == (self.len + 1):
-            return CirclyList.InsertEnd(self, newNode.value)
+           self.InsertEnd(value)
         elif pos < 1 or pos > (self.len + 1):
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, pos - 1):
                 curr = curr.next
-            newNode.next = curr.next
-            newNode.next.prev = newNode
-            newNode.prev = curr
-            curr.next = newNode
+            newnode.next = curr.next
+            newnode.next.prev = newnode
+            newnode.prev = curr
+            curr.next = newnode
         self.len += 1
 
     ## O(1)

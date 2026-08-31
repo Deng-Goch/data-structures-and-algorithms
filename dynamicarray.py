@@ -1,6 +1,8 @@
 from ctypes import py_object
 
 class DynArray:
+
+    ## O(n)
     def __init__(self, *args):
         self.capacity = 1
         self.size = 0
@@ -8,7 +10,7 @@ class DynArray:
         for el in args:
             self.append(el)
 
-    ## O(x)
+    ## O(1)
     def __len__(self):
         return self.size
     
@@ -32,7 +34,7 @@ class DynArray:
             return "[" + rep + "]"
 
     ## O(1)
-    ## print(x[2:3:5])
+    ## allows us to do: print(x[2:3:5])
     def __getitem__(self, index):
         ## Handle slicing
         if isinstance(index, slice):
@@ -50,12 +52,14 @@ class DynArray:
         return self.array[index]
 
     ## O(1)
+    ## allows us to do: 
     def __setitem__(self, index, value):
         if index < 0 or index >= self.size:
             raise IndexError("Index out of bounds")
         self.array[index] = value
 
     ## O(n)
+    ## allows us to do: 
     def __delitem__(self, index):
         return self.pop(index)
 
@@ -84,7 +88,6 @@ class DynArray:
         self.size += 1
 
     ## O(n)
-    ## insert, but lose the last element if the array is filled up.
     def insert(self, index, value):
         if index < 0 or index >= self.size:
             raise IndexError("Index out of bounds")
@@ -230,5 +233,5 @@ class DynArray:
 
 if __name__ == "__main__":
     x = DynArray(1,2,3,4,5,6,8)
-
+    
     print(x)

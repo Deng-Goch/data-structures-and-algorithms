@@ -11,7 +11,8 @@ class BST:
             self.parent = None
     
         def __repr__(self):
-            return f"(K: {self.key}, V: {self.value})"
+            # return f"(K: {self.key}, V: {self.value})"
+            return f'{self.key}'
 
     ## magic methods - 4
     ## O(1)
@@ -44,24 +45,33 @@ class BST:
 
 
     ## Internal/Helper methods - 6
-    def _pre_order_(self, node):
-        if node is not None:
-            print((node.key, node.value))
-            self._pre_order_(node.left)
-            self._pre_order_(node.right)
 
-    def _in_order_(self, node):
-        if node is not None:
-            self._in_order_(node.left)
-            print((node.key, node.value))
-            self._in_order_(node.right)
-
+    ## Node, Left, Right
+    ## O(n)
     def _post_order_(self, node):
         if node is not None:
             self._pre_order_(node.left)
             self._pre_order_(node.right)
             print((node.key, node.value))
 
+    ## Left, Node, Right
+    ## O(n)
+    def _in_order_(self, node):
+        if node is not None:
+            self._in_order_(node.left)
+            print((node.key, node.value))
+            self._in_order_(node.right)
+
+    ## Left, Right, Node
+    ## O(n)
+    def _pre_order_(self, node):
+        if node is not None:
+            print((node.key, node.value))
+            self._pre_order_(node.left)
+            self._pre_order_(node.right)
+
+    ## Node, Left, Right - Level by level.
+    ## O(n)
     def _level_order(self, node):
         if node is None:
             return None
@@ -242,16 +252,16 @@ if __name__ == "__main__":
 
     # bst.delete('g')
     
-    # bst.travers('preordeR')
+    bst.travers('preordeR')
 
-    # print("\n")
+    print("\n")
 
-    # bst.travers('InORDEr')
+    bst.travers('InORDEr')
 
-    # print("\n")
+    print("\n")
 
-    # bst.travers('postorder')
+    bst.travers('postorder')
     
     # print("\n")
     
-    print(bst.travers('leveLordeR'))
+    # print(bst.travers('leveLordeR'))

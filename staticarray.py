@@ -2,7 +2,7 @@ from ctypes import py_object
 
 class StatArray:
     ## 7 magic methods
-    ## O(x)
+    ## O(n)
     def __init__(self, capacity, *args):
         self.capacity = capacity
         self.size = 0
@@ -14,7 +14,7 @@ class StatArray:
             for i in range(capacity):
                 self.append(args[i])
 
-    ## O(x)
+    ## O(1)
     def __len__(self):
         return self.size
     
@@ -38,7 +38,7 @@ class StatArray:
             return "[" + rep + "]"
 
     ## O(1)
-    ## print(x[2:3:5])
+    ## allows us to do: print(x[2:3:5])
     def __getitem__(self, index):
         ## Handle slicing
         if isinstance(index, slice):
@@ -56,12 +56,14 @@ class StatArray:
         return self.Array[index]
 
     ## O(1)
+    ## allows us to do: 
     def __setitem__(self, index, value):
         if index < 0 or index >= self.size:
             raise IndexError("Index out of bounds")
         self.Array[index] = value
 
     ## O(n)
+    ## allows us to do: 
     def __delitem__(self, index):
         return self.pop(index)
 

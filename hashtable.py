@@ -32,7 +32,8 @@ class HashTable:
         return self.size
 
     ## O(1)*
-    def __contains__(self, key):
+    ## allows us to do: 'key' in table
+    def __contains__(self, key) -> bool:
         index = self._Hash_Func_(key)
         bucket = self.buckets[index]
 
@@ -43,18 +44,22 @@ class HashTable:
             return False
 
     ## O(1)*
+    ## allows us to do: 
     def __getitem__(self, key):
         return self.get(key)
 
     ## O(1)*
+    ## allows us to do: 
     def __setitem__(self, key, value):
         return self.update(key, value)
 
     ## O(1)*
+    ## allows us to do: 
     def __delitem__(self, key):
         return self.pop(key)
     
     ## O(n)
+    ## allows us to do: 
     def __iter__(self):
         items = self.items()
 
@@ -66,10 +71,10 @@ class HashTable:
     ## O(len(key))
     def _Hash_Func_(self, key):
         keyCasted = str(key)
-        hashRes = 0
+        hash_result = 0
         for char in keyCasted:
-            hashRes = (((hashRes * 31) + ord(char)) % self.capacity)
-        return hashRes
+            hash_result = (((hash_result * 31) + ord(char)) % self.capacity)
+        return hash_result
 
     ## O(n)
     def _Make_Table_(self, capacity):
