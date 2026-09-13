@@ -28,7 +28,7 @@ class Graph:
         else:
             raise ValueError('Node exist.')
     
-    ## O(x)
+    ## O(n)
     def remove_node(self, node):
         if node not in self.adjaceny_list:
             raise ValueError('Node does not exist.')
@@ -37,7 +37,7 @@ class Graph:
                 neighnors.discard(node)
             del self.adjaceny_list[node]
 
-    ## O(x)
+    ## O(1)
     def add_edge(self, from_node, to_node, weight=None):
         if from_node not in self.adjaceny_list:
             raise ValueError('"From Node" does not exist.')
@@ -60,7 +60,7 @@ class Graph:
             else:
                 self.adjaceny_list[from_node].add((to_node,weight))
 
-    ## O(x)
+    ## O(1)
     def remove_edge(self, from_node, to_node):
         if from_node in self.adjaceny_list:
             if to_node in self.adjaceny_list[from_node]:
@@ -158,27 +158,27 @@ class Graph:
                             stack.push(neighbor)
         return order
 
-    ## O()
+    ## O(x)
     def dijkstra(self, source_node):
         pass
 
-    ## O()
+    ## O(x)
     def a_star(self, source_node):
         pass
 
-    ## O()
+    ## O(x)
     def bellman_fords(self, source_node):
         pass
 
-    ## O()
+    ## O(x)
     def primes(self):
         pass
 
-    ## O()
+    ## O(x)
     def krustkal(self):
         pass
 
-    ## O()
+    ## O(x)
     def ford_fulkerson(self):
         pass
 
