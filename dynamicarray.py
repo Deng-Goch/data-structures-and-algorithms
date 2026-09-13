@@ -7,8 +7,8 @@ class DynArray:
         self.capacity = 1
         self.size = 0
         self.array = self._make_array(self.capacity)
-        for el in args:
-            self.append(el)
+        for arg in args:
+            self.append(arg)
 
     ## O(1)
     def __len__(self):
@@ -36,30 +36,31 @@ class DynArray:
     ## O(1)
     ## allows us to do: print(x[2:3:5])
     def __getitem__(self, index):
-        ## Handle slicing
         if isinstance(index, slice):
             start, stop, step = index.indices(self.size)
             result = DynArray()
             for i in range(start, stop, step):
                 result.append(self.array[i])
             return result
+        else:
+            if index < 0:
+                index += self.size
 
-        # Handle normal indexing
-        if index < 0:
-            index += self.size
-        if index < 0 or index >= self.size:
-            raise IndexError("Index out of bounds")
-        return self.array[index]
+            if index < 0 or index >= self.size:
+                raise IndexError("List index out of range.")
+            else:
+                return self.array[index]
 
     ## O(1)
-    ## allows us to do: 
+    ## allows us to do: x[3] = 100
     def __setitem__(self, index, value):
         if index < 0 or index >= self.size:
-            raise IndexError("Index out of bounds")
-        self.array[index] = value
+            raise IndexError("List index out of range.")
+        else:
+            self.array[index] = value
 
     ## O(n)
-    ## allows us to do: 
+    ## allows us to do: del x[3]
     def __delitem__(self, index):
         return self.pop(index)
 
@@ -68,7 +69,7 @@ class DynArray:
     def _make_array(self, capacity):
         return (capacity * py_object)()  # raw block of pointers
 
-    def _resize(self, new_capacity):
+    def _resize_(self, new_capacity):
         NewArray = self._make_array(new_capacity)
 
         for i in range(self.size):
@@ -77,12 +78,11 @@ class DynArray:
         self.array = NewArray
         self.capacity = new_capacity
 
-
     ## instance methods - 11
     ## O(1)*
     def append(self, value):
         if self.size == self.capacity:
-            self._resize(2 * self.capacity)
+            self._resize_(self.capacity * 2)
 
         self.array[self.size] = value
         self.size += 1
@@ -90,14 +90,15 @@ class DynArray:
     ## O(n)
     def insert(self, index, value):
         if index < 0 or index >= self.size:
-            raise IndexError("Index out of bounds")
+            raise IndexError("List index out of range.")
+        else:
+            if self.size == self.capacity:
+                self._resize_(self.capacity * 2)
 
-        for i in range(self.size-1, index-1, -1):
-            self.array[i] = self.array[i - 1]
+            for i in range(self.size, index, -1):
+                self.array[i] = self.array[i-1]
 
-        self.array[index] = value
-
-        if self.size < self.capacity:
+            self.array[index] = value
             self.size += 1
 
     ## O(n)
@@ -123,9 +124,8 @@ class DynArray:
 
         if index is None:
             index = self.size - 1
-
-        if index < 0 or index >= self.size:
-            raise IndexError("Index out of bounds")
+        elif index < 0 or index >= self.size:
+            raise IndexError("List List index out of range.")
 
         value = self.array[index]
 
@@ -180,8 +180,8 @@ class DynArray:
 
     ## O(n)
     def extend(self, elements):
-        for i in elements:
-            self.append(i)
+        for el in elements:
+            self.append(el)
 
         return self
 
@@ -232,6 +232,10 @@ class DynArray:
 
 
 if __name__ == "__main__":
-    x = DynArray(1,2,3,4,5,6,8)
+    x = DynArray(1,2,3,4,5)
     
+    print(x)
+
+    x.insert(0, 'x')
+
     print(x)
