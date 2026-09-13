@@ -29,16 +29,17 @@ Also, please keep in mind that the data structures are continuously being improv
     1- Binary Search Tree.
     2- Red-Black Tree.
     3- AVL Tree.
-    4- Max-Min Heap.
-    5- Priority Queue.
-    6- Trie / Prefix-Tree:
-    7- Treap.
-    8- Segment Tree.
-    9- Binary Index Tree / Fenwick Tree.
-    10- B-Tree.
-    11- Cartesian Tree.
-    12- Splay Tree.
-    13- KD-Tree.
+    4- Max Heap.
+    5- Min Heap.
+    6- Priority Queue.
+    7- Trie / Prefix-Tree:
+    8- Treap.
+    9- Segment Tree.
+    10- Binary Index Tree / Fenwick Tree.
+    11- B-Tree.
+    12- Cartesian Tree.
+    13- Splay Tree.
+    14- KD-Tree.
 
 ## 8- Others:
     1- Hash Set.
