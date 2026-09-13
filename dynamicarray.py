@@ -235,7 +235,3 @@ if __name__ == "__main__":
     x = DynArray(1,2,3,4,5)
     
     print(x)
-
-    x.insert(0, 'x')
-
-    print(x)
