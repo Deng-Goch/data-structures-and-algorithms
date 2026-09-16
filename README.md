@@ -1,4 +1,4 @@
-Data Structures and Algorithms:
+# Data Structures and Algorithms:
 
 A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
 
