@@ -11,7 +11,7 @@ Also, please keep in mind that the data structures are continuously being improv
 ## The Data Structures are as follow:
 
 ## 1- Array:
-    1- Static Array.
+    1- Static Array[x].
     2- Dynamic Array.
 
 ## 2- Linked List:
