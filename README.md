@@ -4,6 +4,8 @@ A repository for data-structures-and-algorithms implemented from scratch, litera
 
 A lot of these data structures are dependent on other data structures, so for it to work with you, you need the entire repo.
 
+Some of the data structures are meant to imitate their built-ins, like "DynArray" is meant to imitate the "list" object, the "HashSet" is meant to behave exactly like the "set" object, and the "HashTable" is meant for "dict".
+
 Also, please keep in mind that the data structures are continuously being improved, so there might be some bugs.
 
 ## The Data Structures are as follow:

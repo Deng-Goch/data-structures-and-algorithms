@@ -110,7 +110,7 @@ class HashTable:
         return self.buckets
 
 
-    ## 11 methods
+    ## 11 instance methods
     ## O(1)*
     def update(self, key, value):
         if ((self.size / self.capacity) * 100) <= 60:

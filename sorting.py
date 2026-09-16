@@ -1,6 +1,6 @@
 from timeit import timeit
 
-class Sorting:
+class Sorting_Algos:
     ## O(n2)
     def bubbleSort(self, array):
         swap = True
@@ -54,7 +54,7 @@ class Sorting:
 
 
 if __name__ == "__main__":
-    x = Sorting()
+    x = Sorting_Algos()
     y = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9]
     z = [6,2,0,1,6,8]
     # print(x.selectionSort(z))

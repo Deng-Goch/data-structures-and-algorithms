@@ -5,7 +5,7 @@ from hashset import HashSet
 from stack import Stack
 from queu import Queue
 
-class Graph:
+class Adjaceny_List_Based_Graph:
     ## 2 maigic methods
     ## O(1)
     def __init__(self, directed=True, weighted=False):
@@ -20,16 +20,16 @@ class Graph:
             graph += f"{node} -> {neighbors}\n"
         return graph
 
-    ## 10 instance methods - 
+    ## 16 instance methods - 
     ## O(1)
-    def add_node(self, node):
+    def add_node(self, node) -> None:
         if node not in self.adjaceny_list:
             self.adjaceny_list[node] = HashSet()
         else:
             raise ValueError('Node exist.')
     
     ## O(n)
-    def remove_node(self, node):
+    def remove_node(self, node) -> None:
         if node not in self.adjaceny_list:
             raise ValueError('Node does not exist.')
         else:
@@ -38,7 +38,7 @@ class Graph:
             del self.adjaceny_list[node]
 
     ## O(1)
-    def add_edge(self, from_node, to_node, weight=None):
+    def add_edge(self, from_node, to_node, weight=None) -> None:
         if from_node not in self.adjaceny_list:
             raise ValueError('"From Node" does not exist.')
         elif to_node not in self.adjaceny_list:
@@ -61,7 +61,7 @@ class Graph:
                 self.adjaceny_list[from_node].add((to_node,weight))
 
     ## O(1)
-    def remove_edge(self, from_node, to_node):
+    def remove_edge(self, from_node, to_node) -> None:
         if from_node in self.adjaceny_list:
             if to_node in self.adjaceny_list[from_node]:
                 if self.directed is False:
@@ -70,9 +70,9 @@ class Graph:
                 else:
                     self.adjaceny_list[from_node].remove(to_node)
             else:
-                raise ValueError('Edge does not exist.')
+                raise ValueError('"To Node" does not exist.')
         else:
-            raise ValueError("From node does not exist.")
+            raise ValueError('"From Node" does not exist."')
 
     ## O(1)*
     def get_neighbors(self, node):
@@ -82,14 +82,14 @@ class Graph:
             return self.adjaceny_list.get(node)
 
     ## O(n)
-    def node_exist(self, node):
+    def node_exist(self, node) -> bool:
         if node in self.adjaceny_list:
             return True
         else:
             return False
 
     ## O(1)*
-    def edge_exist(self, from_node, to_node):
+    def edge_exist(self, from_node, to_node) -> bool:
         if from_node in self.adjaceny_list:
             if to_node in self.adjaceny_list[from_node]:
                 return True
@@ -103,7 +103,7 @@ class Graph:
         return self.adjaceny_list.keys()
 
     ## O(n)
-    def bfs(self, start_node):
+    def bfs(self, start_node) -> DynArray:
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
 
@@ -131,7 +131,7 @@ class Graph:
         return order
     
     ## O(n)
-    def dfs(self, start_node):
+    def dfs(self, start_node) -> DynArray:
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
         
@@ -186,7 +186,7 @@ class Graph:
 
 
 if __name__ == "__main__":
-    graph = Graph(directed=False, weighted=False)
+    graph = Adjaceny_List_Based_Graph(directed=False, weighted=False)
     graph.add_node('A')
     graph.add_node('B')
     graph.add_node('C')
