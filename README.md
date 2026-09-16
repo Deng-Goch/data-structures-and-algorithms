@@ -43,8 +43,8 @@ Also, please keep in mind that the data structures are continuously being improv
     13- Splay Tree.
     14- KD-Tree.
 
-## 8- Others:
-    1- Hash Set ✅.
+## 8- Others ✅:
+    1- Hash Set ✔️.
     2- Union Find / Disjoint Set.
     3- SkipList
     4- Bloom Filter
