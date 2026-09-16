@@ -11,28 +11,28 @@ Also, please keep in mind that the data structures are continuously being improv
 ## The Data Structures are as follow:
 
 ## 1- Array:
-    1- Static Array✅.
-    2- Dynamic Array✅.
+    1- Static Array ✅.
+    2- Dynamic Array ✅.
 
 ## 2- Linked List:
-    1- Singly Linked List.
-    2- Doubly Linked List.
-    3- Circly Linked List.
+    1- Singly Linked List ✅.
+    2- Doubly Linked List ✅.
+    3- Circly Linked List ✅.
 
-## 3- Stack:
+## 3- Stack ✅:
 
-## 4- Queue:
+## 4- Queue ✅:
 
-## 5- Hash Table / Hash Map / Dictionary:
+## 5- Hash Table / Hash Map / Dictionary ✅:
 
-## 6- Graph:
+## 6- Graph ✅:
 
 ## 7- Tree:
-    1- Binary Search Tree.
+    1- Binary Search Tree ✅.
     2- Red-Black Tree.
     3- AVL Tree.
-    4- Max Heap.
-    5- Min Heap.
+    4- Max Heap ✅.
+    5- Min Heap ✅.
     6- Priority Queue.
     7- Trie / Prefix-Tree:
     8- Treap.
@@ -44,7 +44,7 @@ Also, please keep in mind that the data structures are continuously being improv
     14- KD-Tree.
 
 ## 8- Others:
-    1- Hash Set.
+    1- Hash Set ✅.
     2- Union Find / Disjoint Set.
     3- SkipList
     4- Bloom Filter
