@@ -34,7 +34,7 @@ Also, please keep in mind that the data structures are continuously being improv
     4- Max Heap ✔️.
     5- Min Heap ✔️.
     6- Priority Queue.
-    7- Trie / Prefix-Tree:
+    7- Trie / Prefix-Tree ✔️:
     8- Treap.
     9- Segment Tree.
     10- Binary Index Tree / Fenwick Tree.
