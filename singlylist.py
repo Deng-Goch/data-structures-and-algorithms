@@ -7,7 +7,6 @@ class SinglyList:
             self.next = None
 
     ## 8 magic methods
-
     ## O(n)
     def __init__(self, *args):
         self.head = None
@@ -47,7 +46,8 @@ class SinglyList:
         for _ in range(1, self.len):
             if item == curr.value:
                 return True
-            curr = curr.next
+            else:
+                curr = curr.next
         return False
 
     ## O(n)
@@ -55,15 +55,16 @@ class SinglyList:
     def __getitem__(self, position):
         if position < 1 or position > self.len:
             raise IndexError("Index out of range.")
-        curr = self.head
-        for _ in range(1, position):
-            curr = curr.next
-        return curr.value
+        else:
+            curr = self.head
+            for _ in range(1, position):
+                curr = curr.next
+            return curr.value
 
     ## O(n)
     ## allows us to do: x[3] = 100
     def __setitem__(self, position, value):
-        newnode = SinglyList._SinglyNode_(value)
+        newnode = self._SinglyNode_(value)
         if position == 1:
             self.head.value = value
         elif position == (self.len):
@@ -83,7 +84,7 @@ class SinglyList:
     ## 4 instances methods
     ## sO(1)
     def InsertStart(self, value):
-        newnode = SinglyList._SinglyNode_(value)
+        newnode = self._SinglyNode_(value)
         if self.head == None:
             self.head = newnode
             self.tail = newnode
@@ -94,7 +95,7 @@ class SinglyList:
 
     ## O(1)
     def InsertEnd(self, value):
-        newnode = SinglyList._SinglyNode_(value)
+        newnode = self._SinglyNode_(value)
         if self.tail == None:
             self.tail = newnode
             self.head = newnode
@@ -105,7 +106,7 @@ class SinglyList:
 
     ## O(n)
     def InsertAt(self, value, position):
-        newnode = SinglyList._SinglyNode_(value)
+        newnode = self._SinglyNode_(value)
         if position == 1 :
             self.InsertStart(value)
         elif position == (self.len + 1):
@@ -123,7 +124,7 @@ class SinglyList:
     ## O(1)
     def DelStart(self):
         if self.head == None:
-            raise IndexError("Empty list.")
+            raise ValueError("Empty list.")
         else:
             newHead = self.head.next
             self.head.next = None

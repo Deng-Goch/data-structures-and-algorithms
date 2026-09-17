@@ -12,7 +12,7 @@ class HashTable:
             self.update(key, kwargs[key])
 
     ## O(n)
-    def __repr__(self):
+    def __str__(self):
         if self.size == 0:
             return "{}"
         else:
@@ -44,22 +44,23 @@ class HashTable:
             return False
 
     ## O(1)*
-    ## allows us to do: 
+    ## allows us to do: print(hashtable['key'])
     def __getitem__(self, key):
         return self.get(key)
 
     ## O(1)*
-    ## allows us to do: 
+    ## allows us to do: hashtable['key'] = 30
     def __setitem__(self, key, value):
         return self.update(key, value)
 
     ## O(1)*
-    ## allows us to do: 
+    ## allows us to do: del hashtable['key']
     def __delitem__(self, key):
         return self.pop(key)
     
     ## O(n)
-    ## allows us to do: 
+    ## allows us to do: for key, value in hashtable:
+    ##                          do this
     def __iter__(self):
         items = self.items()
 
@@ -219,6 +220,8 @@ if __name__ == "__main__":
 
     print(hashmap.capacity)
     print(hashmap.size)
+
+    print(hashmap)
 
 
 

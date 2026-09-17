@@ -8,7 +8,6 @@ class DoublyList:
             self.prev = None
 
     ## 8 magic method
-    
     ## O(n)
     def __init__(self, *args):
         self.head = None
@@ -71,7 +70,7 @@ class DoublyList:
     ## O(n)
     ## allows us to do: x[3] = 10
     def __setitem__(self, position, value):
-        newnode = DoublyList._DoublyNode_(value)
+        newnode = self._DoublyNode_(value)
         if position == 1:
             self.DelStart()
             self.InsertStart(value)
@@ -114,7 +113,7 @@ class DoublyList:
     ### 6 instance methods
     ## O(1)
     def InsertStart(self, value):
-        newnode = DoublyList._DoublyNode_(value)
+        newnode = self._DoublyNode_(value)
         if self.head == None:
             self.head = newnode
             self.tail = newnode
@@ -126,7 +125,7 @@ class DoublyList:
 
     ## O(1)
     def InsertEnd(self, val):
-        newnode = DoublyList._DoublyNode_(val)
+        newnode = self._DoublyNode_(val)
         if self.tail == None:
             self.tail = newnode
             self.head = newnode
@@ -138,7 +137,7 @@ class DoublyList:
     
     ## O(n)
     def InsertAt(self, value, position:int):
-        newnode = DoublyList._DoublyNode_(value)
+        newnode = self._DoublyNode_(value)
         if position == 1:
             self.InsertStart(value)
         elif position == (self.len + 1):
@@ -194,5 +193,9 @@ class DoublyList:
 
 if __name__ == "__main__":
     x = DoublyList(1,2,3,4,5,6,7)
+
+    print(x)
+
+    x.RevLinkList()
 
     print(x)

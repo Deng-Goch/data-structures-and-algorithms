@@ -2,8 +2,8 @@ class Stack:
     class _StackNode_:
         def __init__(self, val):
             self.val = val
-            self.prev = None
             self.next = None
+            self.prev = None
 
     ## O(n)
     def __init__(self, *args):
@@ -19,8 +19,8 @@ class Stack:
 
     ## O(1)
     def push(self, val):
-        newnode = Stack._StackNode_(val)
-        if self.len == 0:
+        newnode = self._StackNode_(val)
+        if self.top is None:
             self.top = newnode
         else:
             self.top.next = newnode
@@ -45,13 +45,13 @@ class Stack:
 
     ## O(1)
     def peek(self):
-        if self.top.val is None:
+        if self.top is None:
             raise ValueError('Empty Stack')
         else:
             return (f'{str(self.top.val)}')
 
 
 if __name__ == "__main__":
-    x = Stack(1,2,3,4,5,6,7)
+    x = Stack()
 
     print(x.peek())

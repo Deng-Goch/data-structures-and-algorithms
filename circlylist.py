@@ -69,7 +69,7 @@ class CirclyList:
     ## O(n)
     ## x[3] = 9
     def __setitem__(self, position, value):
-        newnode = CirclyList._CirclyNode_(value)
+        newnode = self._CirclyNode_(value)
         if position == 1:
             self.DelStart()
             self.InsertStart(value)
@@ -111,7 +111,7 @@ class CirclyList:
     ### instance methods - 5
     ## O(1)
     def InsertStart(self, value):
-        newnode = CirclyList._CirclyNode_(value)
+        newnode = self._CirclyNode_(value)
         if self.head == None:
             self.head = newnode
             self.tail = newnode
@@ -127,7 +127,7 @@ class CirclyList:
 
     ## O(1)
     def InsertEnd(self, val):
-        newnode = CirclyList._CirclyNode_(val)
+        newnode = self._CirclyNode_(val)
         if self.tail == None:
             self.tail = newnode
             self.head = newnode
@@ -143,7 +143,7 @@ class CirclyList:
     
     ## O(n)
     def InsertAt(self, value, pos:int):
-        newnode = CirclyList._CirclyNode_(value)
+        newnode = self._CirclyNode_(value)
         if pos == 1:
            self.InsertStart(value)
         elif pos == (self.len + 1):

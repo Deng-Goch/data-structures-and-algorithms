@@ -6,7 +6,7 @@ class DynArray:
     def __init__(self, *args):
         self.capacity = 1
         self.size = 0
-        self.array = self._make_array(self.capacity)
+        self.array = self._make_array_(self.capacity)
         for arg in args:
             self.append(arg)
 
@@ -66,11 +66,11 @@ class DynArray:
 
 
     ## 1 helper methods, used internally by other methods.
-    def _make_array(self, capacity):
+    def _make_array_(self, capacity):
         return (capacity * py_object)()  # raw block of pointers
 
     def _resize_(self, new_capacity):
-        NewArray = self._make_array(new_capacity)
+        NewArray = self._make_array_(new_capacity)
 
         for i in range(self.size):
             NewArray[i] = self.array[i]
@@ -121,21 +121,25 @@ class DynArray:
     def pop(self, index=None):
         if self.size == 0:
             raise IndexError("Poping from an empty array")
+        else:
 
-        if index is None:
-            index = self.size - 1
-        elif index < 0 or index >= self.size:
-            raise IndexError("List List index out of range.")
+            if index < 0:
+                index += self.size
+            elif index is None:
+                index = (self.size - 1)
 
-        value = self.array[index]
+            if index < 0 or index >= self.size:
+                raise IndexError("List List index out of range.")
 
-        for i in range(index, self.size - 1):
-            self.array[i] = self.array[i + 1]
+            value = self.array[index]
 
-        self.array[self.size - 1] = None
-        self.size -= 1
+            for i in range(index, self.size - 1):
+                self.array[i] = self.array[i + 1]
 
-        return value
+            self.array[self.size - 1] = None
+            self.size -= 1
+
+            return value
 
     ## O(n)
     def reverse(self):
@@ -149,17 +153,17 @@ class DynArray:
             start += 1
             stop -= 1
         
-        return self.__str__()
+        return self
 
     ## O(n)
     def copy(self):
         newArr = DynArray(self.size)
         for i in range(self.size):
             newArr.append(self.array[i])
-        self.array = newArr
+        return newArr
 
     ## O(n)
-    def count(self, value):
+    def count(self, value) -> int:
         counter = int(0)
 
         for i in range(self.size):
@@ -170,7 +174,7 @@ class DynArray:
         return counter
 
     ## O(n)
-    def index(self, value):
+    def index(self, value) -> int:
         for i in range(self.size):
             if self.array[i] == value:
                 return i
@@ -183,13 +187,10 @@ class DynArray:
         for el in elements:
             self.append(el)
 
-        return self
-
     ## O(n)
-    def clear(self):
+    def clear(self) -> None:
         for i in range(self.size):
-            self.array[i] = None
-        return self.array
+            self.pop()
 
     ## O(n2)
     def bubbleSort(self):
@@ -207,7 +208,7 @@ class DynArray:
         return self.array
     
     ## O(log2 n)
-    def binSearch(self, target):
+    def binSearch(self, target) -> bool:
         self.bubbleSort()
 
         le = 0
@@ -224,7 +225,7 @@ class DynArray:
         return False
     
     ## O(log n)
-    def linSearch(self, target):
+    def linSearch(self, target) -> bool:
         for i in range(self.array):
             if self.array[i] == target:
                 return True
@@ -235,3 +236,16 @@ if __name__ == "__main__":
     x = DynArray(1,2,3,4,5)
     
     print(x)
+
+    x.pop(-2)
+
+    # x.clear()
+
+    print(x)
+
+
+
+    # lista = list([1,2,3,4,5,6,7])
+
+    # lista.pop(-30)
+    # print(lista)

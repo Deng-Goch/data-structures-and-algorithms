@@ -15,8 +15,11 @@ class Sorting_Algos:
             iters -= 1
         return array
 
+
+    ## O(log2 n)
     def mergeSort(self, array):
         pass
+
 
     ## O(n2)
     def selectionSort(self, array):
@@ -36,6 +39,8 @@ class Sorting_Algos:
 
         return array
 
+
+    ## O(x)
     def insertionSort(self, array):
 
         swap = True
@@ -51,6 +56,37 @@ class Sorting_Algos:
                 return array
 
         return array
+
+
+    ## O(x)
+    def quickSort(self):
+        pass
+
+
+    ## O(x)
+    def heapSort(self):
+        pass
+
+
+    ## O(x)
+    def topologicalSort(self):
+        pass
+
+
+    ## O(x)
+    def bucketSort(self):
+        pass
+
+
+    ## O(x)
+    def radixSort(self):
+        pass
+
+
+    ## O(x)
+    def countingSort(self):
+        pass
+
 
 
 if __name__ == "__main__":

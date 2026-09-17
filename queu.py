@@ -4,8 +4,8 @@ class Queue:
     class _QueueNode_:
         def __init__(self, val):
             self.val = val
-            self.prev = None
             self.next = None
+            self.prev = None
 
     ## O(n)
     def __init__(self, *args):
@@ -35,9 +35,9 @@ class Queue:
 
     ## O(1)
     def Push(self, val):
-        newnode = Queue._QueueNode_(val)
+        newnode = self._QueueNode_(val)
 
-        if self.right == None:
+        if self.right is None:
             self.right = newnode
             self.left = newnode
         else:
@@ -56,10 +56,9 @@ class Queue:
                 self.left = None
                 self.right = None
             else:
-                newLeft = self.left.next
-                newLeft.prev = None
-                self.left.next = None
-                self.left = newLeft
+                self.left = self.left.next
+                self.left.prev.next = None
+                self.left.prev = None
             self.len -= 1
             return popped
 
@@ -80,5 +79,10 @@ class Queue:
 
 if __name__ == "__main__":
     x = Queue(1,2,3,4,5,6,7)
+
+    print(x)
+
+    x.PopLeft()
+    x.PopLeft()
 
     print(x)
