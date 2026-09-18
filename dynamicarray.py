@@ -123,10 +123,11 @@ class DynArray:
             raise IndexError("Poping from an empty array")
         else:
 
+            if index is None:
+                index = (self.size - 1)
+
             if index < 0:
                 index += self.size
-            elif index is None:
-                index = (self.size - 1)
 
             if index < 0 or index >= self.size:
                 raise IndexError("List List index out of range.")
