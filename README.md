@@ -6,6 +6,24 @@ A lot of these data structures are dependent on other data structures, so for it
 
 Some of the data structures are meant to imitate their built-ins, like "DynArray" is meant to imitate the "list" object, the "HashSet" is meant to behave exactly like the "set" object, and the "HashTable" is meant for "dict".
 
+Alos, the Algorithms are built-in to the classes, like:
+    1- Dijkstra's
+    2- A*
+    3- Bellmanfords
+    4- prime's
+    5- krustkals
+    6- fordfulkerson
+    7- GraphDFS
+    8- GraphBFS
+    are all built-in to the "graph" class
+
+    1- TreeBFS
+    2- TreeDFS
+    3- BST Binary Search
+    are built-in to the BT
+
+    and so on ...
+
 Also, please keep in mind that the data structures are continuously being improved, so there might be some bugs.
 
 ## The Data Structures are as follow:
@@ -48,3 +66,4 @@ Also, please keep in mind that the data structures are continuously being improv
     2- Union Find / Disjoint Set.
     3- SkipList
     4- Bloom Filter
+    5- Sorting Algorithms
