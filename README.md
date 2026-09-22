@@ -100,7 +100,7 @@ Finally, please keep in mind that the data structures are continuously being imp
 ## 6- Graph ✅:
     1- Directed & Undirected Graph ✔️.
     2- Weighted & Non-weighted Graph ✔️.
-    3- Cyclic & Acyclic Graph (only if Directed) ✔️.
+    3- Cyclic & Acyclic Graph (only if Directed Graph) ✔️.
 
 ## 7- Tree ✅:
     1- Binary Search Tree ✔️.
