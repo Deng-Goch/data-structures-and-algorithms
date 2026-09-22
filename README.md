@@ -123,4 +123,4 @@ Finally, please keep in mind that the data structures are continuously being imp
     2- Union Find / Disjoint Set.
     3- SkipList
     4- Bloom Filter
-    5- Sorting Algorithms
+    5- Sorting Algorithms ✔️.
