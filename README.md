@@ -1,6 +1,6 @@
 # Data Structures and Algorithms:
 
-A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
+A repository for data-structures-and-algorithms implemented from scratch, literally from scratch, no wrapprs.
 
 
 Some of these data structures are meant to imitate their Python built-ins, like:
@@ -24,7 +24,7 @@ Alos, the Algorithms are built-in to the classes, like:
     1- TreeBFS
     2- TreeDFS
     3- and BST Binary Search
-    are built-in to the BT (Binary Tree) class, and so on ....
+    are built-in to the BT (Binary Tree) class, and so on .....
 
 
 A lot of these data structures are dependent on other data structures / each other e.g.,
