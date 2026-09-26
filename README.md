@@ -3,7 +3,11 @@
 A repository for data-structures-and-algorithms implemented from scratch, literally from scratch.
 
 
-Some of these data structures are meant to imitate their Python built-ins, like "DynArray" is meant to imitate the "list" object, the "HashSet" is meant to behave exactly like the "set" object, and the "HashTable" is meant for "dict".
+Some of these data structures are meant to imitate their Python built-ins, like:
+
+    1- "DynArray" is meant to imitate the "list" object.
+    2- "HashSet" is meant to behave exactly like the "set" object.
+    3- and the "HashTable" is meant for "dict".
 
 Alos, the Algorithms are built-in to the classes, like:
 
@@ -31,7 +35,7 @@ A lot of these data structures are dependent on other data structures / each oth
     4- The "Array Based Minheap" and "Array Based Maxheap" are implemented as "DynArray".
     5- The "Iterative Tree DFS" and "Iterative Tree BFS" depend on "Queue" and "Stack".
     6- The "Trie / Prefix Tree" depends on the "HashMap / HashTable / Dictionary".
-    7- The "Binary Tree Level Order Traversal" depends on "Queue".
+    7- and The "Binary Tree Level Order Traversal" depends on "Queue".
     and so on ....
 
     so for it to work with you, you need the entire repo.
@@ -46,7 +50,7 @@ Additionally, most developers think of things like:
     5- Sliding Window.
     6- Brute Force.
     7- Greedy Approach.
-    8- Divide & Conquer.
+    8- and Divide & Conquer.
    
     as algorithms, but technically speacking, they are algrithms design methods / problem solving techniques. i.e, if a problem could be solved using any of them, we design the algorithm using the right one.
 
@@ -55,7 +59,7 @@ Additionally, most developers think of things like:
     2- "Array Based Min and Max Heap" insert and pop methods use "Recursion"
     3- "Linear Seacrh" uses "Brute Force"
     4- "BST Binary Search" is a "Greedy Approach".
-    5- "Merge Sort" is a "Divide & Conquer" approach etc.
+    5- and "Merge Sort" is a "Divide & Conquer" approach etc.
 
 
 
@@ -71,7 +75,7 @@ Alos, there's a class called "Sorting_Algos" in which I implemented 10 sorting a
     7- Topological Sort.
     8- Bucket Sort.
     9- Radix Sort.
-    10- Counting Sort.
+    10- and Counting Sort.
 
     Specifically these sorting algorithms because the are the ones used in LeetCode.
 
