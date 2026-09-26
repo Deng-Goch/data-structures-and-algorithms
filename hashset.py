@@ -8,8 +8,8 @@ class HashSet:
 
     ## O(n)
     def __iter__(self):
-        for i in range(self._table.size):
-            yield self._table.keys()[i]
+        for el in self._table.keys():
+            yield el
 
     ## O(n)
     def __repr__(self):
@@ -219,23 +219,29 @@ if __name__ == "__main__":
 
     print(hs)
 
-    hs.symmetric_difference_update([0,1,2,4,5,6,10])
-    print(hs)
+    # hs.symmetric_difference_update([0,1,2,4,5,6,10])
+    # print(hs)
+
+    # hs.discard(3)
 
 
     print("\n")
 
+    print(hs)
+
+    for v in hs:
+        print(v)
 
     
-    x = set()
-    x.add(2)
-    x.add(3)
-    x.add(1)
-    x.add(4)
-    x.add(5)
-    x.add(0)
+    # x = set()
+    # x.add(2)
+    # x.add(3)
+    # x.add(1)
+    # x.add(4)
+    # x.add(5)
+    # x.add(0)
 
-    print(x)
+    # print(x)
 
-    x.symmetric_difference_update(set((0,1,2,4,5,6)))
-    print(x)
+    # x.symmetric_difference_update(set((0,1,2,4,5,6)))
+    # print(x)
