@@ -14,6 +14,7 @@ class BST:
             # return f"(K: {self.key}, V: {self.value})"
             return f'{self.key}'
 
+
     ## magic methods - 4
     ## O(1)
     def __init__(self):
@@ -30,6 +31,7 @@ class BST:
             else:
                 return True
         return False
+
 
     ## O(n)
     def __iter__(self):
@@ -54,6 +56,7 @@ class BST:
             self._pre_order_(node.right)
             print((node.key, node.value))
 
+
     ## Left, Node, Right
     ## O(n)
     def _in_order_(self, node):
@@ -62,6 +65,7 @@ class BST:
             print((node.key, node.value))
             self._in_order_(node.right)
 
+
     ## Left, Right, Node
     ## O(n)
     def _pre_order_(self, node):
@@ -69,6 +73,7 @@ class BST:
             print((node.key, node.value))
             self._pre_order_(node.left)
             self._pre_order_(node.right)
+
 
     ## Node, Left, Right - Level by level.
     ## O(n)
@@ -105,6 +110,7 @@ class BST:
             while currNode.left is not None:
                 currNode = currNode.left
             return currNode
+
 
     def _predocessor_(self, node):
         if node is None:
@@ -146,6 +152,7 @@ class BST:
                     currNode.value = val
                     break
 
+
     ## O(log2 n)
     def search(self, key):
         currNode = self.root
@@ -163,6 +170,7 @@ class BST:
                     return None
                 else:
                     currNode = currNode.left
+
 
     ## O(log2 n)
     def delete(self, key):
@@ -216,6 +224,7 @@ class BST:
 
                 self.delete(successor)
 
+
     ## O(n)
     def travers(self, order:str):
         if order.lower() == "preorder":
@@ -228,6 +237,7 @@ class BST:
             return self._level_order(self.root)
         else:
             raise ValueError("Unknow order.")
+
 
 
 if __name__ == "__main__":

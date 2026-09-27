@@ -11,6 +11,7 @@ class HashTable:
         for key in kwargs:
             self.update(key, kwargs[key])
 
+
     ## O(n)
     def __str__(self):
         if self.size == 0:
@@ -27,9 +28,11 @@ class HashTable:
                     dic += str("}")
             return dic
 
+
     # O(1)
     def __len__(self):
         return self.size
+
 
     ## O(1)*
     ## allows us to do: 'key' in table
@@ -43,20 +46,24 @@ class HashTable:
         else:
             return False
 
+
     ## O(1)*
     ## allows us to do: print(hashtable['key'])
     def __getitem__(self, key):
         return self.get(key)
+
 
     ## O(1)*
     ## allows us to do: hashtable['key'] = 30
     def __setitem__(self, key, value):
         return self.update(key, value)
 
+
     ## O(1)*
     ## allows us to do: del hashtable['key']
     def __delitem__(self, key):
         return self.pop(key)
+
     
     ## O(n)
     ## allows us to do: for key, value in hashtable:
@@ -77,12 +84,14 @@ class HashTable:
             hash_result = (((hash_result * 31) + ord(char)) % self.capacity)
         return hash_result
 
+
     ## O(n)
     def _Make_Table_(self, capacity):
         table = DynArray()
         for _ in range(capacity):
             table.append(DynArray())
         return table
+
 
     ## O(1)*
     def _NewInsert_(self, ky, vl, tb):
@@ -97,6 +106,7 @@ class HashTable:
             bucket.append((ky, vl))
             self.size += 1
         return tb
+
 
     ## O(n)
     def _MoveToNewTable_(self):
@@ -121,6 +131,7 @@ class HashTable:
             self._NewInsert_(key, value, self.buckets)
         self.last.append(key)
 
+
     ## O(1)*
     def pop(self, key):
         index = self._Hash_Func_(key)
@@ -134,6 +145,7 @@ class HashTable:
         else:
             raise KeyError('Key Not Found')
 
+
     ## O(1)*
     def get(self, key):
         index = self._Hash_Func_(key)
@@ -145,6 +157,7 @@ class HashTable:
         else:
             raise KeyError('Key Not Found')
 
+
     ## O(n)
     def keys(self):
         keys = DynArray()
@@ -152,6 +165,7 @@ class HashTable:
             for k, _ in bucket:
                 keys.append(k)
         return keys
+
     
     ## O(n)
     def values(self):
@@ -161,6 +175,7 @@ class HashTable:
                 vals.append(v)
         return vals
 
+
     ## O(n)
     def items(self):
         keyVals = DynArray()
@@ -169,11 +184,13 @@ class HashTable:
                 keyVals.append((k, v))
         return keyVals
 
+
     ## O(n)
     def clear(self):
         for i in range(self.capacity):
             self.buckets.pop()
         self.size = 0
+
 
     ## O(n)
     def copy(self):
@@ -183,6 +200,7 @@ class HashTable:
             NewHashTable.update(k, v)
             
         return NewHashTable
+
 
     ## O(1)
     def popitem(self):
@@ -194,12 +212,14 @@ class HashTable:
             self.last.pop()
             return end
 
+
     ## O(1)
     def setdefault(self, key, val_to_give=None):
         if key in self.keys():
             return self.get(key)
         else:
             self.update(key, val_to_give)
+
 
     ## O(n)
     def fromkeys(self, array, default_val=None):
@@ -210,7 +230,6 @@ class HashTable:
             NewHashTable._NewInsert_(el, default_val, NewTable)
         NewHashTable.buckets = NewTable
         return NewHashTable
-
 
 
 if __name__ == "__main__":

@@ -5,12 +5,14 @@ class Stack:
             self.next = None
             self.prev = None
 
+
     ## O(n)
     def __init__(self, *args):
         self.top = None
         self.len = 0
         for arg in args:
             self.push(arg)
+
     
     ## O(1)
     def __len__(self):
@@ -27,6 +29,7 @@ class Stack:
             newnode.prev = self.top
             self.top = newnode
         self.len += 1
+
     
     ## O(1)
     def pop(self):
@@ -42,6 +45,7 @@ class Stack:
                 self.top.next = None
             self.len -= 1
             return popped
+
 
     ## O(1)
     def peek(self):

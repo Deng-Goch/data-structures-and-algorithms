@@ -8,13 +8,16 @@ class Array_Based_Max_Heap:
         for arg in args:
             self.insert(arg)
 
+
     ## O(1)
     def __len__(self):
         return len(self.heap)
 
+
     ## O(n)
     def __str__(self):
         return str(self.heap)
+
 
     ## 5 inner / helper methods
     ## (log2 n) - used with parent for inserting
@@ -22,13 +25,16 @@ class Array_Based_Max_Heap:
     def _parent_(self, index):
         return ((index - 1) // 2)
 
+
     ## O(1)
     def _left_(self, index):
         return ((index * 2) + 1)
 
+
     ## O(1)
     def _right_(self, index):
         return ((index * 2) + 2)
+
 
     ## O(log2 n) - used for inserting
     def _sift_up_(self, index):
@@ -60,6 +66,7 @@ class Array_Based_Max_Heap:
                 return
         else:
             return
+
     
     ## O(log2 n) - used with left and right for deleting
     def _sift_down_(self, index):
@@ -79,18 +86,21 @@ class Array_Based_Max_Heap:
         else:
             return
 
+
     ## 5 methods
     ## O(log2 n)
     def insert(self, value):
         self.heap.append(value)
         self._sift_up_(len(self.heap)-1)
 
-        ## O(1)
+
+    ## O(1)
     def peek(self):
         if len(self.heap) == 0:
             raise IndexError('Peeking from an empty Heap.')
         else:
             return self.heap[0]
+
 
     ## O(log2 n)
     def pop(self):
@@ -107,6 +117,7 @@ class Array_Based_Max_Heap:
             self._sift_down_(0)
 
             return poped
+
 
     ## O(log2 n)
     def meld(self, *args) -> None:

@@ -6,6 +6,7 @@ class SinglyList:
             self.value = value
             self.next = None
 
+
     ## 8 magic methods
     ## O(n)
     def __init__(self, *args):
@@ -14,10 +15,12 @@ class SinglyList:
         self.len = 0
         for arg in args:
             self.InsertEnd(arg)
+
     
     ## O(1)
     def __len__(self):
         return self.len
+
 
     ## O(n)
     def __str__(self):
@@ -27,10 +30,12 @@ class SinglyList:
             arr.append(str(curr.value))
             curr = curr.next
         return ' -> '.join(arr)
+
     
     ## o(n)
     def __repr__(self):
         return f"Head => {self} <= Tail"
+
     
     ## o(n)
     def __iter__(self):
@@ -38,6 +43,7 @@ class SinglyList:
         for _ in range(self.len):
             yield curr.value
             curr = curr.next
+
     
     ## O(n)
     ## allows us to do: 3 in x
@@ -50,6 +56,7 @@ class SinglyList:
                 curr = curr.next
         return False
 
+
     ## O(n)
     ## allows us to do: print(x[3])
     def __getitem__(self, position):
@@ -60,6 +67,7 @@ class SinglyList:
             for _ in range(1, position):
                 curr = curr.next
             return curr.value
+
 
     ## O(n)
     ## allows us to do: x[3] = 100
@@ -80,7 +88,6 @@ class SinglyList:
             curr.next = newnode
 
 
-
     ## 4 instances methods
     ## sO(1)
     def InsertStart(self, value):
@@ -93,6 +100,7 @@ class SinglyList:
             self.head = newnode
         self.len += 1
 
+
     ## O(1)
     def InsertEnd(self, value):
         newnode = self._SinglyNode_(value)
@@ -103,6 +111,7 @@ class SinglyList:
             self.tail.next = newnode
             self.tail = newnode
         self.len += 1
+
 
     ## O(n)
     def InsertAt(self, value, position):
@@ -120,6 +129,7 @@ class SinglyList:
             newnode.next = curr.next
             curr.next = newnode
         self.len += 1
+
 
     ## O(1)
     def DelStart(self):

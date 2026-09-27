@@ -14,14 +14,17 @@ class StatArray:
             for i in range(capacity):
                 self.append(args[i])
 
+
     ## O(1)
     def __len__(self):
         return self.size
+
     
     ## O(n)
     def __iter__(self):
         for i in range(self.size):
             yield self.Array[i]
+
 
     ## O(n)
     def __str__(self):
@@ -36,6 +39,7 @@ class StatArray:
 
             rep += str(self.Array[i+1])
             return "[" + rep + "]"
+
 
     ## O(1)
     ## allows us to do: print(x[2:3:5])
@@ -56,6 +60,7 @@ class StatArray:
                 raise IndexError("Index out of range.")
             return self.Array[index]
 
+
     ## O(1)
     ## allows us to do: x[4] = 20
     def __setitem__(self, index, value):
@@ -63,6 +68,7 @@ class StatArray:
             raise IndexError("Index out of range.")
         else:
             self.Array[index] = value
+
 
     ## O(n)
     ## allows us to do: del x[8]
@@ -84,6 +90,7 @@ class StatArray:
             self.Array[self.size] = value
             self.size += 1
 
+
     ## O(n)
     ## insert, but lose the last element if the array is filled up.
     def insert(self, index, value):
@@ -97,6 +104,7 @@ class StatArray:
 
             if self.size < self.capacity:
                 self.size += 1
+
 
     ## O(n)
     def remove(self, value) -> None:
@@ -113,6 +121,7 @@ class StatArray:
 
         self.Array[self.size - 1] = None
         self.size -= 1
+
     
     ## O(n)
     def pop(self, index=None):
@@ -135,6 +144,7 @@ class StatArray:
 
             return value
 
+
     ## O(n)
     def reverse(self):
         start = int(0)
@@ -149,12 +159,14 @@ class StatArray:
         
         return
 
+
     ## O(n)
     def copy(self):
         newArr = StatArray(self.size)
         for i in range(self.size):
             newArr.append(self.Array[i])
         return newArr
+
 
     ## O(n)
     def count(self, value) -> int:
@@ -167,6 +179,7 @@ class StatArray:
                 continue
         return counter
 
+
     ## O(n)
     def index(self, value) -> int:
         for i in range(self.size):
@@ -176,6 +189,7 @@ class StatArray:
                 continue
         return -1
 
+
     ## O(n)
     def extend(self, elements):
         for i in elements:
@@ -183,11 +197,13 @@ class StatArray:
 
         return self
 
+
     ## O(n)
     def clear(self):
         for i in range(self.size):
             self.pop()
         return self.Array
+
 
     ## O(n2)
     def bubbleSort(self):
@@ -203,6 +219,7 @@ class StatArray:
                     swap = True
             iters -= 1
         return self.Array
+
     
     ## O(log2 n)
     def binSearch(self, target) -> bool:
@@ -220,6 +237,7 @@ class StatArray:
             elif self.Array[mid] < target:
                 le = (mid + 1)
         return False
+
     
     ## O(log n)
     def linSearch(self, target) -> bool:

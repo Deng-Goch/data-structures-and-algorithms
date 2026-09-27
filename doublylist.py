@@ -16,9 +16,11 @@ class DoublyList:
         for arg in args:
             self.InsertEnd(arg)
 
+
     ## O(1)
     def __len__(self) -> int:
         return self.len
+
     
     ## O(n)
     def __str__(self) -> str:
@@ -28,6 +30,7 @@ class DoublyList:
             arr.append(str(curr.value))
             curr = curr.next
         return ' <-> '.join(arr)
+
     
     ## o(n)
     def __iter__(self):
@@ -36,9 +39,11 @@ class DoublyList:
             yield curr.value
             curr = curr.next
 
+
     ## O(n)
     def __repr__(self) -> str:
         return f"Head => {(self)} <= Tail"
+
 
     ## O(n)
     ## allows us to do: 27 in x
@@ -50,6 +55,7 @@ class DoublyList:
             else:
                 curr = curr.next
         return False
+
     
     ## O(n)
     ## allows us to do: print(x[3])
@@ -88,6 +94,7 @@ class DoublyList:
             newnode.prev = curr.prev
             newnode.next = curr.next
             curr = newnode
+
         
     ## O(n)
     ## allows us to do: del x[7]
@@ -108,7 +115,6 @@ class DoublyList:
             curr.prev = None
         self.len -= 1
 
-    
 
     ### 6 instance methods
     ## O(1)
@@ -123,6 +129,7 @@ class DoublyList:
             self.head = newnode
         self.len += 1
 
+
     ## O(1)
     def InsertEnd(self, val):
         newnode = self._DoublyNode_(val)
@@ -134,6 +141,7 @@ class DoublyList:
             newnode.prev = self.tail
             self.tail = newnode
         self.len += 1
+
     
     ## O(n)
     def InsertAt(self, value, position:int):
@@ -154,6 +162,7 @@ class DoublyList:
             curr.next = newnode
         self.len += 1
 
+
     ## O(1)
     def DelStart(self):
         if self.head == None:
@@ -165,6 +174,7 @@ class DoublyList:
             self.head.prev = None
             self.len -= 1
             return del_val.value
+
     
     ## O(1)
     def DelEnd(self):
@@ -177,6 +187,7 @@ class DoublyList:
             self.tail.next = None
             self.len -= 1
             return del_val.value
+
     
     ## O(n)
     def RevLinkList(self):

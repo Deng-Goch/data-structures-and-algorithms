@@ -49,6 +49,7 @@ class Adjaceny_List_Based_Graph:
                     neighbors.discard(node)
                 del self.adjaceny_list[node]
 
+
     ## O(1)
     def add_edge(self, from_node, to_node, weight=None) -> None:
         if from_node not in self.adjaceny_list:

@@ -17,9 +17,11 @@ class CirclyList:
         for arg in args:
             self.InsertEnd(arg)
 
+
     ## O(1)
     def __len__(self) -> int:
         return self.len
+
     
     ## O(n)
     def __str__(self):
@@ -29,10 +31,12 @@ class CirclyList:
             arr.append(str(curr.value))
             curr = curr.next
         return ' ~ '.join(arr)
+
             
     ## O(n)
     def __repr__(self):
         return f"{self.tail.value} <-> {(self)} <-> {self.head.value}"
+
 
     ## O(n)
     ## print(7 in x)
@@ -43,6 +47,7 @@ class CirclyList:
                 return True
             curr = curr.next
         return False
+
     
     ## o(n)
     def __iter__(self):
@@ -50,6 +55,7 @@ class CirclyList:
         for i in range(self.len):
             yield curr.value
             curr = curr.next
+
     
     ## O(n)
     ## print(x[5])
@@ -65,6 +71,7 @@ class CirclyList:
             for _ in range(1, position):
                 curr = curr.next
         return curr.value
+
 
     ## O(n)
     ## x[3] = 9
@@ -87,6 +94,7 @@ class CirclyList:
             newnode.prev = curr.prev
             newnode.next = curr.next
             curr = newnode
+
 
     ## O(n)
     ## del x[7]
@@ -125,6 +133,7 @@ class CirclyList:
             self.tail.next = self.head
         self.len += 1
 
+
     ## O(1)
     def InsertEnd(self, val):
         newnode = self._CirclyNode_(val)
@@ -140,6 +149,7 @@ class CirclyList:
             newnode.prev = self.tail
             self.tail = newnode
         self.len += 1
+
     
     ## O(n)
     def InsertAt(self, value, pos:int):
@@ -160,6 +170,7 @@ class CirclyList:
             curr.next = newnode
         self.len += 1
 
+
     ## O(1)
     def DelStart(self):
         if self.head == None:
@@ -173,6 +184,7 @@ class CirclyList:
             self.tail.next = self.head
             self.len -= 1
             return del_val.value
+
     
     ## O(1)
     def DelEnd(self):

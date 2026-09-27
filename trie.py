@@ -7,9 +7,11 @@ class Trie:
             self.children = HashTable()
             self.word_end = False
 
+
     ## O(1)
     def __init__(self):
         self.root = self._TrieNode_()
+
 
     ## O(n)
     def insert(self, word:str) -> None:
@@ -21,9 +23,11 @@ class Trie:
             curr = curr.children[c]
         curr.word_end = True
 
+
     ## O(x)
     def delete(self, word:str) -> None:
         pass
+
 
     ## O(n)
     def search(self, word:str) -> bool:
@@ -36,6 +40,7 @@ class Trie:
                 return False
         return curr.word_end
 
+
     ## O(n)
     def hasPrefix(self, prefix) -> bool:
         curr = self.root
@@ -47,10 +52,12 @@ class Trie:
                 return False
         return True
 
+
     ## O(x)
     def startsWith(self, prefix) -> bool:
         words = DynArray()
         pass
+
 
     ## O(x)
     def listWords(self) -> None:

@@ -7,6 +7,7 @@ class Queue:
             self.next = None
             self.prev = None
 
+
     ## O(n)
     def __init__(self, *args):
         self.right = None
@@ -14,10 +15,12 @@ class Queue:
         self.len = 0
         for arg in args:
             self.Push(arg)
+
     
     ## O(1)
     def __len__(self):
         return self.len
+
     
     ## O(n)
     def __str__(self):
@@ -27,6 +30,7 @@ class Queue:
             arr.append(str(curr.val))
             curr = curr.next
         return ' <~> '.join(arr)
+
 
     ## O(n)
     def __repr__(self):
@@ -45,6 +49,7 @@ class Queue:
             newnode.prev = self.right
             self.right = newnode
         self.len += 1
+
     
     ## O(1)
     def PopLeft(self):
@@ -62,12 +67,14 @@ class Queue:
             self.len -= 1
             return popped
 
+
     ## O(1)
     def PeekLeft(self):
         if self.left is None:
             raise ValueError('Empty Stack')
         else:
             return str(self.left.val)
+
     
     ## O(1)
     def PeekRight(self):

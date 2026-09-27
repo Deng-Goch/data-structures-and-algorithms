@@ -6,10 +6,12 @@ class HashSet:
     def __init__(self):
         self._table = HashTable()
 
+
     ## O(n)
     def __iter__(self):
         for el in self._table.keys():
             yield el
+
 
     ## O(n)
     def __repr__(self):
@@ -25,12 +27,14 @@ class HashSet:
         else:
             return 'set()'
 
+
     ## O(1)
     def __contains__(self, value):
         if value in self._table:
             return True
         else:
             return False
+
 
     ## O(1)
     def __len__(self):
@@ -45,10 +49,12 @@ class HashSet:
         else:
             self._table.update(element, None)
 
+
     ## O(n)
     def update(self, Iterable) -> None:
         for key in Iterable:
             self.add(key)
+
 
     ## O(1)
     def discard(self, element:object) -> None:
@@ -57,12 +63,14 @@ class HashSet:
         else:
             return
 
+
     ## O(1)
     def remove(self, element:object) -> None:
         if element in self._table:
             del self._table[element]
         else:
             raise KeyError
+
 
     ## O(1)
     def pop(self):
@@ -73,10 +81,12 @@ class HashSet:
         else:
             raise KeyError('Pop from an empty set.')
 
+
     ## O(n)
     def clear(self) -> None:
         for key in self:
             del self._table[key]
+
     
     ## O(n)
     def copy(self) -> 'HashSet':
@@ -85,7 +95,6 @@ class HashSet:
         for key in self:
             NewSet.add(key)
         return NewSet
-
 
 
     ## 10 set operations
@@ -98,6 +107,7 @@ class HashSet:
                 continue
         return True
 
+
     ## O(n)
     def issubset(self, Iterable) -> bool:
         for key in self:
@@ -107,6 +117,7 @@ class HashSet:
                 return False
         return True
 
+
     ## O(n)
     def issuperset(self, Iterable) -> bool:
         for key in Iterable:
@@ -115,6 +126,7 @@ class HashSet:
             else:
                 return False
         return True
+
 
     ## O(n)
     def union(self, Iterable) -> 'HashSet':
@@ -127,6 +139,7 @@ class HashSet:
 
         return NewSet
 
+
     ## O(n)
     def intersection(self, Iterable) -> 'HashSet':
         NewSet = HashSet()
@@ -137,6 +150,7 @@ class HashSet:
                 continue
         return NewSet
 
+
     ## O(n)
     def intersection_update(self, Iterable):
         for key in Iterable:
@@ -144,6 +158,7 @@ class HashSet:
                 self.add(key)
             else:
                 continue
+
 
     ## O(n)
     def difference(self, Iterable=None) -> 'HashSet':
@@ -161,6 +176,7 @@ class HashSet:
                     continue
             return NewSet
 
+
     ## O(n)
     def difference_update(self, Iterable=None) -> None:
         if Iterable is None:
@@ -170,6 +186,7 @@ class HashSet:
                 if key in Iterable:
                     self.remove(key)
             return    
+
 
     ## O(x)
     def symmetric_difference(self, Iterable):
@@ -187,6 +204,7 @@ class HashSet:
                 NewSet.add(key)
 
         return NewSet
+
         
     ## O(x)
     def symmetric_difference_update(self, Iterable) -> None:
@@ -203,7 +221,6 @@ class HashSet:
                 continue
             else:
                 self.add(key)
-
 
 
 if __name__ == "__main__":
