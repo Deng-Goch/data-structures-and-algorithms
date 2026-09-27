@@ -10,9 +10,11 @@ from queu import Queue
 class Adjaceny_List_Based_Graph:
     ## 2 maigic methods
     ## O(1)
-    def __init__(self, directed=True, weighted=False):
+    def __init__(self, directed=True, weighted=False, directed_cycles=False, self_cycle=False):
         self.directed = directed
         self.weighted = weighted
+        self.directed_cycles = directed_cycles
+        self.self_cycle = self_cycle
         self.adjaceny_list = HashTable()
 
 
@@ -52,6 +54,10 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)
     def add_edge(self, from_node, to_node, weight=None) -> None:
+        if from_node == to_node:
+            if self.self_cycle is False:
+                raise AssertionError("Can't have node self loop/cycle.")
+        
         if from_node not in self.adjaceny_list:
             raise ValueError('"From Node" does not exist.')
         elif to_node not in self.adjaceny_list:
@@ -62,7 +68,13 @@ class Adjaceny_List_Based_Graph:
                     self.adjaceny_list[from_node].add(to_node)
                     self.adjaceny_list[to_node].add(from_node)
                 else:
-                    self.adjaceny_list[from_node].add(to_node)
+                    if self.directed_cycles is True:
+                        self.adjaceny_list[from_node].add(to_node)
+                    else:
+                        if from_node in self.adjaceny_list[to_node]:
+                            raise AssertionError("Can't have cycles.")
+                        else:
+                            self.adjaceny_list[from_node].add(to_node)
             else:
                 if weight is None or type(float(weight)) != float:
                     raise TypeError("Enter a weight of type int/float.")
@@ -71,7 +83,13 @@ class Adjaceny_List_Based_Graph:
                         self.adjaceny_list[to_node].add((from_node,weight))
                         self.adjaceny_list[from_node].add((to_node,weight))
                     else:
-                        self.adjaceny_list[from_node].add((to_node,weight))
+                        if self.directed_cycles is True:
+                            self.adjaceny_list[from_node].add(to_node)
+                        else:
+                            if from_node in self.adjaceny_list[to_node]:
+                                raise AssertionError("Can't have cycles.")
+                            else:
+                                self.adjaceny_list[from_node].add(to_node)
 
 
     ## O(1)
@@ -222,50 +240,16 @@ class Adjaceny_List_Based_Graph:
 
 
 if __name__ == "__main__":
-    graph = Adjaceny_List_Based_Graph(directed=False, weighted=True)
-    graph.add_node('A')
-    graph.add_node('B')
-    graph.add_node('C')
-    graph.add_node('D')
-    graph.add_node('E')
-    graph.add_node('F')
-    graph.add_node("G")
-    graph.add_node('H')
+    graph = Adjaceny_List_Based_Graph(directed=True, weighted=False, directed_cycles=False, self_cycle=False)
+
+    graph.add_node("A")
+    graph.add_node("B")
+    graph.add_node("C")
+    graph.add_node("D")
+
+    graph.add_edge("A", "B")
+    graph.add_edge("B", "C")
+
+    graph.add_edge("C", "D")
 
     print(graph)
-
-    # graph.remove_node("A")
-
-    # print(graph)
-
-    graph.add_edge("A", "B", 7)
-    graph.add_edge('A', 'C', 3)
-    graph.add_edge('A', 'E', 10)
-
-    graph.add_edge('B', 'A', 6)
-    graph.add_edge("B", "C", 4)
-
-    graph.add_edge('D', 'E', 4)
-    graph.add_edge('D', 'F', 8)
-    graph.add_edge('D', 'C', 9)
-
-    graph.add_edge("E", "A", 2)
-    graph.add_edge('E', 'B', 5)
-    graph.add_edge('E', 'C', 11)
-
-    graph.add_edge('F', 'H', 8.6)
-    graph.add_edge("G", "E", 6)
-
-    
-    print(graph)
-
-    # print(graph.adjaceny_list.values())
-
-    graph.remove_node("A")
-
-    print("\n")
-
-    print(graph)
-
-    print(graph.iterative_bfs("E"))
-    print(graph.iterative_dfs("B"))
