@@ -105,13 +105,14 @@ Finally, please keep in mind that the data structures are continuously being imp
     1- Directed & Undirected Graph ✔️.
     2- Weighted & Non-weighted Graph ✔️.
     3- Cyclic & Acyclic Graph (only if Directed Graph) ✔️.
+    4- Self-cyclic & Non-self-syclic (Only if Directed Graph) ✔️.
 
 ## 7- Tree ✅:
     1- Binary Search Tree ✔️.
     2- Red-Black Tree.
     3- AVL Tree.
-    4- Max Heap (Array Based & Tree Based) ✔️.
-    5- Min Heap (Array Based & Tree Based) ✔️.
+    4- Max Heap (Array Based) ✔️.
+    5- Min Heap (Array Based) ✔️.
     6- Priority Queue.
     7- Trie / Prefix-Tree ✔️:
     8- Treap.
