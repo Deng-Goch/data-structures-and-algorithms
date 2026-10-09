@@ -4,6 +4,17 @@ class HashTable:
     ## 8 Magic Methods
     ## O(1)
     def __init__(self, **kwargs):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.size = 0
         self.capacity = 8
         self.buckets = self._Make_Table_(self.capacity)
@@ -124,6 +135,17 @@ class HashTable:
     ## 11 instance methods
     ## O(1)*
     def update(self, key, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if ((self.size / self.capacity) * 100) <= 60:
             self._NewInsert_(key, value, self.buckets)
         else:
@@ -134,6 +156,17 @@ class HashTable:
 
     ## O(1)*
     def pop(self, key):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         index = self._Hash_Func_(key)
         bucket = self.buckets[index]
 
@@ -148,6 +181,17 @@ class HashTable:
 
     ## O(1)*
     def get(self, key):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         index = self._Hash_Func_(key)
         bucket = self.buckets[index]
 
@@ -160,6 +204,17 @@ class HashTable:
 
     ## O(n)
     def keys(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         keys = DynArray()
         for bucket in self.buckets:
             for k, _ in bucket:
@@ -169,6 +224,17 @@ class HashTable:
     
     ## O(n)
     def values(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         vals = DynArray()
         for bucket in self.buckets:
             for _, v in bucket:
@@ -178,6 +244,17 @@ class HashTable:
 
     ## O(n)
     def items(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         keyVals = DynArray()
         for bucket in self.buckets:
             for k, v in bucket:
@@ -187,6 +264,17 @@ class HashTable:
 
     ## O(n)
     def clear(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.capacity):
             self.buckets.pop()
         self.size = 0
@@ -194,6 +282,17 @@ class HashTable:
 
     ## O(n)
     def copy(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewHashTable = HashTable()
 
         for k, v in self.items():
@@ -204,6 +303,17 @@ class HashTable:
 
     ## O(1)
     def popitem(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if len(self.last) == 0:
             raise IndexError("Empty Hashtable")
         else:
@@ -215,6 +325,17 @@ class HashTable:
 
     ## O(1)
     def setdefault(self, key, val_to_give=None):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if key in self.keys():
             return self.get(key)
         else:
@@ -223,6 +344,17 @@ class HashTable:
 
     ## O(n)
     def fromkeys(self, array, default_val=None):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewHashTable = HashTable()
         NewTable = self._Make_Table_(len(array))
 

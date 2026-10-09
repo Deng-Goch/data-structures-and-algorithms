@@ -1,4 +1,4 @@
-class RBT:
+class Red_Black_Tree:
     pass
 
 

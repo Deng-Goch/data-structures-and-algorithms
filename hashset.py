@@ -4,12 +4,23 @@ class HashSet:
     ## magic methods - 5
     ## O(1)
     def __init__(self):
-        self._table = HashTable()
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        self._table_ = HashTable()
 
 
     ## O(n)
     def __iter__(self):
-        for el in self._table.keys():
+        for el in self._table_.keys():
             yield el
 
 
@@ -17,10 +28,10 @@ class HashSet:
     def __repr__(self):
         if len(self) > 0:
             rep = str("")
-            for i in range(self._table.size):
-                rep += str(self._table.keys()[i])
+            for i in range(self._table_.size):
+                rep += str(self._table_.keys()[i])
 
-                if i != (self._table.size - 1):
+                if i != (self._table_.size - 1):
                     rep += ", "
 
             return "{" + rep + "}"
@@ -30,7 +41,7 @@ class HashSet:
 
     ## O(1)
     def __contains__(self, value):
-        if value in self._table:
+        if value in self._table_:
             return True
         else:
             return False
@@ -38,45 +49,100 @@ class HashSet:
 
     ## O(1)
     def __len__(self):
-        return (self._table.size)
+        return (self._table_.size)
 
 
     ## instance methods - 17
     # O(1)
     def add(self, element) -> None:
-        if element in self._table:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        if element in self._table_:
             return
         else:
-            self._table.update(element, None)
+            self._table_.update(element, None)
 
 
     ## O(n)
     def update(self, Iterable) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in Iterable:
             self.add(key)
 
 
     ## O(1)
     def discard(self, element:object) -> None:
-        if element in self._table:
-            del self._table[element]
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        if element in self._table_:
+            del self._table_[element]
         else:
             return
 
 
     ## O(1)
     def remove(self, element:object) -> None:
-        if element in self._table:
-            del self._table[element]
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        if element in self._table_:
+            del self._table_[element]
         else:
             raise KeyError
 
 
     ## O(1)
     def pop(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if len(self) > 0:
-            poped = self._table.keys()[0]
-            del self._table[poped]
+            poped = self._table_.keys()[0]
+            del self._table_[poped]
             return poped
         else:
             raise KeyError('Pop from an empty set.')
@@ -84,12 +150,34 @@ class HashSet:
 
     ## O(n)
     def clear(self) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in self:
-            del self._table[key]
+            del self._table_[key]
 
     
     ## O(n)
     def copy(self) -> 'HashSet':
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewSet = HashSet()
 
         for key in self:
@@ -100,6 +188,17 @@ class HashSet:
     ## 10 set operations
     ## O(n)
     def isdisjoint(self, Iterable) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in Iterable:
             if key in self:
                 return False
@@ -110,6 +209,17 @@ class HashSet:
 
     ## O(n)
     def issubset(self, Iterable) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in self:
             if key in Iterable:
                 continue
@@ -120,6 +230,17 @@ class HashSet:
 
     ## O(n)
     def issuperset(self, Iterable) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in Iterable:
             if key in self:
                 continue
@@ -130,6 +251,17 @@ class HashSet:
 
     ## O(n)
     def union(self, Iterable) -> 'HashSet':
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewSet = HashSet()
         for key in self:
             NewSet.add(key)
@@ -142,6 +274,17 @@ class HashSet:
 
     ## O(n)
     def intersection(self, Iterable) -> 'HashSet':
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewSet = HashSet()
         for key in self:
             if key in Iterable:
@@ -153,6 +296,17 @@ class HashSet:
 
     ## O(n)
     def intersection_update(self, Iterable):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for key in Iterable:
             if key in self:
                 self.add(key)
@@ -162,6 +316,17 @@ class HashSet:
 
     ## O(n)
     def difference(self, Iterable=None) -> 'HashSet':
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewSet = HashSet()
 
         if Iterable is None:
@@ -179,6 +344,17 @@ class HashSet:
 
     ## O(n)
     def difference_update(self, Iterable=None) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if Iterable is None:
             return
         else:
@@ -190,6 +366,17 @@ class HashSet:
 
     ## O(x)
     def symmetric_difference(self, Iterable):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         NewSet = HashSet()
         for key in Iterable:
             if key in self:
@@ -208,7 +395,18 @@ class HashSet:
         
     ## O(x)
     def symmetric_difference_update(self, Iterable) -> None:
-        keys = self._table.keys()
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        keys = self._table_.keys()
 
         for key in keys:
             if key in Iterable:

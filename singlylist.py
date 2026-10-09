@@ -10,6 +10,17 @@ class SinglyList:
     ## 8 magic methods
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.head = None
         self.tail = None
         self.len = 0
@@ -91,6 +102,17 @@ class SinglyList:
     ## 4 instances methods
     ## sO(1)
     def InsertStart(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._SinglyNode_(value)
         if self.head == None:
             self.head = newnode
@@ -103,6 +125,17 @@ class SinglyList:
 
     ## O(1)
     def InsertEnd(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._SinglyNode_(value)
         if self.tail == None:
             self.tail = newnode
@@ -115,6 +148,17 @@ class SinglyList:
 
     ## O(n)
     def InsertAt(self, value, position):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._SinglyNode_(value)
         if position == 1 :
             self.InsertStart(value)
@@ -133,6 +177,17 @@ class SinglyList:
 
     ## O(1)
     def DelStart(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.head == None:
             raise ValueError("Empty list.")
         else:

@@ -1,4 +1,4 @@
-class BIT:
+class Binary_Index_Fenwick_Tree:
     pass
 
 

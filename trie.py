@@ -10,11 +10,33 @@ class Trie:
 
     ## O(1)
     def __init__(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.root = self._TrieNode_()
 
 
     ## O(n)
     def insert(self, word:str) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         curr = self.root
 
         for c in word:
@@ -26,11 +48,33 @@ class Trie:
 
     ## O(x)
     def delete(self, word:str) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(n)
     def search(self, word:str) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         curr = self.root
 
         for c in word:
@@ -43,6 +87,17 @@ class Trie:
 
     ## O(n)
     def hasPrefix(self, prefix) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         curr = self.root
 
         for c in prefix:
@@ -55,12 +110,34 @@ class Trie:
 
     ## O(x)
     def startsWith(self, prefix) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         words = DynArray()
         pass
 
 
     ## O(x)
     def listWords(self) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         words = DynArray()
         pass
 

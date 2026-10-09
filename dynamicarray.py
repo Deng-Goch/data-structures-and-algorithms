@@ -4,6 +4,17 @@ class DynArray:
 
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.capacity = 1
         self.size = 0
         self.array = self._make_array_(self.capacity)
@@ -89,6 +100,17 @@ class DynArray:
     ## instance methods - 11
     ## O(1)*
     def append(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.size == self.capacity:
             self._resize_(self.capacity * 2)
 
@@ -98,6 +120,17 @@ class DynArray:
 
     ## O(n)
     def insert(self, index, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if index < 0 or index >= self.size:
             raise IndexError("List index out of range.")
         else:
@@ -113,6 +146,17 @@ class DynArray:
 
     ## O(n)
     def remove(self, value) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         index = 0
         for i in range(self.size):
             if self.array[i] == value:
@@ -130,6 +174,17 @@ class DynArray:
     
     ## O(n)
     def pop(self, index=None):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.size == 0:
             raise IndexError("Poping from an empty array")
         else:
@@ -156,6 +211,17 @@ class DynArray:
 
     ## O(n)
     def reverse(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         start = int(0)
         stop = (self.size - 1)
 
@@ -171,6 +237,17 @@ class DynArray:
 
     ## O(n)
     def copy(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newArr = DynArray(self.size)
         for i in range(self.size):
             newArr.append(self.array[i])
@@ -179,6 +256,17 @@ class DynArray:
 
     ## O(n)
     def count(self, value) -> int:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         counter = int(0)
 
         for i in range(self.size):
@@ -191,6 +279,17 @@ class DynArray:
 
     ## O(n)
     def index(self, value) -> int:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.size):
             if self.array[i] == value:
                 return i
@@ -201,18 +300,50 @@ class DynArray:
 
     ## O(n)
     def extend(self, elements):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for el in elements:
             self.append(el)
 
 
     ## O(n)
     def clear(self) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.size):
             self.pop()
 
 
     ## O(n2)
     def bubbleSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
 
         swap = True
         iters = ((self.size)-1)
@@ -229,6 +360,17 @@ class DynArray:
     
     ## O(log2 n)
     def binSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.bubbleSort()
 
         le = 0
@@ -247,6 +389,17 @@ class DynArray:
     
     ## O(log n)
     def linSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.array):
             if self.array[i] == target:
                 return True

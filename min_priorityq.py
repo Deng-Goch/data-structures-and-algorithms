@@ -1,4 +1,4 @@
-class PriorityQueue:
+class Heap_Based_Min_Priority_Queue:
     pass
 
 

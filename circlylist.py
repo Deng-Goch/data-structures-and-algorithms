@@ -1,7 +1,7 @@
 from dynamicarray import DynArray
 
-class CirclyList:
-    class _CirclyNode_:
+class Circular_List:
+    class _CirularNode_:
         def __init__(self, value=None):
             self.value = value
             self.next = None
@@ -11,6 +11,17 @@ class CirclyList:
 
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.head = None
         self.tail = None
         self.len = 0
@@ -76,7 +87,7 @@ class CirclyList:
     ## O(n)
     ## x[3] = 9
     def __setitem__(self, position, value):
-        newnode = self._CirclyNode_(value)
+        newnode = self._CirularNode_(value)
         if position == 1:
             self.DelStart()
             self.InsertStart(value)
@@ -119,7 +130,18 @@ class CirclyList:
     ### instance methods - 5
     ## O(1)
     def InsertStart(self, value):
-        newnode = self._CirclyNode_(value)
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        newnode = self._CirularNode_(value)
         if self.head == None:
             self.head = newnode
             self.tail = newnode
@@ -136,7 +158,18 @@ class CirclyList:
 
     ## O(1)
     def InsertEnd(self, val):
-        newnode = self._CirclyNode_(val)
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        newnode = self._CirularNode_(val)
         if self.tail == None:
             self.tail = newnode
             self.head = newnode
@@ -153,7 +186,18 @@ class CirclyList:
     
     ## O(n)
     def InsertAt(self, value, pos:int):
-        newnode = self._CirclyNode_(value)
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        newnode = self._CirularNode_(value)
         if pos == 1:
            self.InsertStart(value)
         elif pos == (self.len + 1):
@@ -173,6 +217,17 @@ class CirclyList:
 
     ## O(1)
     def DelStart(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.head == None:
             raise IndexError("Empty Linked List.")
         else:
@@ -188,6 +243,17 @@ class CirclyList:
     
     ## O(1)
     def DelEnd(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.tail == None:
             raise IndexError("Empty Linked List.")
         else:
@@ -202,6 +268,6 @@ class CirclyList:
 
 
 if __name__ == "__main__":
-    x = CirclyList(1,2,3,4,5,6,7,8)
+    x = Circular_List(1,2,3,4,5,6,7,8)
 
     print(x)

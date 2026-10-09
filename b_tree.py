@@ -1,4 +1,4 @@
-class BTREE:
+class B_Tree:
     pass
 
 

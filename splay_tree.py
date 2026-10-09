@@ -1,4 +1,4 @@
-class SplayTree:
+class Splay_Tree:
     pass
 
 

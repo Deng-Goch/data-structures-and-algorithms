@@ -66,12 +66,12 @@ Additionally, most developers think of things like:
 
 Alos, there's a class called "Sorting_Algos" in which I implemented 10 sorting algorithms namely:
 
-    1- Merge Sort.
-    2- Bubble Sort.
-    3- Selection Sort.
-    4- Insertion Sort.
-    5- Quick Sort.
-    6- Heap Sort.
+    1- Merge Sort ✔️.
+    2- Bubble Sort ✔️.
+    3- Selection Sort ✔️.
+    4- Insertion Sort ✔️.
+    5- Quick Sort ✔️.
+    6- Heap Sort ✔️.
     7- Topological Sort.
     8- Bucket Sort.
     9- Radix Sort.
@@ -98,8 +98,13 @@ Finally, please keep in mind that the data structures are continuously being imp
 ## 3- Stack ✅:
 
 ## 4- Queue ✅:
+    1- Reqular Queue ✔️.
+    2- Max Priority Queue ✔️.
+    3- Min Priority Queue ✔️.
 
 ## 5- Hash Table / Hash Map / Dictionary ✅:
+    1- Hash Table / Hash Map / Dictionary ✔️.
+    1- Hash Set ✔️.
 
 ## 6- Graph ✅:
     1- Directed & Undirected Graph ✔️.
@@ -113,19 +118,17 @@ Finally, please keep in mind that the data structures are continuously being imp
     3- AVL Tree.
     4- Max Heap (Array Based) ✔️.
     5- Min Heap (Array Based) ✔️.
-    6- Priority Queue.
-    7- Trie / Prefix-Tree ✔️:
-    8- Treap.
-    9- Segment Tree.
-    10- Binary Index Tree / Fenwick Tree.
-    11- B-Tree.
-    12- Cartesian Tree.
-    13- Splay Tree.
-    14- KD-Tree.
+    6- Trie / Prefix-Tree ✔️:
+    7- Treap.
+    8- Segment Tree.
+    9- Binary Index Tree / Fenwick Tree.
+    10- B-Tree.
+    11- Cartesian Tree.
+    12- Splay Tree.
+    13- KD-Tree.
 
 ## 8- Others ✅:
-    1- Hash Set ✔️.
-    2- Union Find / Disjoint Set.
-    3- SkipList
-    4- Bloom Filter
-    5- Sorting Algorithms ✔️.
+    1- Union Find / Disjoint Set.
+    2- SkipList
+    3- Bloom Filter
+    4- Sorting Algorithms ✔️.

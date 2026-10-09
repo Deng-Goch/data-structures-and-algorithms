@@ -1,4 +1,4 @@
-class AVLT:
+class AVL_Tree:
     pass
 
 

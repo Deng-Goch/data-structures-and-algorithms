@@ -3,7 +3,18 @@ from ctypes import py_object
 class StatArray:
     ## 7 magic methods
     ## O(n)
-    def __init__(self, capacity, *args):
+    def __init__(self, capacity:int, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+        
         self.capacity = capacity
         self.size = 0
         self.Array = self._make_array_(self.capacity)
@@ -84,6 +95,17 @@ class StatArray:
     ## instance methods - 11
     ## O(1)*
     def append(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.size == self.capacity:
             raise BufferError('No Empty Space - Array filled up.')
         else:
@@ -94,6 +116,17 @@ class StatArray:
     ## O(n)
     ## insert, but lose the last element if the array is filled up.
     def insert(self, index, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if index < 0 or index >= self.size:
             raise IndexError("Index out of range.")
         else:
@@ -108,6 +141,17 @@ class StatArray:
 
     ## O(n)
     def remove(self, value) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         index = 0
         for i in range(self.size):
             if self.Array[i] == value:
@@ -125,6 +169,17 @@ class StatArray:
     
     ## O(n)
     def pop(self, index=None):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.size == 0:
             raise IndexError("Poping from an empty array")
         else:
@@ -147,6 +202,17 @@ class StatArray:
 
     ## O(n)
     def reverse(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         start = int(0)
         stop = (self.size - 1)
 
@@ -162,6 +228,17 @@ class StatArray:
 
     ## O(n)
     def copy(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newArr = StatArray(self.size)
         for i in range(self.size):
             newArr.append(self.Array[i])
@@ -170,6 +247,17 @@ class StatArray:
 
     ## O(n)
     def count(self, value) -> int:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         counter = int(0)
 
         for i in range(self.size):
@@ -182,6 +270,17 @@ class StatArray:
 
     ## O(n)
     def index(self, value) -> int:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.size):
             if self.Array[i] == value:
                 return i
@@ -192,6 +291,17 @@ class StatArray:
 
     ## O(n)
     def extend(self, elements):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in elements:
             self.append(i)
 
@@ -200,6 +310,17 @@ class StatArray:
 
     ## O(n)
     def clear(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.size):
             self.pop()
         return self.Array
@@ -207,6 +328,16 @@ class StatArray:
 
     ## O(n2)
     def bubbleSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
 
         swap = True
         iters = ((self.size)-1)
@@ -223,6 +354,17 @@ class StatArray:
     
     ## O(log2 n)
     def binSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.bubbleSort()
 
         le = 0
@@ -241,6 +383,17 @@ class StatArray:
     
     ## O(log n)
     def linSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for i in range(self.Array):
             if self.Array[i] == target:
                 return True

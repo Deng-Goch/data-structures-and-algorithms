@@ -1,4 +1,4 @@
-class SkipList:
+class Skip_List:
     pass
 
 

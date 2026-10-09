@@ -10,11 +10,22 @@ from queu import Queue
 class Adjaceny_List_Based_Graph:
     ## 2 maigic methods
     ## O(1)
-    def __init__(self, directed=True, weighted=False, directed_cycles=False, self_cycle=False):
+    def __init__(self, directed:bool=True, weighted:bool=False, cyclic:bool=False, self_cyclic:bool=False):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.directed = directed
         self.weighted = weighted
-        self.directed_cycles = directed_cycles
-        self.self_cycle = self_cycle
+        self.cyclic = cyclic ## Only applicable if directed
+        self.self_cyclic = self_cyclic ## Only applicable if directed
         self.adjaceny_list = HashTable()
 
 
@@ -29,6 +40,17 @@ class Adjaceny_List_Based_Graph:
     ## 16 instance methods - 
     ## O(1)
     def add_node(self, node) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if node not in self.adjaceny_list:
             self.adjaceny_list[node] = HashSet()
         else:
@@ -37,6 +59,17 @@ class Adjaceny_List_Based_Graph:
     
     ## O(n)
     def remove_node(self, node) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if node not in self.adjaceny_list:
             raise ValueError('Node does not exist.')
         else:
@@ -54,8 +87,19 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)
     def add_edge(self, from_node, to_node, weight=None) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if from_node == to_node:
-            if self.self_cycle is False:
+            if self.self_cyclic is False:
                 raise AssertionError("Can't have node self loop/cycle.")
         
         if from_node not in self.adjaceny_list:
@@ -68,7 +112,7 @@ class Adjaceny_List_Based_Graph:
                     self.adjaceny_list[from_node].add(to_node)
                     self.adjaceny_list[to_node].add(from_node)
                 else:
-                    if self.directed_cycles is True:
+                    if self.cyclic is True:
                         self.adjaceny_list[from_node].add(to_node)
                     else:
                         if from_node in self.adjaceny_list[to_node]:
@@ -83,7 +127,7 @@ class Adjaceny_List_Based_Graph:
                         self.adjaceny_list[to_node].add((from_node,weight))
                         self.adjaceny_list[from_node].add((to_node,weight))
                     else:
-                        if self.directed_cycles is True:
+                        if self.cyclic is True:
                             self.adjaceny_list[from_node].add(to_node)
                         else:
                             if from_node in self.adjaceny_list[to_node]:
@@ -94,6 +138,17 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)
     def remove_edge(self, from_node, to_node) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if from_node in self.adjaceny_list:
             if to_node in self.adjaceny_list[from_node]:
                 if self.directed is False:
@@ -109,6 +164,17 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)*
     def get_neighbors(self, node) -> HashSet:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if node not in self.adjaceny_list:
             raise ValueError("Node does not exist.")
         else:
@@ -117,6 +183,17 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)*
     def node_exist(self, node) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if node in self.adjaceny_list:
             return True
         else:
@@ -125,6 +202,17 @@ class Adjaceny_List_Based_Graph:
 
     ## O(1)*
     def edge_exist(self, from_node, to_node) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if from_node in self.adjaceny_list:
             if to_node in self.adjaceny_list[from_node]:
                 return True
@@ -136,11 +224,33 @@ class Adjaceny_List_Based_Graph:
 
     ## O(n)
     def get_nodes(self) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         return self.adjaceny_list.keys()
 
 
     ## O(x)
     def iterative_bfs(self, start_node) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
         else:
@@ -170,6 +280,17 @@ class Adjaceny_List_Based_Graph:
     
     ## O(x)
     def iterative_dfs(self, start_node) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if start_node not in self.adjaceny_list:
             raise ValueError("Start Node does not exist.")
         else:
@@ -199,48 +320,136 @@ class Adjaceny_List_Based_Graph:
 
     ## O(x)
     def recursive_bfs(self, start_node) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
     
     ## O(x)
     def recursive_dfs(self, start_node) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def dijkstra(self, source_node):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def a_star(self, source_node):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def bellman_fords(self, source_node):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def primes(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def krustkal(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def ford_fulkerson(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
 
 
 if __name__ == "__main__":
-    graph = Adjaceny_List_Based_Graph(directed=True, weighted=False, directed_cycles=False, self_cycle=False)
+    graph = Adjaceny_List_Based_Graph(directed=True, weighted=False, cyclic=False, self_cyclic=False)
 
     graph.add_node("A")
     graph.add_node("B")

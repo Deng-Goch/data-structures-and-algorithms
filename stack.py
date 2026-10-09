@@ -8,6 +8,17 @@ class Stack:
 
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.top = None
         self.len = 0
         for arg in args:
@@ -21,6 +32,17 @@ class Stack:
 
     ## O(1)
     def push(self, val):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._StackNode_(val)
         if self.top is None:
             self.top = newnode
@@ -33,6 +55,17 @@ class Stack:
     
     ## O(1)
     def pop(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.top is None:
            raise ValueError('Empty Stack')
         else:
@@ -49,6 +82,17 @@ class Stack:
 
     ## O(1)
     def peek(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.top is None:
             raise ValueError('Empty Stack')
         else:

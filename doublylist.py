@@ -10,6 +10,17 @@ class DoublyList:
     ## 8 magic method
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.head = None
         self.tail = None
         self.len = 0
@@ -119,6 +130,17 @@ class DoublyList:
     ### 6 instance methods
     ## O(1)
     def InsertStart(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._DoublyNode_(value)
         if self.head == None:
             self.head = newnode
@@ -132,6 +154,17 @@ class DoublyList:
 
     ## O(1)
     def InsertEnd(self, val):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._DoublyNode_(val)
         if self.tail == None:
             self.tail = newnode
@@ -145,6 +178,17 @@ class DoublyList:
     
     ## O(n)
     def InsertAt(self, value, position:int):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._DoublyNode_(value)
         if position == 1:
             self.InsertStart(value)
@@ -165,6 +209,17 @@ class DoublyList:
 
     ## O(1)
     def DelStart(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.head == None:
             raise IndexError("Empty Linked List.")
         else:
@@ -178,6 +233,17 @@ class DoublyList:
     
     ## O(1)
     def DelEnd(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.tail == None:
             raise IndexError("Empty Linked List.")
         else:
@@ -191,6 +257,17 @@ class DoublyList:
     
     ## O(n)
     def RevLinkList(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         iters = ((self.len) // 2)
         p1 = self.head
         p2 = self.tail

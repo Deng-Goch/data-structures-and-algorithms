@@ -10,6 +10,17 @@ class Queue:
 
     ## O(n)
     def __init__(self, *args):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.right = None
         self.left = None
         self.len = 0
@@ -39,6 +50,17 @@ class Queue:
 
     ## O(1)
     def Push(self, val):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         newnode = self._QueueNode_(val)
 
         if self.right is None:
@@ -53,6 +75,17 @@ class Queue:
     
     ## O(1)
     def PopLeft(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.left is None:
            raise ValueError('Empty Stack')
         else:
@@ -70,6 +103,17 @@ class Queue:
 
     ## O(1)
     def PeekLeft(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.left is None:
             raise ValueError('Empty Stack')
         else:
@@ -78,6 +122,17 @@ class Queue:
     
     ## O(1)
     def PeekRight(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if self.right is None:
             raise ValueError('Empty Stack')
         else:

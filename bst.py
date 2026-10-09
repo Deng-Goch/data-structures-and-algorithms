@@ -1,7 +1,7 @@
 from dynamicarray import DynArray
 from queu import Queue
 
-class BST:
+class Binary_Search_Tree_BST:
     class TreeNode:
         def __init__(self, key, value):
             self.key = key
@@ -18,6 +18,17 @@ class BST:
     ## magic methods - 4
     ## O(1)
     def __init__(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.root = None
 
     ## O(log2 n)
@@ -127,15 +138,26 @@ class BST:
 
     ## main operations - 4
     ## O(log2 n)
-    def insert(self, key, val):
+    def insert(self, key, val) -> None:
+
+        """
+        Input: Key, Value
+
+        Process: Inert a node to the tree.
+
+        Output:
+
+        Error: Throws a 
+        """
+
         if self.root is None:
-            self.root = BST.TreeNode(key, val)
+            self.root = Binary_Search_Tree_BST.TreeNode(key, val)
         else:
             currNode = self.root
             while True:
                 if key < currNode.key:
                     if currNode.left is None:
-                        currNode.left = BST.TreeNode(key, val)
+                        currNode.left = Binary_Search_Tree_BST.TreeNode(key, val)
                         currNode.left.parent = currNode
                         break
                     else:
@@ -143,7 +165,7 @@ class BST:
 
                 elif key > currNode.key:
                     if currNode.right is None:
-                        currNode.right = BST.TreeNode(key, val)
+                        currNode.right = Binary_Search_Tree_BST.TreeNode(key, val)
                         currNode.right.parent = currNode
                         break
                     else:
@@ -155,6 +177,17 @@ class BST:
 
     ## O(log2 n)
     def search(self, key):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+        
         currNode = self.root
 
         while True:
@@ -174,6 +207,17 @@ class BST:
 
     ## O(log2 n)
     def delete(self, key):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         node = self.search(key)
         if node is None:
             raise ValueError('Node with this key does not exist!')
@@ -227,6 +271,17 @@ class BST:
 
     ## O(n)
     def travers(self, order:str):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if order.lower() == "preorder":
             return self._pre_order_(self.root)
         elif order.lower() == "inorder":
@@ -241,7 +296,7 @@ class BST:
 
 
 if __name__ == "__main__":
-    bst = BST()
+    bst = Binary_Search_Tree_BST()
     bst.insert(53, 53)
     bst.insert(21, 21)
     bst.insert(13, 13)

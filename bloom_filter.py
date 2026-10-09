@@ -1,4 +1,4 @@
-class BloomFilter:
+class Bloom_Filter:
     pass
 
 

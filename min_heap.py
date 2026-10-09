@@ -90,12 +90,34 @@ class Array_Based_Min_Heap:
     ## 5 methods
     ## O(log2 n)
     def insert(self, value):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         self.heap.append(value)
         self._sift_up_(len(self.heap)-1)
 
 
     ## O(1)
     def peek(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if len(self.heap) == 0:
             raise IndexError('Peeking from an empty Heap.')
         else:
@@ -104,6 +126,17 @@ class Array_Based_Min_Heap:
 
     ## O(log2 n)
     def pop(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         if len(self.heap) == 0:
             raise IndexError('Poping from an empty Heap.')
         elif len(self.heap) == 1:
@@ -123,8 +156,34 @@ class Array_Based_Min_Heap:
 
     ## O(log2 n)
     def meld(self, *args) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         for arg in args:
             self.insert(arg)
+
+
+    def min_heapify(self, array:DynArray) -> DynArray:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        pass
 
 
 if __name__ == "__main__":

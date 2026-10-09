@@ -1,4 +1,4 @@
-class CARTESIAN:
+class Cartesian_Tree:
     pass
 
 

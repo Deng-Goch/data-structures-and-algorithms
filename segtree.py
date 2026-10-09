@@ -1,4 +1,4 @@
-class SegTree:
+class Segment_Tree:
     pass
 
 

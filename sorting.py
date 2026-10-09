@@ -3,6 +3,17 @@ from timeit import timeit
 class Sorting_Algos:
     ## O(n2)
     def bubbleSort(self, array):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         swap = True
         end = (len(array)-1)
         while swap:
@@ -18,11 +29,32 @@ class Sorting_Algos:
 
     ## O(log2 n)
     def mergeSort(self, array):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(n2)
     def selectionSort(self, array):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
 
         start = 0
         swap = True
@@ -43,6 +75,16 @@ class Sorting_Algos:
     ## O(x)
     def insertionSort(self, array):
 
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         swap = True
         
         for i in range(len(array)-1):
@@ -60,31 +102,97 @@ class Sorting_Algos:
 
     ## O(x)
     def quickSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def heapSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def topologicalSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def bucketSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def radixSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 
     ## O(x)
     def countingSort(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
         pass
 
 

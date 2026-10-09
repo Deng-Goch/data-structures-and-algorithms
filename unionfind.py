@@ -1,4 +1,4 @@
-class UnionFind:
+class Union_Find:
     pass
 
 
