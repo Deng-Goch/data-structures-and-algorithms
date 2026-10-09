@@ -93,7 +93,7 @@ Finally, please keep in mind that the data structures are continuously being imp
 ## 2- Linked List ✅:
     1- Singly Linked List ✔️.
     2- Doubly Linked List ✔️.
-    3- Circly Linked List ✔️.
+    3- Circular Linked List ✔️.
 
 ## 3- Stack ✅:
 
