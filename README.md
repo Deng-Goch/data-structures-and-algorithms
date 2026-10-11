@@ -1,6 +1,6 @@
 # Data Structures and Algorithms:
 
-A repository for data-structures-and-algorithms implemented from scratch, literally from scratch, no wrapprs.
+A repository for data-structures-and-algorithms implemented from scratch, literally from scratch, no wrapprs, no AI code generated. AI was onlyy used for knowing how to get a contiguous/neighboring blocks of memory for array implementation since array is the base for many data structures.
 
 
 Some of these data structures are meant to imitate their Python built-ins, like:
@@ -98,11 +98,11 @@ Finally, please keep in mind that the data structures are continuously being imp
 ## 3- Stack ✅:
 
 ## 4- Queue ✅:
-    1- Reqular Queue ✔️.
+    1- Regular Queue ✔️.
     2- Max Priority Queue ✔️.
     3- Min Priority Queue ✔️.
 
-## 5- Hash Table / Hash Map / Dictionary ✅:
+## 5- Hashing ✅:
     1- Hash Table / Hash Map / Dictionary ✔️.
     1- Hash Set ✔️.
 
@@ -110,7 +110,7 @@ Finally, please keep in mind that the data structures are continuously being imp
     1- Directed & Undirected Graph ✔️.
     2- Weighted & Non-weighted Graph ✔️.
     3- Cyclic & Acyclic Graph (only if Directed Graph) ✔️.
-    4- Self-cyclic & Non-self-syclic (Only if Directed Graph) ✔️.
+    4- Self-cyclic & self-Asyclic (Only if Directed Graph) ✔️.
 
 ## 7- Tree ✅:
     1- Binary Search Tree ✔️.
@@ -120,8 +120,8 @@ Finally, please keep in mind that the data structures are continuously being imp
     5- Min Heap (Array Based) ✔️.
     6- Trie / Prefix-Tree ✔️:
     7- Treap.
-    8- Segment Tree.
-    9- Binary Index Tree / Fenwick Tree.
+    8- Binary Index Tree / Fenwick Tree.
+    9- Segment Tree.
     10- B-Tree.
     11- Cartesian Tree.
     12- Splay Tree.
