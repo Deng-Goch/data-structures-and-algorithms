@@ -9,7 +9,7 @@ Some of these data structures are meant to imitate their Python built-ins, like:
     2- "HashSet" is meant to behave exactly like the "set" object.
     3- and the "HashTable" is meant for "dict".
 
-Alos, the Algorithms are encapsulated into the classes/objects, like:
+Alos, the Algorithms are encapsulated into the objects/classes, like:
 
     1- GraphDFS (iterative & recursive)
     2- GraphBFS (iterative & recursive)
