@@ -110,10 +110,13 @@ class Heap_Based_Max_Priority_Queue:
     def pop(self):
 
         """
-        Action: it removes the element with the least priority.
+        Input: 
 
-        Error: if the queue is empty, it throws "IndexError: Empty Priority Queue."
+        Process: 
 
+        Output: 
+
+        Error: 
         """
         popped = self.heap[0]
 
