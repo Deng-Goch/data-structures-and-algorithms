@@ -11,8 +11,8 @@ class Binary_Search_Tree_BST:
             self.parent = None
     
         def __repr__(self):
-            # return f"(K: {self.key}, V: {self.value})"
-            return f'{self.key}'
+            return f"(K: {self.key}, V: {self.value})"
+            # return f'{self.key}'
 
 
     ## magic methods - 4
@@ -20,16 +20,17 @@ class Binary_Search_Tree_BST:
     def __init__(self):
 
         """
-        Input: 
+        Input: None
 
-        Process: 
+        Process: Gives us the root of the tree as a None node.
 
-        Output: 
+        Output: None
 
-        Error: 
+        Error: None
         """
 
         self.root = None
+
 
     ## O(log2 n)
     def __contains__(self, key):
@@ -48,8 +49,9 @@ class Binary_Search_Tree_BST:
     def __iter__(self):
         yield from self._in_order_(self.root)
 
+
     ## O(n)
-    def __repr__(self):
+    def __str__(self):
         rep = DynArray()
         for node in self:
             rep.append(node)
@@ -86,7 +88,7 @@ class Binary_Search_Tree_BST:
             self._pre_order_(node.right)
 
 
-    ## Node, Left, Right - Level by level.
+    ## Node, Left, Right - (Level by level).
     ## O(n)
     def _level_order(self, node):
         if node is None:
@@ -145,7 +147,7 @@ class Binary_Search_Tree_BST:
 
         Process: Inert a node to the tree.
 
-        Output:
+        Output: None
 
         Error: Throws a 
         """
@@ -273,13 +275,13 @@ class Binary_Search_Tree_BST:
     def travers(self, order:str):
 
         """
-        Input: 
+        Input: tree traversal order.
 
-        Process: 
+        Process: gets the nodes and returns them in the specified order.
 
-        Output: 
+        Output: returns the tree in the secified order one after the other.
 
-        Error: 
+        Error: throws a "ValueError("Unknow order.")" if order is not known - throws a 
         """
 
         if order.lower() == "preorder":
@@ -313,19 +315,19 @@ if __name__ == "__main__":
     bst.insert(70, 70)
     bst.insert(77, 77)
 
-    # print(bst)
+    print(bst)
 
     # bst.delete('g')
     
-    bst.travers('preordeR')
+    # bst.travers('preordeR')
 
-    print("\n")
+    # print("\n")
 
-    bst.travers('InORDEr')
+    # bst.travers('InORDEr')
 
-    print("\n")
+    # print("\n")
 
-    bst.travers('postorder')
+    # bst.travers('postorder')
     
     # print("\n")
     

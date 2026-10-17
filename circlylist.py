@@ -13,13 +13,13 @@ class Circular_List:
     def __init__(self, *args):
 
         """
-        Input: 
+        Input: takes list elements but optional.
 
-        Process: 
+        Process: it creates a circular list.
 
-        Output: 
+        Output: None
 
-        Error: 
+        Error: None
         """
 
         self.head = None
@@ -129,16 +129,16 @@ class Circular_List:
 
     ### instance methods - 5
     ## O(1)
-    def InsertStart(self, value):
+    def InsertStart(self, value) -> None:
 
         """
-        Input: 
+        Input: a value of any type.
 
-        Process: 
+        Process: inserts the value to the beginning and makes it the new head.
 
-        Output: 
+        Output: None
 
-        Error: 
+        Error: throws a "TypeError: Circular_List.InsertStart() missing 1 required positional argument: 'value'" if no value is provided.
         """
 
         newnode = self._CirularNode_(value)

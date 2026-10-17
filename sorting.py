@@ -2,7 +2,7 @@ from timeit import timeit
 
 class Sorting_Algos:
     ## O(n2)
-    def bubbleSort(self, array):
+    def bubbleSort(self, array) -> list:
 
         """
         Input: 
@@ -117,7 +117,7 @@ class Sorting_Algos:
 
 
     ## O(x)
-    def heapSort(self):
+    def heapSort(self, array):
 
         """
         Input: 
@@ -129,8 +129,15 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
+        def _heapify_(array):
 
+            return array
+            pass
+
+        def _delete_(array):
+
+            return array
+            pass
 
     ## O(x)
     def topologicalSort(self):

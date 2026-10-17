@@ -6,13 +6,13 @@ class HashTable:
     def __init__(self, **kwargs):
 
         """
-        Input: 
+        Input: key-value pairs i.e, age=20.
 
-        Process: 
+        Process: Insert all key value-pairs to the dictionary.
 
-        Output: 
+        Output: None
 
-        Error: 
+        Error: None
         """
 
         self.size = 0
@@ -137,13 +137,13 @@ class HashTable:
     def update(self, key, value):
 
         """
-        Input: 
+        Input: key and a value.
 
-        Process: 
+        Process: Insert the given key value pairs to the dictionary.
 
-        Output: 
+        Output: None
 
-        Error: 
+        Error: If no input given, it throws "TypeError: HashTable.update() missing 1 required positional argument: 'value'" or "TypeError: HashTable.update() missing 2 required positional arguments: 'key' and 'value'"
         """
 
         if ((self.size / self.capacity) * 100) <= 60:
@@ -366,14 +366,10 @@ class HashTable:
 
 if __name__ == "__main__":
     hashmap = HashTable(name='Deng', age=30, gender='Male')
-    print(hashmap.buckets)
+
     print(hashmap.keys())
 
-    print(hashmap.capacity)
-    print(hashmap.size)
 
     print(hashmap)
 
-
-
-    
+    hashmap.update()

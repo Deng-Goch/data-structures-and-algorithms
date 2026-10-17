@@ -10,22 +10,31 @@ from queu import Queue
 class Adjaceny_List_Based_Graph:
     ## 2 maigic methods
     ## O(1)
-    def __init__(self, directed:bool=True, weighted:bool=False, cyclic:bool=False, self_cyclic:bool=False):
+    def __init__(self, directed:bool=True, weighted:bool=False, cyclic:bool=True, Node_Self_Cyclic:bool=False):
 
         """
-        Input: 
+        Input:
+        
+        Directed:bool - default=True - Tells if edges are two ways or one way.
+        
+        Weighted:bool - default=False - Tells if edges carry a weight or not "type(weight) is int/float".
+        
+        Cyclic:bool - default=False - Tells if a directed graph has cycles i.e, if a node can connect to a certain node and that node connects back to it. Please node that this is only applicable to directed graph.
+        
+        NodeSelfCycle:bool - default=False - Tells if a directed graph nodes can point to themselves or not. Please node that this is only applicable to directed graph.
 
-        Process: 
+        
+        Process: Creates an Adjaceny LIst.
 
-        Output: 
+        Output: An Adjaceny_List_Based_Graph object.
 
-        Error: 
+        Error: None
         """
 
         self.directed = directed
         self.weighted = weighted
-        self.cyclic = cyclic ## Only applicable if directed
-        self.self_cyclic = self_cyclic ## Only applicable if directed
+        self.cyclic = cyclic                        ## Only applicable if directed
+        self.Node_Self_Cyclic = Node_Self_Cyclic    ## Only applicable if directed
         self.adjaceny_list = HashTable()
 
 
@@ -42,13 +51,13 @@ class Adjaceny_List_Based_Graph:
     def add_node(self, node) -> None:
 
         """
-        Input: 
+        Input: a node of any type.
 
-        Process: 
+        Process: adds a node to the graph but without edges.
 
-        Output: 
+        Output: None.
 
-        Error: 
+        Error: If no input, it throws a TypeError: Adjaceny_List_Based_Graph.add_node() missing 1 required positional argument: 'node'
         """
 
         if node not in self.adjaceny_list:
@@ -61,13 +70,13 @@ class Adjaceny_List_Based_Graph:
     def remove_node(self, node) -> None:
 
         """
-        Input: 
+        Input: a node of any type.
 
-        Process: 
+        Process: Removes the given node from the graph along with its edges.
 
-        Output: 
+        Output: None.
 
-        Error: 
+        Error: It throws a "ValueError: Node does not exist." if node not in the Graph.
         """
 
         if node not in self.adjaceny_list:
@@ -99,7 +108,7 @@ class Adjaceny_List_Based_Graph:
         """
 
         if from_node == to_node:
-            if self.self_cyclic is False:
+            if self.Node_Self_Cyclic is False:
                 raise AssertionError("Can't have node self loop/cycle.")
         
         if from_node not in self.adjaceny_list:
@@ -185,13 +194,13 @@ class Adjaceny_List_Based_Graph:
     def node_exist(self, node) -> bool:
 
         """
-        Input: 
+        Input: graph node.
 
-        Process: 
+        Process: Checks if the givem node is in the graph.
 
-        Output: 
+        Output: Either True or False.
 
-        Error: 
+        Error: Throws a "TypeError: Adjaceny_List_Based_Graph.node_exist() missing 1 required positional argument: 'node'" if no node entered.
         """
 
         if node in self.adjaceny_list:
@@ -206,9 +215,9 @@ class Adjaceny_List_Based_Graph:
         """
         Input: 
 
-        Process: 
+        Process: Checks if there's an edge between "From Node" to "To Node".
 
-        Output: 
+        Output: Either True or False.
 
         Error: 
         """
@@ -228,9 +237,9 @@ class Adjaceny_List_Based_Graph:
         """
         Input: 
 
-        Process: 
+        Process: Get all the nodes that are in this graph, including the isolated nodes.
 
-        Output: 
+        Output: An array obects whose elements are all the nodes in this geraph object.
 
         Error: 
         """
@@ -242,13 +251,13 @@ class Adjaceny_List_Based_Graph:
     def iterative_bfs(self, start_node) -> DynArray:
 
         """
-        Input: 
+        Input: A node to start from.
 
-        Process: 
+        Process: Get all the nodes that aren't isolated/disconnected from the graph.
 
-        Output: 
+        Output: An array object whoes elements are graph nodes in a BFS traversal given the start node.
 
-        Error: 
+        Error: If the entered node is not on the graph, it throws a "ValueError('"Start Node" does not exist.')"
         """
 
         if start_node not in self.adjaceny_list:
@@ -282,17 +291,17 @@ class Adjaceny_List_Based_Graph:
     def iterative_dfs(self, start_node) -> DynArray:
 
         """
-        Input: 
+        Input: A node to start from.
 
-        Process: 
+        Process: Get all the nodes that aren't isolated/disconnected from the graph.
 
-        Output: 
+        Output: An array object whoes elements are graph nodes in a DFS traversal given the start node.
 
-        Error: 
+        Error: If the entered node is not on the graph, it throws a "ValueError('"Start Node" does not exist.')"
         """
 
         if start_node not in self.adjaceny_list:
-            raise ValueError("Start Node does not exist.")
+            raise ValueError('"Start Node" does not exist.')
         else:
             stack = Stack()
             stack.push(start_node)
@@ -449,7 +458,7 @@ class Adjaceny_List_Based_Graph:
 
 
 if __name__ == "__main__":
-    graph = Adjaceny_List_Based_Graph(directed=True, weighted=False, cyclic=False, self_cyclic=False)
+    graph = Adjaceny_List_Based_Graph(directed=True, weighted=False, cyclic=False, Node_Self_Cyclic=False)
 
     graph.add_node("A")
     graph.add_node("B")
@@ -462,3 +471,5 @@ if __name__ == "__main__":
     graph.add_edge("C", "D")
 
     print(graph)
+
+    graph.remove_node('D')

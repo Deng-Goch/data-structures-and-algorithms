@@ -196,7 +196,7 @@ class DynArray:
                 index += self.size
 
             if index < 0 or index >= self.size:
-                raise IndexError("List List index out of range.")
+                raise IndexError("List index out of range.")
 
             value = self.array[index]
 
