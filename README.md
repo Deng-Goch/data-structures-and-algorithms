@@ -99,8 +99,8 @@ Finally, please keep in mind that the data structures are continuously being imp
 
 ## 4- Queue ✅:
     1- Regular Queue ✔️.
-    2- Max Priority Queue ✔️.
-    3- Min Priority Queue ✔️.
+    2- Max Priority Queue (Heap/Array Based) ✔️.
+    3- Min Priority Queue (Heap/Array Based) ✔️.
 
 ## 5- Hashing ✅:
     1- Hash Table / Hash Map / Dictionary ✔️.
