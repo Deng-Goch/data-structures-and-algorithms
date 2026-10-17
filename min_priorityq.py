@@ -85,7 +85,7 @@ class Heap_Based_Min_Priority_Queue:
             return
 
 
-    ## 3 methods/operations
+    ## 3 methods / operations
     ## O(log2 n)
     def push(self, priority, value) -> None:
 
@@ -105,7 +105,7 @@ class Heap_Based_Min_Priority_Queue:
         self._sift_up_(len(self.heap)-1)
 
 
-    ## O(1)
+    ## O(log2 n)
     def pop(self):
 
         """
