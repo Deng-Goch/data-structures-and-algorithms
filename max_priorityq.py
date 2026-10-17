@@ -1,10 +1,10 @@
 from dynamicarray import DynArray
 
 class Heap_Based_Max_Priority_Queue:
-    def __init__(self, *args):
+
+    ## 3 magic methods
+    def __init__(self):
         self.heap = DynArray()
-        for arg in args:
-            self.push(arg)
 
 
     def __str__(self):
@@ -32,7 +32,7 @@ class Heap_Based_Max_Priority_Queue:
 
 
     ## O(log2 n) - used for inserting
-    def _sift_up_(self, index:int) -> int:
+    def _sift_up_(self, index:int):
         parent = self._parent_(index)
 
         if parent >= 0:
@@ -40,20 +40,18 @@ class Heap_Based_Max_Priority_Queue:
             left = self._left_(parent)
             right = self._right_(parent)
 
-            if left <= (len(self.heap)-1) and right <= (len(self.heap)-1):
+            if left < (len(self.heap)) and right < (len(self.heap)):
 
                 if self.heap[left][0] > self.heap[parent][0]:
                     self.heap[left], self.heap[parent] = self.heap[parent], self.heap[left]
-                    
+                    self._sift_up_(parent)
                 elif self.heap[right][0] > self.heap[parent][0]:
                     self.heap[right], self.heap[parent] = self.heap[parent], self.heap[right]
-                    
-                if self.heap[left][0] > self.heap[right][0]:
-                    self.heap[left], self.heap[right] = self.heap[right], self.heap[left]
-                self._sift_up_(parent)
+                    self._sift_up_(parent)
+                else:
+                    return
 
-            elif left <= (len(self.heap)-1):
-
+            elif left < len(self.heap):
                 if self.heap[left][0] > self.heap[parent][0]:
                     self.heap[left], self.heap[parent] = self.heap[parent], self.heap[left]
                     self._sift_up_(parent)
@@ -65,18 +63,22 @@ class Heap_Based_Max_Priority_Queue:
 
     ## O(log2 n) - used with left and right for deleting
     def _sift_down_(self, index):
-        right = self._right_(index)
         left = self._left_(index)
+        right = self._right_(index)
         
-        if left <= (len(self.heap)-1) and right <= (len(self.heap)-1):
-            self.heap[index], self.heap[right] = self.heap[right], self.heap[index]
-            if self.heap[left][0] > self.heap[right][0]:
-                self.heap[left], self.heap[right] = self.heap[right], self.heap[left]
-            self._sift_down_(left)
+        if left < (len(self.heap)) and right < (len(self.heap)):
 
-        elif left <= (len(self.heap)-1):
-            if self.heap[index][0] < self.heap[left][0]:
-                self.heap[index], self.heap[left] = self.heap[left], self.heap[index]
+            if self.heap[left][0] > self.heap[right][0] and self.heap[left][0] > self.heap[index][0]:
+                self.heap[left], self.heap[index] = self.heap[index], self.heap[left]
+                self._sift_down_(left)
+
+            elif self.heap[right][0] > self.heap[left][0] and self.heap[right][0] > self.heap[index][0]:
+                self.heap[right], self.heap[index] = self.heap[index], self.heap[right]
+                self._sift_down_(right)
+
+        elif left < (len(self.heap)):
+            if self.heap[left][0] > self.heap[index][0]:
+                self.heap[left], self.heap[index] = self.heap[index], self.heap[left]
                 self._sift_down_(right)
         else:
             return
@@ -105,7 +107,7 @@ class Heap_Based_Max_Priority_Queue:
 
 
     ## O(1)
-    def pop(self) -> None:
+    def pop(self):
 
         """
         Action: it removes the element with the least priority.
@@ -113,13 +115,16 @@ class Heap_Based_Max_Priority_Queue:
         Error: if the queue is empty, it throws "IndexError: Empty Priority Queue."
 
         """
+        popped = self.heap[0]
 
         if len(self.heap) == 0:
             raise IndexError('Empty Priority Queue.')
         else:
-            self.heap[0] = self.heap[len(self.heap)-1]
+            self.heap[0], self.heap[len(self.heap)-1] = self.heap[len(self.heap)-1], self.heap[0]
             self.heap.pop()
             self._sift_down_(0)
+
+        return popped
 
 
     ## O(1)
@@ -144,22 +149,17 @@ class Heap_Based_Max_Priority_Queue:
 
 if __name__ == "__main__":
     pq = Heap_Based_Max_Priority_Queue()
-    # pq.push(7, 'Deng')
-    # pq.push(9, 'Goch')
-    # pq.push(6, 'Monydhot')
-    # pq.push('z', 'Yor')
-    # pq.push(4, 'DENG')
+    pq.push(9, 'Deng')
+    pq.push(7, 'Goch')
+    pq.push(6, 'Monydhot')
+    pq.push(5, 'Yor')
+    pq.push(4, 'DENG')
+    pq.push(100, 'Yassin')
 
     print(pq)
 
-    pq.pop()
+    print()
 
-    # print("\n")
+    print(pq.pop())
 
-    # print(pq)
-
-    # pq.push(15, 'Pakodi')
-
-    # print(pq)
-
-    # print(pq.peek())
+    print(pq)

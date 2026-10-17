@@ -4,6 +4,17 @@ class Array_Based_Min_Heap:
     ## 3 magic methods
     ## O(1)
     def __init__(self, *args):
+
+        """
+        Input: takes a collection of arguments.
+
+        Process: inserts the arguments into the heap one after the other.
+
+        Output: 
+
+        Error:
+        """
+
         self.heap = DynArray()
         for arg in args:
             self.insert(arg)
@@ -45,19 +56,18 @@ class Array_Based_Min_Heap:
             left = self._left_(parent)
             right = self._right_(parent)
 
-            if left <= (len(self.heap)-1) and right <= (len(self.heap)-1):
+            if left < (len(self.heap)) and right < (len(self.heap)):
 
                 if self.heap[left] < self.heap[parent]:
                     self.heap[left], self.heap[parent] = self.heap[parent], self.heap[left]
-                    
+                    self._sift_up_(parent)
                 elif self.heap[right] < self.heap[parent]:
                     self.heap[right], self.heap[parent] = self.heap[parent], self.heap[right]
-                    
-                if self.heap[left] > self.heap[right]:
-                    self.heap[left], self.heap[right] = self.heap[right], self.heap[left]
-                self._sift_up_(parent)
+                    self._sift_up_(parent)
+                else:
+                    return
 
-            elif left <= (len(self.heap)-1):
+            elif left < (len(self.heap)):
 
                 if self.heap[left] < self.heap[parent]:
                     self.heap[left], self.heap[parent] = self.heap[parent], self.heap[left]
@@ -73,16 +83,19 @@ class Array_Based_Min_Heap:
         right = self._right_(index)
         left = self._left_(index)
         
-        if left <= (len(self.heap)-1) and right <= (len(self.heap)-1):
-            self.heap[index], self.heap[left] = self.heap[left], self.heap[index]
-            if self.heap[left] > self.heap[right]:
-                self.heap[left], self.heap[right] = self.heap[right], self.heap[left]
-            self._sift_down_(right)
+        if left < (len(self.heap)) and right < (len(self.heap)):
 
-        elif left <= (len(self.heap)-1):
-            if self.heap[index] > self.heap[left]:
-                self.heap[index], self.heap[left] = self.heap[left], self.heap[index]
+            if self.heap[left] < self.heap[right] and self.heap[left] < self.heap[index]:
+                self.heap[left], self.heap[index] = self.heap[index], self.heap[left]
                 self._sift_down_(left)
+
+            elif self.heap[right] < self.heap[left] and self.heap[right] < self.heap[index]:
+                self.heap[right], self.heap[index] = self.heap[index], self.heap[right]
+                self._sift_down_(right)
+
+        elif left < (len(self.heap)):
+            if self.heap[left] < self.heap[index]:
+                self.heap[left], self.heap[index] = self.heap[index], self.heap[left]
         else:
             return
 
@@ -146,7 +159,8 @@ class Array_Based_Min_Heap:
         else:
             poped = self.heap[0]
 
-            self.heap[0] = self.heap[len(self.heap)-1]
+            self.heap[0], self.heap[len(self.heap)-1] = self.heap[len(self.heap)-1], self.heap[0]
+
             self.heap.pop()
 
             self._sift_down_(0)
@@ -155,19 +169,19 @@ class Array_Based_Min_Heap:
 
 
     ## O(log2 n)
-    def meld(self, *args) -> None:
+    def meld(self, Iterable) -> None:
 
         """
-        Input: 
+        Input: takes an iterable or a collection of arguments.
 
-        Process: 
+        Process: inserts the arguments into the heap one after the other.
 
-        Output: 
+        Output: returns a new heap with the new arguments inserted to their right position on the heap.
 
-        Error: 
+        Error: throws a "TypeError: '>' not supported between instances of 'x' and 'y'" if the value in the heap and the values in the iterable are of different data types. OR "TypeError: Array_Based_Max_Heap.meld() missing 1 required positional argument: 'Iterable'" if no iterable object entered.
         """
 
-        for arg in args:
+        for arg in Iterable:
             self.insert(arg)
 
 
@@ -200,32 +214,43 @@ if __name__ == "__main__":
     minheap.insert(75)
 
     print(minheap)
+    print()
 
-    # minheap.meld(102, 79, 0, 15, 69)
-
-    # print(minheap)
 
     minheap.pop()
-
     print(minheap)
 
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+
+    minheap.pop()
+    print(minheap)
+
+
     # minheap.pop()
-
-    # print(minheap)
-
-    # minheap.pop()
-
-    # print(minheap)
-
-    # minheap.insert(70)
-
-    # print(minheap)
-
-
-    # minheap.insert(51)
-
-    # print(minheap)
-
-    # minheap.pop()
-
     # print(minheap)
