@@ -6,13 +6,13 @@ class DynArray:
     def __init__(self, *args):
 
         """
-        Input: 
+        Input: Capacity: A collection of arguments seprated by a ",". "Optional"
 
-        Process: 
+        Process: Inserts all the argumnets into static array one after the other.
 
-        Output: 
+        Output: A static array object.
 
-        Error: 
+        Error:
         """
 
         self.capacity = 1
@@ -48,15 +48,17 @@ class DynArray:
             return "[" + rep + "]"
 
 
-    ## O(1)
+    ## O(1)*
     ## allows us to do: print(x[2:3:5])
     def __getitem__(self, index):
+        ## slicing
         if isinstance(index, slice):
             start, stop, step = index.indices(self.size)
             result = DynArray()
             for i in range(start, stop, step):
                 result.append(self.array[i])
             return result
+        ## normal indexing
         else:
             if index < 0:
                 index += self.size
@@ -70,6 +72,9 @@ class DynArray:
     ## O(1)
     ## allows us to do: x[3] = 100
     def __setitem__(self, index, value):
+        if index < 0:
+            index += self.size
+
         if index < 0 or index >= self.size:
             raise IndexError("List index out of range.")
         else:
@@ -119,7 +124,7 @@ class DynArray:
 
 
     ## O(n)
-    def insert(self, index, value):
+    def insert(self, index, value) -> None:
 
         """
         Input: 
@@ -128,8 +133,10 @@ class DynArray:
 
         Output: 
 
-        Error: 
+        Error: Throws a "TypeError: insert expected 2 arguments, got 0, 1" if no argument is passed in or 1 argument is passed in - 
         """
+        if index < 0:
+            index += self.size
 
         if index < 0 or index >= self.size:
             raise IndexError("List index out of range.")
@@ -163,7 +170,7 @@ class DynArray:
                 index += i
                 break
         else:
-            return
+            raise ValueError("DynArray.remove(x): x not in DynArray.")
 
         for i in range(index, self.size -1):
             self.array[i] = self.array[i + 1]
@@ -176,11 +183,11 @@ class DynArray:
     def pop(self, index=None):
 
         """
-        Input: 
+        Input: Index: An integer positive or negative to determine the index of the element to be popped. "Optional". If not provided, it's equals the length of the array - 1, i.e., the last array element.
 
-        Process: 
+        Process: Pop the element by position/index and move all the elements to the right of it to left by one move each.
 
-        Output: 
+        Output: The popped array element.
 
         Error: 
         """
@@ -210,29 +217,27 @@ class DynArray:
 
 
     ## O(n)
-    def reverse(self):
+    def reverse(self) -> None:
 
         """
         Input: 
 
-        Process: 
+        Process: Reverse DynArray elements.
 
         Output: 
 
         Error: 
         """
 
-        start = int(0)
-        stop = (self.size - 1)
+        left = int(0)
+        right = (self.size - 1)
 
-        ops = (self.size // 2)
+        iters = (self.size // 2)
 
-        for i in range(0, ops, 1):
-            self.array[start], self.array[stop] = self.array[stop], self.array[start]
-            start += 1
-            stop -= 1
-        
-        return self
+        for i in range(0, iters, 1):
+            self.array[left], self.array[right] = self.array[right], self.array[left]
+            left += 1
+            right -= 1
 
 
     ## O(n)
@@ -248,7 +253,7 @@ class DynArray:
         Error: 
         """
 
-        newArr = DynArray(self.size)
+        newArr = DynArray()
         for i in range(self.size):
             newArr.append(self.array[i])
         return newArr
@@ -267,7 +272,7 @@ class DynArray:
         Error: 
         """
 
-        counter = int(0)
+        counter = 0
 
         for i in range(self.size):
             if self.array[i] == value:
@@ -278,7 +283,7 @@ class DynArray:
 
 
     ## O(n)
-    def index(self, value) -> int:
+    def index(self, value, start=0, stop=None) -> int:
 
         """
         Input: 
@@ -287,19 +292,34 @@ class DynArray:
 
         Output: 
 
-        Error: 
+        Error:
+        
+        Throws
+        
+        A "TypeError: index expected at least 1 argument, got 0" if no argument given.
+        
+        A "ValueError: 'x' is not in DynArray" if the given value is not in the array.
+
         """
 
-        for i in range(self.size):
+        if start == 0:
+            start = 0
+
+        if stop is None:
+            stop = self.size
+
+
+        for i in range(start, stop):
             if self.array[i] == value:
                 return i
             else:
                 continue
-        return -1
+        else:
+            raise ValueError("ValueError: 'x' is not in DynArray")
 
 
     ## O(n)
-    def extend(self, elements):
+    def extend(self, Iterable) -> None:
 
         """
         Input: 
@@ -311,8 +331,8 @@ class DynArray:
         Error: 
         """
 
-        for el in elements:
-            self.append(el)
+        for arg in Iterable:
+            self.append(arg)
 
 
     ## O(n)
@@ -332,7 +352,7 @@ class DynArray:
             self.pop()
 
 
-    ## O(n2)
+    ## O(n^2)
     def bubbleSort(self):
 
         """
@@ -356,6 +376,25 @@ class DynArray:
                     swap = True
             iters -= 1
         return self.array
+
+
+    ## O(log n)
+    def linSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        for i in range(self.array):
+            if self.array[i] == target:
+                return True
+        return False
 
     
     ## O(log2 n)
@@ -386,40 +425,11 @@ class DynArray:
                 le = (mid + 1)
         return False
 
-    
-    ## O(log n)
-    def linSearch(self, target) -> bool:
-
-        """
-        Input: 
-
-        Process: 
-
-        Output: 
-
-        Error: 
-        """
-
-        for i in range(self.array):
-            if self.array[i] == target:
-                return True
-        return False
-
 
 if __name__ == "__main__":
-    x = DynArray(1,2,3,4,5)
+    x = DynArray(5,100,0,-7)
+    print(x)
+
+    x.bubbleSort()
     
     print(x)
-
-    x.pop(-2)
-
-    # x.clear()
-
-    print(x)
-
-
-
-    # lista = list([1,2,3,4,5,6,7])
-
-    # lista.pop(-30)
-    # print(lista)

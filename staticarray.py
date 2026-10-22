@@ -6,13 +6,18 @@ class StatArray:
     def __init__(self, capacity:int, *args):
 
         """
-        Input: 
+        Input:
+        
+        Capacity: An a positive integer to determine the size of the static array. "Compolsury".
+        
+        A collection of arguments seprated by a ",". "Optional"
 
-        Process: 
+        
+        Process: Inserts all the argumnets into static array one after the other.
 
-        Output: 
+        Output: A static array object.
 
-        Error: 
+        Error: Throws a "TypeError: can't multiply sequence by non-int of type '_ctypes.PyCSimpleType'" if the capacity input is of type non-int.
         """
         
         self.capacity = capacity
@@ -52,7 +57,7 @@ class StatArray:
             return "[" + rep + "]"
 
 
-    ## O(1)
+    ## O(1)*
     ## allows us to do: print(x[2:3:5])
     def __getitem__(self, index):
         ## slicing
@@ -62,21 +67,25 @@ class StatArray:
             for i in range(start, stop, step):
                 result.append(self.Array[i])
             return result
+        ## normal indexing
         else:
-            #normal indexing
             if index < 0:
                 index += self.size
                 
             if index < 0 or index >= self.size:
-                raise IndexError("Index out of range.")
-            return self.Array[index]
+                raise IndexError("List index out of range.")
+            else:
+                return self.Array[index]
 
 
     ## O(1)
     ## allows us to do: x[4] = 20
     def __setitem__(self, index, value):
+        if index < 0:
+            index += self.size
+
         if index < 0 or index >= self.size:
-            raise IndexError("Index out of range.")
+            raise IndexError("List index out of range.")
         else:
             self.Array[index] = value
 
@@ -107,7 +116,7 @@ class StatArray:
         """
 
         if self.size == self.capacity:
-            raise BufferError('No Empty Space - Array filled up.')
+            raise IndexError('No Empty Space - Array filled up.')
         else:
             self.Array[self.size] = value
             self.size += 1
@@ -115,7 +124,7 @@ class StatArray:
 
     ## O(n)
     ## insert, but lose the last element if the array is filled up.
-    def insert(self, index, value):
+    def insert(self, index, value) -> None:
 
         """
         Input: 
@@ -126,9 +135,11 @@ class StatArray:
 
         Error: 
         """
+        if index < 0:
+            index += self.size
 
         if index < 0 or index >= self.size:
-            raise IndexError("Index out of range.")
+            raise IndexError("List index out of range.")
         else:
             for i in range(self.size-1, index-1, -1):
                 self.Array[i] = self.Array[i - 1]
@@ -158,7 +169,7 @@ class StatArray:
                 index += i
                 break
         else:
-            return
+            ValueError("StatArray.remove(x): x not in StatArray.")
 
         for i in range(index, self.size -1):
             self.Array[i] = self.Array[i + 1]
@@ -171,11 +182,11 @@ class StatArray:
     def pop(self, index=None):
 
         """
-        Input: 
+        Input: Index: An integer positive or negative to determine the index of the element to be popped. "Optional". If not provided, it's equals the length of the array - 1, i.e., the last array element.
 
-        Process: 
+        Process: Pop the element by position/index and move all the elements to the right of it to left by one move each.
 
-        Output: 
+        Output: The popped array element.
 
         Error: 
         """
@@ -183,11 +194,15 @@ class StatArray:
         if self.size == 0:
             raise IndexError("Poping from an empty array")
         else:
+
             if index is None:
-                index = self.size - 1
+                index = (self.size - 1)
+
+            if index < 0:
+                index += self.size
 
             if index < 0 or index >= self.size:
-                raise IndexError("Index out of range.")
+                raise IndexError("List index out of range.")
 
             value = self.Array[index]
 
@@ -206,24 +221,22 @@ class StatArray:
         """
         Input: 
 
-        Process: 
+        Process: Reverse DynArray elements.
 
         Output: 
 
         Error: 
         """
 
-        start = int(0)
-        stop = (self.size - 1)
+        left = int(0)
+        right = (self.size - 1)
 
-        ops = (self.size // 2)
+        iters = (self.size // 2)
 
-        for i in range(0, ops, 1):
-            self.Array[start], self.Array[stop] = self.Array[stop], self.Array[start]
-            start += 1
-            stop -= 1
-        
-        return
+        for i in range(0, iters, 1):
+            self.Array[left], self.Array[right] = self.Array[right], self.Array[left]
+            left += 1
+            right -= 1
 
 
     ## O(n)
@@ -239,7 +252,7 @@ class StatArray:
         Error: 
         """
 
-        newArr = StatArray(self.size)
+        newArr = StatArray()
         for i in range(self.size):
             newArr.append(self.Array[i])
         return newArr
@@ -258,7 +271,7 @@ class StatArray:
         Error: 
         """
 
-        counter = int(0)
+        counter = 0
 
         for i in range(self.size):
             if self.Array[i] == value:
@@ -269,7 +282,7 @@ class StatArray:
 
 
     ## O(n)
-    def index(self, value) -> int:
+    def index(self, value, start=0, stop=None) -> int:
 
         """
         Input: 
@@ -278,19 +291,34 @@ class StatArray:
 
         Output: 
 
-        Error: 
+        Error:
+        
+        Throws
+        
+        A "TypeError: index expected at least 1 argument, got 0" if no argument given.
+        
+        A "ValueError: 'x' is not in DynArray" if the given value is not in the array.
+
         """
 
-        for i in range(self.size):
+        if start == 0:
+            start = 0
+
+        if stop is None:
+            stop = self.size
+
+
+        for i in range(start, stop):
             if self.Array[i] == value:
                 return i
             else:
                 continue
-        return -1
+        else:
+            raise ValueError("ValueError: 'x' is not in DynArray")
 
 
     ## O(n)
-    def extend(self, elements):
+    def extend(self, Iterable) -> None:
 
         """
         Input: 
@@ -302,14 +330,12 @@ class StatArray:
         Error: 
         """
 
-        for i in elements:
-            self.append(i)
-
-        return self
+        for arg in Iterable:
+            self.append(arg)
 
 
     ## O(n)
-    def clear(self):
+    def clear(self) -> None:
 
         """
         Input: 
@@ -323,10 +349,9 @@ class StatArray:
 
         for i in range(self.size):
             self.pop()
-        return self.Array
 
 
-    ## O(n2)
+    ## O(n^2)
     def bubbleSort(self):
 
         """
@@ -350,6 +375,25 @@ class StatArray:
                     swap = True
             iters -= 1
         return self.Array
+
+
+    ## O(log n)
+    def linSearch(self, target) -> bool:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        for i in range(self.Array):
+            if self.Array[i] == target:
+                return True
+        return False
 
     
     ## O(log2 n)
@@ -380,30 +424,13 @@ class StatArray:
                 le = (mid + 1)
         return False
 
-    
-    ## O(log n)
-    def linSearch(self, target) -> bool:
-
-        """
-        Input: 
-
-        Process: 
-
-        Output: 
-
-        Error: 
-        """
-
-        for i in range(self.Array):
-            if self.Array[i] == target:
-                return True
-        return False
 
 
 if __name__ == "__main__":
-    x = StatArray(6, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
+    x = StatArray(5,1,2,3,4,5)
+
     print(x)
 
-    x.clear()
+    # x.bubbleSort()
 
     print(x)
