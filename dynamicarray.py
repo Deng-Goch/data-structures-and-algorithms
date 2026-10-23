@@ -102,7 +102,7 @@ class DynArray:
         self.capacity = new_capacity
 
 
-    ## instance methods - 11
+    ## instance methods - 13
     ## O(1)*
     def append(self, value):
 

@@ -42,18 +42,18 @@ class DoublyList:
             curr = curr.next
         return ' <-> '.join(arr)
 
-    
-    ## o(n)
-    def __iter__(self):
-        curr = self.head
-        for i in range(self.len):
-            yield curr.value
-            curr = curr.next
-
 
     ## O(n)
     def __repr__(self) -> str:
         return f"Head => {(self)} <= Tail"
+    
+    
+    ## o(n)
+    def __iter__(self):
+        curr = self.head
+        for _ in range(self.len):
+            yield curr.value
+            curr = curr.next
 
 
     ## O(n)
@@ -87,24 +87,17 @@ class DoublyList:
     ## O(n)
     ## allows us to do: x[3] = 10
     def __setitem__(self, position, value):
-        newnode = self._DoublyNode_(value)
         if position == 1:
-            self.DelStart()
-            self.InsertStart(value)
+            self.head.value = value
         elif position == self.len:
-            self.DelEnd()
-            self.InsertEnd(value)
+            self.tail.value = value
         elif position < 1 or position > self.len:
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, position):
                 curr = curr.next
-            curr.next.prev = newnode
-            curr.prev.next = newnode
-            newnode.prev = curr.prev
-            newnode.next = curr.next
-            curr = newnode
+            curr.value = value
 
         
     ## O(n)
@@ -129,7 +122,7 @@ class DoublyList:
 
     ### 6 instance methods
     ## O(1)
-    def InsertStart(self, value):
+    def InsertStart(self, value) -> None:
 
         """
         Input: 
@@ -142,7 +135,7 @@ class DoublyList:
         """
 
         newnode = self._DoublyNode_(value)
-        if self.head == None:
+        if self.head is None:
             self.head = newnode
             self.tail = newnode
         else:
@@ -153,7 +146,7 @@ class DoublyList:
 
 
     ## O(1)
-    def InsertEnd(self, val):
+    def InsertEnd(self, value) -> None:
 
         """
         Input: 
@@ -165,8 +158,8 @@ class DoublyList:
         Error: 
         """
 
-        newnode = self._DoublyNode_(val)
-        if self.tail == None:
+        newnode = self._DoublyNode_(value)
+        if self.tail is None:
             self.tail = newnode
             self.head = newnode
         else:
@@ -177,7 +170,7 @@ class DoublyList:
 
     
     ## O(n)
-    def InsertAt(self, value, position:int):
+    def InsertAt(self, value, position:int) -> None:
 
         """
         Input: 
@@ -195,7 +188,7 @@ class DoublyList:
         elif position == (self.len + 1):
             self.InsertEnd(value)
         elif position < 1 or position > (self.len + 1):
-            raise IndexError("Index out of range.")
+            raise IndexError("Position Out Of Range.")
         else:
             curr = self.head
             for _ in range(1, position - 1):
@@ -220,7 +213,7 @@ class DoublyList:
         Error: 
         """
 
-        if self.head == None:
+        if self.head is None:
             raise IndexError("Empty Linked List.")
         else:
             del_val = self.head
@@ -244,7 +237,7 @@ class DoublyList:
         Error: 
         """
 
-        if self.tail == None:
+        if self.tail is None:
             raise IndexError("Empty Linked List.")
         else:
             del_val = self.tail
@@ -256,7 +249,7 @@ class DoublyList:
 
     
     ## O(n)
-    def RevLinkList(self):
+    def RevLinkList(self) -> None:
 
         """
         Input: 
@@ -269,14 +262,13 @@ class DoublyList:
         """
 
         iters = ((self.len) // 2)
-        p1 = self.head
-        p2 = self.tail
+        left = self.head
+        right = self.tail
 
         for _ in range(iters):
-            p1.value, p2.value = p2.value, p1.value
-            p1 = p1.next
-            p2 = p2.prev
-        return self.head
+            left.value, right.value = right.value, left.value
+            left = left.next
+            right = right.prev
 
 
 if __name__ == "__main__":
@@ -284,6 +276,6 @@ if __name__ == "__main__":
 
     print(x)
 
-    x.RevLinkList()
+    x.InsertAt('XY', 4)
 
     print(x)

@@ -101,7 +101,7 @@ class StatArray:
         return (capacity * py_object)()  # raw block of pointers
 
 
-    ## instance methods - 11
+    ## instance methods - 13
     ## O(1)*
     def append(self, value):
 
