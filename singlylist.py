@@ -1,4 +1,5 @@
 from dynamicarray import DynArray
+from stack import Stack
 
 class SinglyList:
     class _SinglyNode_:
@@ -200,11 +201,35 @@ class SinglyList:
             return del_val.value
 
 
+    ## O(n)
+    def RevLinkList(self):
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        stak = Stack()
+
+        for node in self:
+            stak.push(node)
+
+        curr = self.head
+        for node in range(len(self)):
+            curr.value = stak.pop()
+            curr = curr.next
+
+
 if __name__ == "__main__":
     x = SinglyList(1,2,3,4,5,6,7)
 
     print(x)
 
-    x.InsertAt('XY', 4)
+    x.revLinkList()
 
     print(x)

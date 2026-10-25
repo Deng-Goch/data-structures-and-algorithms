@@ -2,8 +2,8 @@ from dynamicarray import DynArray
 
 class Queue:
     class _QueueNode_:
-        def __init__(self, val):
-            self.val = val
+        def __init__(self, value):
+            self.value = value
             self.next = None
             self.prev = None
 
@@ -38,7 +38,7 @@ class Queue:
         arr = DynArray()
         curr = self.left
         for _ in range(0, self.len):
-            arr.append(str(curr.val))
+            arr.append(str(curr.value))
             curr = curr.next
         return ' <~> '.join(arr)
 
@@ -49,7 +49,7 @@ class Queue:
 
 
     ## O(1)
-    def Push(self, val):
+    def Push(self, value):
 
         """
         Input: 
@@ -61,7 +61,7 @@ class Queue:
         Error: 
         """
 
-        newnode = self._QueueNode_(val)
+        newnode = self._QueueNode_(value)
 
         if self.right is None:
             self.right = newnode
@@ -89,7 +89,7 @@ class Queue:
         if self.left is None:
            raise ValueError('Empty Stack')
         else:
-            popped = self.left.val
+            popped = self.left.value
             if self.len == 1:
                 self.left = None
                 self.right = None
@@ -117,7 +117,7 @@ class Queue:
         if self.left is None:
             raise ValueError('Empty Stack')
         else:
-            return str(self.left.val)
+            return str(self.left.value)
 
     
     ## O(1)
@@ -136,7 +136,7 @@ class Queue:
         if self.right is None:
             raise ValueError('Empty Stack')
         else:
-            return str(self.right.val)
+            return str(self.right.value)
 
 
 if __name__ == "__main__":

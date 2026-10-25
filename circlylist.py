@@ -7,8 +7,8 @@ class Circular_List:
             self.next = None
             self.prev = None
 
-    ## magic methods - 8
 
+    ## magic methods - 8
     ## O(n)
     def __init__(self, *args):
 
@@ -17,9 +17,9 @@ class Circular_List:
 
         Process: it creates a circular list.
 
-        Output: None
+        Output:
 
-        Error: None
+        Error:
         """
 
         self.head = None
@@ -63,7 +63,7 @@ class Circular_List:
     ## o(n)
     def __iter__(self):
         curr = self.head
-        for i in range(self.len):
+        for _ in range(self.len):
             yield curr.value
             curr = curr.next
 
@@ -89,23 +89,16 @@ class Circular_List:
     def __setitem__(self, position, value):
         newnode = self._CirularNode_(value)
         if position == 1:
-            self.DelStart()
-            self.InsertStart(value)
+            self.head.value = value
         elif position == self.len:
-            self.DelEnd()
-            self.InsertEnd(value)
+            self.tail.value = value
         elif position < 1 or position > self.len:
             raise IndexError("Index out of range.")
         else:
             curr = self.head
             for _ in range(1, position):
                 curr = curr.next
-            curr.next.prev = newnode
-            curr.prev.next = newnode
-            newnode.prev = curr.prev
-            newnode.next = curr.next
-            curr = newnode
-
+            curr.value = value
 
     ## O(n)
     ## del x[7]
@@ -136,13 +129,13 @@ class Circular_List:
 
         Process: inserts the value to the beginning and makes it the new head.
 
-        Output: None
+        Output:
 
         Error: throws a "TypeError: Circular_List.InsertStart() missing 1 required positional argument: 'value'" if no value is provided.
         """
 
         newnode = self._CirularNode_(value)
-        if self.head == None:
+        if self.head is None:
             self.head = newnode
             self.tail = newnode
             self.head.prev = self.tail
@@ -157,7 +150,7 @@ class Circular_List:
 
 
     ## O(1)
-    def InsertEnd(self, val):
+    def InsertEnd(self, value):
 
         """
         Input: 
@@ -169,8 +162,8 @@ class Circular_List:
         Error: 
         """
 
-        newnode = self._CirularNode_(val)
-        if self.tail == None:
+        newnode = self._CirularNode_(value)
+        if self.tail is None:
             self.tail = newnode
             self.head = newnode
             self.tail.next = self.head
@@ -185,7 +178,7 @@ class Circular_List:
 
     
     ## O(n)
-    def InsertAt(self, value, pos:int):
+    def InsertAt(self, value, position:int):
 
         """
         Input: 
@@ -198,15 +191,15 @@ class Circular_List:
         """
 
         newnode = self._CirularNode_(value)
-        if pos == 1:
+        if position == 1:
            self.InsertStart(value)
-        elif pos == (self.len + 1):
+        elif position == (self.len + 1):
            self.InsertEnd(value)
-        elif pos < 1 or pos > (self.len + 1):
+        elif position < 1 or position > (self.len + 1):
             raise IndexError("Index out of range.")
         else:
             curr = self.head
-            for _ in range(1, pos - 1):
+            for _ in range(1, position - 1):
                 curr = curr.next
             newnode.next = curr.next
             newnode.next.prev = newnode
@@ -228,7 +221,7 @@ class Circular_List:
         Error: 
         """
 
-        if self.head == None:
+        if self.head is None:
             raise IndexError("Empty Linked List.")
         else:
             del_val = self.head
@@ -254,7 +247,7 @@ class Circular_List:
         Error: 
         """
 
-        if self.tail == None:
+        if self.tail is None:
             raise IndexError("Empty Linked List.")
         else:
             del_val = self.tail
@@ -267,7 +260,45 @@ class Circular_List:
             return del_val.value
 
 
+    ## O(n)
+    def RevLinkList(self) -> None:
+
+        """
+        Input: 
+
+        Process: 
+
+        Output: 
+
+        Error: 
+        """
+
+        iters = ((self.len) // 2)
+        left = self.head
+        right = self.tail
+
+        for _ in range(iters):
+            left.value, right.value = right.value, left.value
+            left = left.next
+            right = right.prev
+
+
 if __name__ == "__main__":
     x = Circular_List(1,2,3,4,5,6,7,8)
+
+    print(x)
+
+    x[5] = 'X'
+
+    print(x)
+
+    x.DelEnd()
+
+    print()
+
+    print(x)
+    print(len(x))
+
+    x.RevLinkList()
 
     print(x)

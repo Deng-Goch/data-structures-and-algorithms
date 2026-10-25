@@ -63,8 +63,8 @@ class Heap_Based_Min_Priority_Queue:
 
     ## O(log2 n) - used with left and right for deleting
     def _sift_down_(self, index):
-        right = self._right_(index)
         left = self._left_(index)
+        right = self._right_(index)
         
         if left < (len(self.heap)) and right < (len(self.heap)):
 
@@ -120,7 +120,7 @@ class Heap_Based_Min_Priority_Queue:
         if len(self.heap) == 0:
             raise IndexError('Empty Priority Queue.')
         else:
-            self.heap[0], self.heap[len(self.heap)-1] = self.heap[0], self.heap[len(self.heap)-1]
+            self.heap[0], self.heap[len(self.heap)-1] = self.heap[len(self.heap)-1], self.heap[0]
             self.heap.pop()
             self._sift_down_(0)
 
@@ -152,5 +152,13 @@ if __name__ == "__main__":
     pq.push(6, 'Monydhot')
     pq.push(9, 'Yor')
     pq.push(8, 'DENG')
+
+    print(pq)
+
+    pq.push(1, "Yassin")
+
+    print(pq)
+
+    pq.pop()
 
     print(pq)
