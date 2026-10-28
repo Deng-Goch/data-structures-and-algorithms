@@ -33,22 +33,22 @@ class Array_Based_Max_Heap:
     ## 5 inner / helper methods
     ## (log2 n) - used with parent for inserting
     ## O(1)
-    def _parent_(self, index):
+    def _parent_(self, index:int) -> int:
         return ((index - 1) // 2)
 
 
     ## O(1)
-    def _left_(self, index):
+    def _left_(self, index:int) -> int:
         return ((index * 2) + 1)
 
 
     ## O(1)
-    def _right_(self, index):
+    def _right_(self, index:int) -> int:
         return ((index * 2) + 2)
 
 
     ## O(log2 n) - used for inserting
-    def _sift_up_(self, index):
+    def _sift_up_(self, index:int) -> None:
         parent = self._parent_(index)
 
         if parent >= 0:
@@ -79,7 +79,7 @@ class Array_Based_Max_Heap:
 
     
     ## O(log2 n) - used with left and right for deleting
-    def _sift_down_(self, index):
+    def _sift_down_(self, index:int) -> None:
         left = self._left_(index)
         right = self._right_(index)
         
@@ -194,52 +194,34 @@ class Array_Based_Max_Heap:
         Error: 
         """
 
-        pass
+        def _parent_(index:int) -> int:
+            return ((index - 1) // 2)
+
+        def _heapify_(array):
+            swap = True
+
+            while swap:
+                swap = False
+                for i in range((len(array)-1), 0, -1):
+                    parent = _parent_(i)
+
+                    if array[i] > array[parent]:
+                        array[i], array[parent] = array[parent], array[i]
+                        swap = True
+                    else:
+                        continue
+            return array
+
+        heapified = _heapify_(array)
+
+        if len(self.heap) == 0:
+            self.heap = heapified
+            return self.heap
 
 
 if __name__ == "__main__":
     maxheap = Array_Based_Max_Heap()
 
-    maxheap.insert(70)
-    maxheap.insert(81)
-    maxheap.insert(37)
-    maxheap.insert(17)
-    maxheap.insert(14)
-    maxheap.insert(19)
-    maxheap.insert(27)
-    maxheap.insert(45)
-    maxheap.insert(75)
+    maxheap.max_heapify(DynArray(3,7,0,12,4,6,2,3,9,39,20,1,3,38))
 
     print(maxheap)
-    print()
-
-    # maxheap.pop()
-    # print(maxheap.peek())
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-    # maxheap.pop()
-    # print(maxheap)
-
-
-    # maxheap.pop()
-    # print(maxheap)

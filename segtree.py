@@ -1,7 +1,5 @@
-class Segment_Tree:
-    pass
+class Segment_Tree:...
 
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...

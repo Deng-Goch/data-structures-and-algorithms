@@ -1,4 +1,4 @@
-from timeit import timeit
+from dynamicarray import DynArray
 
 class Sorting_Algos:
     ## O(n2)
@@ -40,7 +40,6 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
 
 
     ## O(n2)
@@ -113,7 +112,6 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
 
 
     ## O(x)
@@ -129,15 +127,57 @@ class Sorting_Algos:
         Error: 
         """
 
+        ### Part 1: Maxheap sort it.
+        def _parent_(index:int) -> int:
+            return ((index - 1) // 2)
+
         def _heapify_(array):
+            swap = True
 
+            while swap:
+                swap = False
+                for i in range((len(array)-1), 0, -1):
+                    parent = _parent_(i)
+
+                    if array[i] > array[parent]:
+                        array[i], array[parent] = array[parent], array[i]
+                        swap = True
+                    else:
+                        continue
             return array
-            pass
 
-        def _delete_(array):
 
-            return array
-            pass
+        ### Part 2: Delete without poping the last element.
+        def _left_(index:int) -> int:
+            return ((index * 2) + 1)
+
+        def _right_(index:int) -> int:
+            return ((index * 2) + 2)
+
+        def _sift_down_(index:int) -> None:
+            left = _left_(index)
+            right = _right_(index)
+
+            if left < len(array) and right < len(array):
+                if array[index] < array[left] and array[index] < array[right]:
+                    array[index], array[left] = array[left], array[index]
+                elif array[index] < array[right] and array[right] < array[index]:
+                    array[index], array[right] = array[right], array[index]
+                else:
+                    return
+                _sift_down_(left)
+
+            elif left < len(array):
+                if array[index] < array[left]:
+                    array[index], array[left] = array[left], array[index]
+                _sift_down_(right)
+            else:
+                return
+
+
+        heaped = _heapify_(array)
+        
+        return heaped
 
     ## O(x)
     def topologicalSort(self):
@@ -151,8 +191,6 @@ class Sorting_Algos:
 
         Error: 
         """
-
-        pass
 
 
     ## O(x)
@@ -168,7 +206,6 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
 
 
     ## O(x)
@@ -184,7 +221,6 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
 
 
     ## O(x)
@@ -200,13 +236,11 @@ class Sorting_Algos:
         Error: 
         """
 
-        pass
 
 
 
 if __name__ == "__main__":
     x = Sorting_Algos()
-    y = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9]
-    z = [6,2,0,1,6,8]
+    y = DynArray(3,7,0,12,4,6,2,3,9,39,20,1,3,38)
     # print(x.selectionSort(z))
-    print(x.insertionSort(z))
+    print(x.heapSort(y))

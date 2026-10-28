@@ -1,8 +1,6 @@
-class Union_Find:
-    pass
+class Union_Find:...
 
 
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...

@@ -1,6 +1,4 @@
-class Skip_List:
-    pass
+class Skip_List:...
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...

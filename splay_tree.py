@@ -1,7 +1,5 @@
-class Splay_Tree:
-    pass
+class Splay_Tree:...
 
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...

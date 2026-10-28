@@ -1,7 +1,5 @@
-class Binary_Index_Fenwick_Tree:
-    pass
+class Binary_Index_Fenwick_Tree:...
 
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...

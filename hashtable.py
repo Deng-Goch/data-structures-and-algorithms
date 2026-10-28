@@ -14,9 +14,8 @@ class HashTable:
 
         Error: None
         """
-
-        self.size = 0
         self.capacity = 8
+        self.size = 0
         self.buckets = self._Make_Table_(self.capacity)
         self.last = DynArray()
         for key in kwargs:
@@ -29,10 +28,12 @@ class HashTable:
             return "{}"
         else:
             ends = len(self.items())
+
             dic = str("{")
             for k, v in self.items():
                 dic += f"'{k}': {v}"
-                ends -= int(1)
+
+                ends -= 1
                 if ends >= 1:
                     dic += str(", ")
                 else:
@@ -105,18 +106,18 @@ class HashTable:
 
 
     ## O(1)*
-    def _NewInsert_(self, ky, vl, tb):
-        index = self._Hash_Func_(ky)
-        bucket = tb[index]
+    def _NewInsert_(self, key, value, table):
+        index = self._Hash_Func_(key)
+        bucket = table[index]
 
         for i, (k, v) in enumerate(bucket):
-            if k == ky:
-                bucket[i] = (ky, vl)
+            if k == key:
+                bucket[i] = (key, value)
                 break
         else:
-            bucket.append((ky, vl))
+            bucket.append((key, value))
             self.size += 1
-        return tb
+        return table
 
 
     ## O(n)
@@ -127,8 +128,8 @@ class HashTable:
         NewTable = self._Make_Table_(self.capacity)
         self.buckets = NewTable
 
-        for (ky, vl) in items:
-            self._NewInsert_(ky, vl, self.buckets)
+        for (key, value) in items:
+            self._NewInsert_(key, value, self.buckets)
         return self.buckets
 
 
@@ -235,11 +236,11 @@ class HashTable:
         Error: 
         """
 
-        vals = DynArray()
+        values = DynArray()
         for bucket in self.buckets:
             for _, v in bucket:
-                vals.append(v)
-        return vals
+                values.append(v)
+        return values
 
 
     ## O(n)
@@ -255,11 +256,11 @@ class HashTable:
         Error: 
         """
 
-        keyVals = DynArray()
+        keyValues = DynArray()
         for bucket in self.buckets:
             for k, v in bucket:
-                keyVals.append((k, v))
-        return keyVals
+                keyValues.append((k, v))
+        return keyValues
 
 
     ## O(n)
@@ -275,8 +276,9 @@ class HashTable:
         Error: 
         """
 
-        for i in range(self.capacity):
+        for _ in range(self.capacity):
             self.buckets.pop()
+        self.capacity = 8
         self.size = 0
 
 
@@ -295,8 +297,8 @@ class HashTable:
 
         NewHashTable = HashTable()
 
-        for k, v in self.items():
-            NewHashTable.update(k, v)
+        for key, value in self.items():
+            NewHashTable.update(key, value)
             
         return NewHashTable
 
@@ -318,13 +320,13 @@ class HashTable:
             raise IndexError("Empty Hashtable")
         else:
             end = self.last[-1]
-            HashTable.pop(self, self.last[-1])
+            self.pop(self.last[-1])
             self.last.pop()
             return end
 
 
     ## O(1)
-    def setdefault(self, key, val_to_give=None):
+    def setdefault(self, key, default=None):
 
         """
         Input: 
@@ -339,11 +341,11 @@ class HashTable:
         if key in self.keys():
             return self.get(key)
         else:
-            self.update(key, val_to_give)
+            self.update(key, default)
 
 
     ## O(n)
-    def fromkeys(self, array, default_val=None):
+    def fromkeys(self, iterable, value=None):
 
         """
         Input: 
@@ -356,20 +358,53 @@ class HashTable:
         """
 
         NewHashTable = HashTable()
-        NewTable = self._Make_Table_(len(array))
+        NewTable = self._Make_Table_(len(iterable))
 
-        for el in array:
-            NewHashTable._NewInsert_(el, default_val, NewTable)
+        for el in iterable:
+            NewHashTable._NewInsert_(el, value, NewTable)
         NewHashTable.buckets = NewTable
         return NewHashTable
 
 
 if __name__ == "__main__":
-    hashmap = HashTable(name='Deng', age=30, gender='Male')
+    hashmap = HashTable()
 
-    print(hashmap.keys())
+    print()
 
+    hashmap.update('Full Name', 'Deng Goch Monydhot')
+    hashmap.update('Department', 'Finance')
+    hashmap.update('Job Title', 'Finance Officer')
+    hashmap.update('Salary', 1111)
+    hashmap.update('Supervisor', 'Dominic Vundrule')
+    hashmap.update('Years Served', 3)
+    hashmap.update('Status', 'Contracted')
+
+    print()
 
     print(hashmap)
 
-    hashmap.update()
+    print()
+
+    print(hashmap['Full Name'])
+
+    print()
+
+    print(hashmap.last)
+
+    print()
+
+    print(hashmap.popitem())
+
+    print()
+    
+    print(hashmap.last)
+
+    print()
+    
+    print(hashmap.popitem())
+
+    print()
+    
+    print(hashmap.last)
+
+    x = dict()

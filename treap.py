@@ -1,7 +1,5 @@
-class Treap:
-    pass
+class Treap:...
 
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == "__main__":...
